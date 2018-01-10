@@ -1,0 +1,27 @@
+<ion-content padding>
+    <ion-scroll scrollX="true">
+  		<ion-card *ngFor="let order of firebaseProvider.orders | async">
+        <ion-card-header>
+          OrderID: {{order.Apotheke}}
+        </ion-card-header>
+        <ion-card-content>
+          <button ion-button  (click)="firebaseProvider.updateItem(order.key, 'Apotheke', 5)">Update</button>
+          <button ion-button (click)="firebaseProvider.deleteItem(order.key)">Delete</button>
+        </ion-card-content>
+  		</ion-card>
+    </ion-scroll>
+
+    <button ion-button (click)="firebaseProvider.addItem(newitem.value)">Add</button>
+      <button ion-button (click)="startNew()">New</button>
+
+    <ion-card>
+      <ion-list>
+        <ion-item *ngFor="let order of firebaseProvider.orders | async">
+          OrderID: {{order.Name}}
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <!--input type="text" #newitem /-->
+
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Medikament</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-searchbar (keydown)="search($event)">
+
+  </ion-searchbar>
+
+  <ion-card *ngFor="let drug of firebaseProvider.drugs | async">
+    <ion-card-header>
+      Name: {{drug.key}}<br />
+      PZN: {{drug.PNZ}}
+    </ion-card-header>
+    <ion-card-content>
+      Hersteller: {{drug.Hersteller}}<br />
+      Preis: {{drug.Preis}}<br />
+      Wirkstoff: {{drug.Wirkstoff.Name}}
+      <button ion-button  (click)="nextStep(drug.key)">Auswählen</button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

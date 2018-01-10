@@ -1,0 +1,28 @@
+<!--
+  Generated template for the BZusammenfassungPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>b-zusammenfassung</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card *ngFor="let box of box | async">
+    <ion-card-header>
+      DosenID: {{box.key}}
+      OrderID: {{box.value}}
+    </ion-card-header>
+    <ion-card-content>
+      <button ion-button  (click)="firebaseProvider.updateItem(order.key, 'Apotheke', 5)">Update</button>
+      <button ion-button (click)="firebaseProvider.deleteItem(order.key)">Delete</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
