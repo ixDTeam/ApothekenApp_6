@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/map';
-
+import { Subject } from 'rxjs/Subject'
+import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class FirebaseProvider {
@@ -65,10 +66,8 @@ export class FirebaseProvider {
       }
 
       getDrugs(value){
-        return this.db.list('/Drugs/', ref => ref.orderByKey().equalTo(value));
+        return this.db.list('/Drugs/', ref => ref.orderByKey().startAt(value));
       }
-
-
 
 
       getBox(){
