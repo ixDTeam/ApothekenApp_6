@@ -6,7 +6,7 @@
 
 
 <ion-content padding>
-  <ion-searchbar [(ngModel)]="searchInput" [showCancelButton]="shouldShowCancel"  (ionInput)="searchEvent(searchInput)">
+  <ion-searchbar [(ngModel)]="searchInput" [autocomplete]="true" [debounce]="200" [showCancelButton]="shouldShowCancel"  (ionInput)="searchEvent(searchInput)">
 
   </ion-searchbar>
 

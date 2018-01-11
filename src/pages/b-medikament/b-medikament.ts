@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { Subject } from 'rxjs/Subject'
@@ -25,7 +25,16 @@ export class BMedikamentPage {
     // });
   }
 
+ngOnInit(){
+  this.drugs = this.firebaseProvider.getDrugs("").snapshotChanges().map(changes => {
+    console.log(changes);
+    return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+  });
+}
+
+
 searchEvent(searchInput){
+  searchInput = searchInput.TitleCasePipe();
   this.drugs = this.firebaseProvider.getDrugs(searchInput).snapshotChanges().map(changes => {
     console.log(changes);
     return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));

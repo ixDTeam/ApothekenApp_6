@@ -66,7 +66,7 @@ export class FirebaseProvider {
       }
 
       getDrugs(value){
-        return this.db.list('/Drugs/', ref => ref.orderByKey().startAt(value));
+        return this.db.list('/Drugs/', ref => ref.orderByKey().startAt(value).endAt(value+"\uf8ff"));
       }
 
 
