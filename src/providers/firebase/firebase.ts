@@ -12,6 +12,11 @@ export class FirebaseProvider {
     drugs: Observable<any[]>;
 
     ordersRef: AngularFireList<any>;
+
+    // Waiting List
+    ordersWaiting: Observable<any[]>;
+    ordersWaitingRef: AngularFireList<any>;
+
     ScannerRef: AngularFireList<any>;
     DosenRef: AngularFireList<any>;
     DrugsRef: AngularFireList<any>;
@@ -30,24 +35,41 @@ export class FirebaseProvider {
 
   constructor(public db: AngularFireDatabase) {
         this.ScannerRef = db.list('/Scanner/');
-        this.DrugsRef = db.list('/Drugs/');
+
         this.DosenRef = db.list('/Box/');
         this.ordersRef = db.list('/Orders/');
-
-
 
         this.orders = this.ordersRef.snapshotChanges().map(changes => {
           return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
         });
 
+        // Orders Waiting
+        this.ordersWaitingRef = db.list('/Orders/', ref => ref.orderByChild('status').equalTo('1'));
+        this.ordersWaiting = this.ordersWaitingRef.snapshotChanges().map(changes => {
+          return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+        });
+
+        // this.ordersWaitingRef = db.list('/Orders/', ref => ref.orderByChild('status').equalTo('1'));
+        // this.ordersWaiting = this.ordersWaitingRef.snapshotChanges(changes => {
+        //   console.log(changes);
+        //   return changes;
+        // });
+
         this.dosen = this.DosenRef.snapshotChanges().map(changes => {
           return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
         });
 
-        this.drugs = this.DrugsRef.snapshotChanges().map(changes => {
-          return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-        });
+        // this.drugs = this.DrugsRef.snapshotChanges().map(changes => {
+        //   return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+        // });
       }
+
+      getDrugs(value){
+        return this.db.list('/Drugs/', ref => ref.orderByKey().equalTo(value));
+      }
+
+
+
 
       getBox(){
         return this.DosenRef;

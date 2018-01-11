@@ -17,8 +17,8 @@ import { Observable } from 'rxjs/Observable'
 })
 export class BZusammenfassungPage {
 
-box: Observable<[]>;
-boxObj: Observable<[]>;
+box: Observable<any[]>;
+boxObj: Observable<any[]>;
 test = "box_ID";
 
 ScannerID = "00001";

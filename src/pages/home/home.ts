@@ -11,6 +11,7 @@ import { BMedikamentPage } from '../b-medikament/b-medikament';
 })
 export class HomePage {
 
+
   constructor(public navCtrl: NavController, public firebaseProvider: FirebaseProvider) {
 
   }
