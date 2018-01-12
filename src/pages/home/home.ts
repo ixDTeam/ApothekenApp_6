@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { BMedikamentPage } from '../b-medikament/b-medikament';
+import { BPatientPage } from '../b-patient/b-patient';
 
 @Component({
   selector: 'page-home',
@@ -16,8 +16,8 @@ export class HomePage {
 
   }
 
-startNew(){
-  this.navCtrl.push(BMedikamentPage);
-}
+  startNew(){
+    this.navCtrl.push(BPatientPage);
+  }
 
 }

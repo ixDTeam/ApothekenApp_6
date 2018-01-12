@@ -11,10 +11,7 @@
         </ion-card-content>
   		</ion-card>
     </ion-scroll>
-
-    <button ion-button (click)="firebaseProvider.addItem(newitem.value)">Add</button>
-      <button ion-button (click)="startNew()">New</button>
-
+    <button ion-button (click)="startNew()">New</button>
     <ion-card>
       <ion-list>
         <ion-item *ngFor="let order of firebaseProvider.orders | async">

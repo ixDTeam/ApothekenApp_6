@@ -39,9 +39,7 @@ searchEvent(searchInput){
   searchInput = searchInput.replace(/\w\S*/g, function (txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
-  console.log(searchInput);
   this.firebaseProvider.getDrugs(searchInput).snapshotChanges().subscribe(changes => this.drugsVar = changes);
-    console.log(this.drugsVar.length);
 }
 
 nextStep(key){

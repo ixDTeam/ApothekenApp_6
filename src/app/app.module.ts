@@ -12,11 +12,10 @@ import { DetailPage } from '../pages/detail/detail';
 import { BMedikamentPage } from '../pages/b-medikament/b-medikament';
 import { BDosierungPage } from '../pages/b-dosierung/b-dosierung';
 import { BZusammenfassungPage } from '../pages/b-zusammenfassung/b-zusammenfassung';
-
+import { BPatientPage } from '../pages/b-patient/b-patient';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
@@ -40,6 +39,7 @@ const firebaseConfig = {
     HomePage,
     TabsPage,
     DetailPage,
+    BPatientPage,
     BMedikamentPage,
     BDosierungPage,
     BZusammenfassungPage
@@ -59,6 +59,7 @@ const firebaseConfig = {
     HomePage,
     TabsPage,
     DetailPage,
+    BPatientPage,
     BMedikamentPage,
     BDosierungPage,
     BZusammenfassungPage
