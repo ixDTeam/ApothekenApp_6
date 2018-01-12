@@ -38,7 +38,7 @@ currentBoxID:any;
     );
 
     this.firebaseProvider.db.object('Box').valueChanges().subscribe((value) => {
-      this.outside = value;
+      //this.outside = value;
       //console.log(this.outside);
       }
     );
