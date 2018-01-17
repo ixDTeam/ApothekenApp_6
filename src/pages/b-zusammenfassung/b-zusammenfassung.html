@@ -15,14 +15,16 @@
 
 <ion-content padding>
 
-  <ion-card *ngFor="let box of box | async">
+  <ion-card *ngFor="let box of box">
     <ion-card-header>
-      DosenID: {{box.key}}
-      OrderID: {{box.value}}
+      Medikament: {{box.Medikament}}
+      BoxID: {{box.BoxID}}
     </ion-card-header>
     <ion-card-content>
-      <button ion-button  (click)="firebaseProvider.updateItem(order.key, 'Apotheke', 5)">Update</button>
       <button ion-button (click)="firebaseProvider.deleteItem(order.key)">Delete</button>
     </ion-card-content>
   </ion-card>
+  <button ion-button (click)="newArray()">Zu Array</button>
+  <button ion-button (click)="newOrder()">Zu Firebase</button>
+
 </ion-content>

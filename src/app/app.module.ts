@@ -9,8 +9,11 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { DetailPage } from '../pages/detail/detail';
 
+import { MultiuserPage } from '../pages/multiuser/multiuser';
+
 import { BMedikamentPage } from '../pages/b-medikament/b-medikament';
 import { BDosierungPage } from '../pages/b-dosierung/b-dosierung';
+import { BScanPage } from '../pages/b-scan/b-scan';
 import { BZusammenfassungPage } from '../pages/b-zusammenfassung/b-zusammenfassung';
 import { BPatientPage } from '../pages/b-patient/b-patient';
 
@@ -38,9 +41,11 @@ const firebaseConfig = {
     ContactPage,
     HomePage,
     TabsPage,
+    MultiuserPage,
     DetailPage,
     BPatientPage,
     BMedikamentPage,
+    BScanPage,
     BDosierungPage,
     BZusammenfassungPage
   ],
@@ -56,11 +61,13 @@ const firebaseConfig = {
     MyApp,
     AboutPage,
     ContactPage,
+    MultiuserPage,
     HomePage,
     TabsPage,
     DetailPage,
     BPatientPage,
     BMedikamentPage,
+    BScanPage,
     BDosierungPage,
     BZusammenfassungPage
   ],

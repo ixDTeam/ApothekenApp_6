@@ -1,14 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BMedikamentPage } from '../b-medikament/b-medikament';
-
-
-/**
- * Generated class for the BPatientPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { FirebaseProvider } from '../../providers/firebase/firebase';
 
 @IonicPage()
 @Component({
@@ -17,14 +10,13 @@ import { BMedikamentPage } from '../b-medikament/b-medikament';
 })
 export class BPatientPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  private patientID:any;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BPatientPage');
+  constructor(public navCtrl: NavController, public fb: FirebaseProvider) {
   }
 
   nextStep(){
+    this.fb.setPatintenID(this.patientID);
     this.navCtrl.push(BMedikamentPage);
   }
 }

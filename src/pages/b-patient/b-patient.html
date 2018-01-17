@@ -5,15 +5,16 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>Patient</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-  <ion-input [(ngModel)]="dosierung_Mo" type="number"></ion-input>
+  <ion-item>
+    <ion-label fixed color="primary">PatientID</ion-label>
+    <ion-input [(ngModel)]="patientID"></ion-input>
+  </ion-item>
   <button ion-button (click)="nextStep()">Auswählen</button>
 </ion-content>

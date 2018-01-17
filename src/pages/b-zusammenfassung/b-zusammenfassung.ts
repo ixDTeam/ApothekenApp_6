@@ -17,55 +17,25 @@ import { Observable } from 'rxjs/Observable'
 })
 export class BZusammenfassungPage {
 
-box: Observable<any[]>;
+box:any[] = [];
 boxObj: Observable<any[]>;
 test = "box_ID";
 
-ScannerID = "00001";
+
 
 currentBoxID:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
-    this.firebaseProvider.db.object('Box/'+this.test).valueChanges().subscribe(
-      //console.log
-    );
-
-    this.firebaseProvider.db.object('Scanner/Devices/'+this.ScannerID).valueChanges().subscribe((value) => {
-        this.currentBoxID = value;
-        console.log(this.currentBoxID);
-        this.newOrder(this.currentBoxID);
-      }
-    );
-
-    this.firebaseProvider.db.object('Box').valueChanges().subscribe((value) => {
-      //this.outside = value;
-      //console.log(this.outside);
-      }
-    );
-
-      this.box = this.firebaseProvider
-      .getBox()
-      .snapshotChanges()
-      .map(
-        changes => {
-          return changes.map(c => ({
-            key: c.payload.key,
-            Order: c.payload.val(),
-          }));
-        });
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FirebaseProvider) {
+    this.box = fb.ordersStore;
+    
   }
 
-  ionViewDidLoad() {
-
-  }
-
-newDose(){
-
+newArray(){
+  this.fb.newArray();
 }
 
-newOrder(BoxID){
-  this.firebaseProvider.newOrder(BoxID);
+newOrder(){
+  this.fb.newOrder();
 }
 
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 
-import { BZusammenfassungPage } from '../b-zusammenfassung/b-zusammenfassung';
+import { BScanPage } from '../b-scan/b-scan';
 
 /**
  * Generated class for the BDosierungPage page.
@@ -26,8 +26,7 @@ export class BDosierungPage {
  dosierung_laenge:any = 1;
  dosierung_einheit:any = 1;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
-    console.log(navParams.get('drugName'));
+  constructor(public navCtrl: NavController, public firebaseProvider: FirebaseProvider) {
   }
 
   dosierungAdd(dosierung){
@@ -87,7 +86,7 @@ export class BDosierungPage {
   }
 
   nextStep(){
-    this.navCtrl.push(BZusammenfassungPage, {
+    this.navCtrl.push(BScanPage, {
     });
     this.firebaseProvider.dosierung_Mo = this.dosierung_Mo;
     this.firebaseProvider.dosierung_Mi = this.dosierung_Mi;

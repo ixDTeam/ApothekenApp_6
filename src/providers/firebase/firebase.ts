@@ -8,108 +8,128 @@ import 'rxjs/add/operator/switchMap';
 @Injectable()
 export class FirebaseProvider {
 
-    orders: Observable<any[]>;
-    dosen: Observable<any[]>;
-    drugs: Observable<any[]>;
+  private ScannerID = "00001";
 
-    ordersRef: AngularFireList<any>;
+  orders: Observable<any[]>;
+  dosen: Observable<any[]>;
+  drugs: Observable<any[]>;
 
-    // Waiting List
-    ordersWaiting: Observable<any[]>;
-    ordersWaitingRef: AngularFireList<any>;
+  ordersRef: AngularFireList<any>;
 
-    ScannerRef: AngularFireList<any>;
-    DosenRef: AngularFireList<any>;
-    DrugsRef: AngularFireList<any>;
+  ordersStore:any[] = [];
 
-    currentOrderID:any;
+  // Waiting List
+  ordersWaiting:any;
+  ordersWaitingRef: AngularFireList<any>;
 
-    medikament:any = '';
-    dosierung_Mo:any = '';
-    dosierung_Mi:any = '';
-    dosierung_Ab:any = '';
-    dosierung_Na:any = '';
+  scannerRef:any;
+  dosenRef: AngularFireList<any>;
+  drugsRef: AngularFireList<any>;
 
-    dosierung_laenge:any = '';
-    dosierung_einheit:any = '';
+
+  currentOrderID: any;
+
+  private patientID: any;
+
+  BoxID:any;
+  medikament: any = '';
+  dosierung_Mo: any = '';
+  dosierung_Mi: any = '';
+  dosierung_Ab: any = '';
+  dosierung_Na: any = '';
+
+  dosierung_laenge: any = '';
+  dosierung_einheit: any = '';
 
 
   constructor(public db: AngularFireDatabase) {
-        this.ScannerRef = db.list('/Scanner/');
+    this.ordersWaitingRef = this.db.list('/Orders/', ref => ref.orderByChild('Status').equalTo('Waiting'));
+    this.ordersRef = db.list('/Orders/');
+    this.dosenRef = db.list('/Box/');
+    this.scannerRef = db.object('/Scanner/Devices/'+this.ScannerID);
+  }
 
-        this.DosenRef = db.list('/Box/');
-        this.ordersRef = db.list('/Orders/');
+  get_ordersRef(){
+    return this.ordersRef
+  }
 
-        this.orders = this.ordersRef.snapshotChanges().map(changes => {
-          return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-        });
+  get_ordersWaitingRef(){
+    return this.ordersWaitingRef
+  }
 
-        // Orders Waiting
-        this.ordersWaitingRef = db.list('/Orders/', ref => ref.orderByChild('status').equalTo('1'));
-        this.ordersWaiting = this.ordersWaitingRef.snapshotChanges().map(changes => {
-          return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-        });
+  getItems(){
+    let ordersWaiting
+  }
 
-        // this.ordersWaitingRef = db.list('/Orders/', ref => ref.orderByChild('status').equalTo('1'));
-        // this.ordersWaiting = this.ordersWaitingRef.snapshotChanges(changes => {
-        //   console.log(changes);
-        //   return changes;
-        // });
+  getDrugs(value) {
+    return this.db.list('/Drugs/', ref => ref.orderByKey().startAt(value).endAt(value + "\uf8ff"));
+  }
 
-        this.dosen = this.DosenRef.snapshotChanges().map(changes => {
-          return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-        });
+  getScannerID(){
+    return this.ScannerID
+  }
 
-        // this.drugs = this.DrugsRef.snapshotChanges().map(changes => {
-        //   return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-        // });
+  getPatientenID() {
+    return this.patientID
+  }
+
+  setPatintenID(id) {
+    this.patientID = id;
+    console.log("PatientenID wurde geändernt auf " + this.patientID);
+  }
+
+  getBox() {
+    return this.dosenRef;
+  }
+
+
+  deleteItem(key: string) {
+    this.ordersRef.remove(key);
+  }
+
+
+  newArray(){
+    var Order = {
+      "BoxID":  this.BoxID,
+      "Medikament": this.medikament,
+      "PatientID": this.patientID,
+      "dosierung" : {
+        dosierung_Mo: this.dosierung_Mo,
+        dosierung_Mi: this.dosierung_Mi,
+        dosierung_Ab: this.dosierung_Ab,
+        dosierung_Na: this.dosierung_Na,
+        dosierung_einheit: this.dosierung_einheit,
+        dosierung_laenge: this.dosierung_laenge,
       }
-
-      getDrugs(value){
-        return this.db.list('/Drugs/', ref => ref.orderByKey().startAt(value).endAt(value+"\uf8ff"));
-      }
-
-
-      getBox(){
-        return this.DosenRef;
-      }
-
-      addItem(newElement: string) {
-        this.ordersRef.push({ Apotheke: newElement })
-        .then((item) => {
-          console.log(item.key);
-        });;
-      }
-
-      deleteItem(key: string) {
-      this.ordersRef.remove(key);
-    }
+    };
+    this.ordersStore.push(Order);
+    console.log(this.ordersStore);
+  }
 
 
-    newOrder(BoxID){
+  newOrder() {
     let Order = {
-          'medikament': this.medikament,
-          'BoxID': BoxID,
-          dosierung: {
-            'dosierung_Mo': this.dosierung_Mo,
-            'dosierung_Mi': this.dosierung_Mi,
-            'dosierung_Ab': this.dosierung_Ab,
-            'dosierung_Na': this.dosierung_Na,
-            'dosierung_laenge': this.dosierung_laenge,
-            'dosierung_einheit': this.dosierung_einheit
-          }
-        }
-      this.ordersRef
-      .push({ Order }).
-        then((item) => {
-          this.currentOrderID = item.key;
-          console.log(BoxID);
-          //this.db.list('/Box/'+BoxID).push({ BoxID: BoxID, OrderID: this.currentOrderID });
-          this.db.list('/Box/').set('BoxID_'+BoxID, { BoxID: BoxID, OrderID: this.currentOrderID });
-        });
-    }
+      'Status': "Waiting"
+      }
 
-    updateItem(key: string, element: string, newElement: string) {
+      this.ordersRef
+      .push({ 'Status': "Waiting" })
+      .then((item) => {
+        this.currentOrderID = item.key;
+        for (var i = 0; i < this.ordersStore.length; i++){
+          console.log(this.ordersStore[i]);
+          this.db.list('/Box/').set(this.ordersStore[i].BoxID, { BoxID: this.ordersStore[i].BoxID, OrderID: this.currentOrderID, OrderNR: i });
+          var newOrder = this.ordersStore[i];
+          this.db.list('/Orders/'+this.currentOrderID).set("Order_"+i,this.ordersStore[i]);
+      }
+
+    });
+    // let Order_2: {
+    //     'PatientID': "Test"
+    //   };
+  }
+
+  updateItem(key: string, element: string, newElement: string) {
     this.ordersRef.update(key, { Apotheke: newElement });
   }
 

@@ -14,40 +14,28 @@ import { Observable } from 'rxjs/Observable'
 })
 export class BMedikamentPage {
 
-  searchInput:any;
-  search$: Subject<string|null>;
-  drugs: Observable<any>;
-  drugsVar;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider, public loadingCtrl: LoadingController ) {
+  private drugsVar:any;
+
+  constructor(public navCtrl: NavController, public fb: FirebaseProvider, public loadingCtrl: LoadingController ) {
   }
 
-ngOnInit(){
-  let loading = this.loadingCtrl.create({
-    content: 'Wird geladen'
-  });
-  //loading.present();
-  this.firebaseProvider.getDrugs("").snapshotChanges().subscribe(changes => this.drugsVar = changes);
-  //loading.dismiss();
-}
+  ngOnInit(){
+    this.fb.getDrugs("").snapshotChanges().subscribe(changes => this.drugsVar = changes);
+  }
+
+  searchEvent(searchInput){
+    searchInput = searchInput.replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
+    this.fb.getDrugs(searchInput).snapshotChanges().subscribe(changes => this.drugsVar = changes);
+  }
 
 
-
-
-searchEvent(searchInput){
-  searchInput = searchInput || '';
-  searchInput = searchInput.replace(/\w\S*/g, function (txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-  this.firebaseProvider.getDrugs(searchInput).snapshotChanges().subscribe(changes => this.drugsVar = changes);
-}
-
-nextStep(key){
-  this.navCtrl.push(BDosierungPage, {
-    drugName: key,
-  });
-  this.firebaseProvider.medikament = key;
-}
+  nextStep(medikament){
+    this.fb.medikament = medikament;
+    this.navCtrl.push(BDosierungPage);
+  }
 
 
 }

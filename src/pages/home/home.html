@@ -1,9 +1,9 @@
 <ion-content padding>
     <ion-scroll scrollX="true">
-  		<ion-card *ngFor="let order of firebaseProvider.ordersWaiting | async">
+  		<ion-card *ngFor="let order of ordersWaiting">
         <ion-card-header>
           OrderID: {{order.Apotheke}}
-          Status: {{order.status}}
+          Status: {{order.Status}}
         </ion-card-header>
         <ion-card-content>
           <button ion-button  (click)="firebaseProvider.updateItem(order.key, 'Apotheke', 5)">Update</button>
@@ -14,12 +14,10 @@
     <button ion-button (click)="startNew()">New</button>
     <ion-card>
       <ion-list>
-        <ion-item *ngFor="let order of firebaseProvider.orders | async">
+        <ion-item *ngFor="let order of orders">
           OrderID: {{order.Name}}<br />
         </ion-item>
       </ion-list>
     </ion-card>
-
-    <!--input type="text" #newitem /-->
 
 </ion-content>

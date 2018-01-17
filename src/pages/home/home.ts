@@ -11,8 +11,21 @@ import { BPatientPage } from '../b-patient/b-patient';
 })
 export class HomePage {
 
+  ordersWaiting:any;
+  orders:any;
+  controll:any;
 
-  constructor(public navCtrl: NavController, public firebaseProvider: FirebaseProvider) {
+  constructor(public navCtrl: NavController, public fb: FirebaseProvider) {
+
+    // Order mit Status Waiting
+    fb.get_ordersWaitingRef()
+    .snapshotChanges()
+    .subscribe(changes => this.ordersWaiting = changes);
+
+    // Alle Orders
+    fb.get_ordersRef()
+    .snapshotChanges()
+    .subscribe(changes => this.orders = changes, (err) => {console.error(err);});
 
   }
 
