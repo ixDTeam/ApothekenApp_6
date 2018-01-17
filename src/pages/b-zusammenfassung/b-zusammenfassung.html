@@ -15,16 +15,19 @@
 
 <ion-content padding>
 
-  <ion-card *ngFor="let box of box">
+  <ion-card *ngFor="let box of box" let i = index>
     <ion-card-header>
       Medikament: {{box.Medikament}}
       BoxID: {{box.BoxID}}
+      PatientID: {{box.patientID}}
+      Dosierung: {{box.dosierung.dosierung_Mo}}, {{box.dosierung.dosierung_Mi}}, {{box.dosierung.dosierung_Ab}}, {{box.dosierung.dosierung_Na}}
     </ion-card-header>
     <ion-card-content>
-      <button ion-button (click)="firebaseProvider.deleteItem(order.key)">Delete</button>
+      <button ion-button (click)="editToArray(i)">Edit</button>
+      <button ion-button (click)="deleteToArray(i)">Delete</button>
     </ion-card-content>
   </ion-card>
-  <button ion-button (click)="newArray()">Zu Array</button>
-  <button ion-button (click)="newOrder()">Zu Firebase</button>
+  <button ion-button (click)="startNewOrderToArray()">Weiteres Medikament hinzufügen</button>
+  <button ion-button (click)="newOrderToFirebase()">Kostenpflichtig bestellen.</button>
 
 </ion-content>

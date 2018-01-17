@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { Observable } from 'rxjs/Observable'
 
+import { BPatientPage } from '../b-patient/b-patient';
+
 /**
  * Generated class for the BZusammenfassungPage page.
  *
@@ -18,24 +20,29 @@ import { Observable } from 'rxjs/Observable'
 export class BZusammenfassungPage {
 
 box:any[] = [];
-boxObj: Observable<any[]>;
-test = "box_ID";
-
-
-
-currentBoxID:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FirebaseProvider) {
     this.box = fb.ordersStore;
-    
+    this.fb.newOrderToArray();
   }
 
-newArray(){
-  this.fb.newArray();
+
+editToArray(index){
+  // Eher Fake derzeit. Kann besser! 
+  this.fb.ordersStore.splice(index, 1);
+  this.navCtrl.push(BPatientPage);
 }
 
-newOrder(){
-  this.fb.newOrder();
+deleteToArray(index){
+  this.fb.ordersStore.splice(index, 1);
+}
+
+startNewOrderToArray(){
+  this.navCtrl.push(BPatientPage);
+}
+
+newOrderToFirebase(){
+  this.fb.newOrderToFirebase();
 }
 
 }

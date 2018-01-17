@@ -37,7 +37,6 @@ export class FirebaseProvider {
   dosierung_Mi: any = '';
   dosierung_Ab: any = '';
   dosierung_Na: any = '';
-
   dosierung_laenge: any = '';
   dosierung_einheit: any = '';
 
@@ -82,13 +81,16 @@ export class FirebaseProvider {
     return this.dosenRef;
   }
 
-
   deleteItem(key: string) {
     this.ordersRef.remove(key);
   }
 
 
-  newArray(){
+  deleteToArray(index){
+    this.ordersStore.splice(index, 1);
+  }
+
+  newOrderToArray(){
     var Order = {
       "BoxID":  this.BoxID,
       "Medikament": this.medikament,
@@ -107,7 +109,7 @@ export class FirebaseProvider {
   }
 
 
-  newOrder() {
+  newOrderToFirebase() {
     let Order = {
       'Status': "Waiting"
       }
