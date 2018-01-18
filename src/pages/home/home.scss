@@ -1,11 +1,34 @@
-page-home {
 
-.scroll-zoom-wrapper{
+
+page-home {
+  .scroll-zoom-wrapper{
   white-space: nowrap;
 }
 
+.myh3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.mycardheader {
+  padding-bottom: 5px;
+}
+
+.myCard {
+  margin-top: 24px;
+}
+
+.myAdd {
+  position: fixed;
+  right: 40px;
+  margin-top: 35px;
+}
+
+button {
+  width: 80px;
+}
+
 ion-scroll{
-  padding: 24px 30px 32px 32px;
   height: 200px;
   background-color: #C9D2D7;
     ::-webkit-scrollbar {
@@ -15,12 +38,19 @@ ion-scroll{
 
 ion-card.card{
   display: inline-block;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, .12);
   width: 236px;
   height: 144px;
+  padding: 5px;
 
 }
+
+#orderCard{
+  width: 492px;
+}
+
+
 
 ion-card.card.static{
   z-index: 10;
@@ -46,5 +76,4 @@ ion-card.card.static{
   background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(201,210,215,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#c9d2d7',GradientType=1 ); /* IE6-9 */
 }
-
 }
