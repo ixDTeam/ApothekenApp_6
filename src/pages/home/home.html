@@ -1,15 +1,22 @@
-<ion-content padding>
+<ion-content>
     <ion-scroll scrollX="true">
   		<ion-card *ngFor="let order of ordersWaiting">
         <ion-card-header>
-          OrderID: {{order.Apotheke}}
-          Status: {{order.Status}}
+          <h3>PatientenID</h3>
         </ion-card-header>
         <ion-card-content>
-          <button ion-button  (click)="firebaseProvider.updateItem(order.key, 'Apotheke', 5)">Update</button>
-          <button ion-button (click)="firebaseProvider.deleteItem(order.key)">Delete</button>
+          <p>{{order}}</p>
+          <p>Order_2</p>
         </ion-card-content>
+        <p class="text_button" (click)="displayItem(order.key)">Ansehen</p>
+
   		</ion-card>
+
+      <ion-card class="static" (click)="startNew()">
+       <ion-icon name="add"></ion-icon>
+  		</ion-card>
+      <div class="static_bg">
+      </div>
     </ion-scroll>
     <button ion-button (click)="startNew()">New</button>
     <ion-card>

@@ -5,15 +5,15 @@
   Ionic pages and navigation.
 -->
 <ion-header>
+
   <ion-navbar>
     <ion-title>Detail</ion-title>
   </ion-navbar>
+
 </ion-header>
+
 <ion-content padding>
-  <h3>Position</h3>
-  <p>{{position.lat}}<p>
-  <p>{{position.lng}}<p>
-  <h3>Daten</h3>
-  <p>Herzrate {{position.heartrate}}<p>
-  <p>Wind {{position.wind}}<p>      
+  <ion-item *ngFor="let order of orders">
+    {{order.key}}
+  </ion-item>
 </ion-content>

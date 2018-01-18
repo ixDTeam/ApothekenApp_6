@@ -6,15 +6,24 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Patient</ion-title>
+    <nav>
+      <div class="navItem">1. Patient</div>
+      <div class="navItem">2. Medikament</div>
+      <div class="navItem">3. Dosieung</div>
+      <div class="navItem">4. Zusammenfassung</div>
+    </nav>
   </ion-navbar>
+
 </ion-header>
 
 
+
 <ion-content padding>
-  <ion-item>
-    <ion-label fixed color="primary">PatientID</ion-label>
-    <ion-input [(ngModel)]="patientID"></ion-input>
-  </ion-item>
-  <button ion-button (click)="nextStep()">Auswählen</button>
+
+    <ion-item>
+      <ion-label  fixed color="primary">PatientID</ion-label>
+      <ion-input required  [(ngModel)]="patientID"></ion-input>
+    </ion-item>
+    <button type="submit" ion-button >Auswählen</button>
+    <button type="submit" (click)="nextStep()" ion-button >Auswählen</button>
 </ion-content>

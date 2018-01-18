@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { Observable } from 'rxjs/Observable'
 
-import { BPatientPage } from '../b-patient/b-patient';
+import { BMedikamentPage } from '../b-medikament/b-medikament';
 
 /**
  * Generated class for the BZusammenfassungPage page.
@@ -28,9 +28,9 @@ box:any[] = [];
 
 
 editToArray(index){
-  // Eher Fake derzeit. Kann besser! 
+  // Eher Fake derzeit. Kann besser!
   this.fb.ordersStore.splice(index, 1);
-  this.navCtrl.push(BPatientPage);
+  this.navCtrl.push(BMedikamentPage);
 }
 
 deleteToArray(index){
@@ -38,7 +38,7 @@ deleteToArray(index){
 }
 
 startNewOrderToArray(){
-  this.navCtrl.push(BPatientPage);
+  this.navCtrl.push(BMedikamentPage);
 }
 
 newOrderToFirebase(){

@@ -26,10 +26,24 @@ export class BDosierungPage {
  dosierung_laenge:any = 1;
  dosierung_einheit:any = 1;
 
-  constructor(public navCtrl: NavController, public firebaseProvider: FirebaseProvider) {
+ medikament:any;
+
+  constructor(public navCtrl: NavController, public fb: FirebaseProvider) {
+    fb.db.object('/Drugs/'+fb.getMedikament()).valueChanges()
+    .subscribe(changes => {
+       this.medikament = changes;
+       this.dosierung_Mo = this.medikament.Dosierung.Mo;
+       this.dosierung_Mi = this.medikament.Dosierung.Mi;
+       this.dosierung_Ab = this.medikament.Dosierung.Ab;
+       this.dosierung_Na = this.medikament.Dosierung.Na;
+       this.dosierung_einheit = this.medikament.Dosierung.Einheit;
+       this.dosierung_laenge = this.medikament.Dosierung.Laenge;
+    });
+
   }
 
   dosierungAdd(dosierung){
+
   switch (dosierung) {
     case 'Mo':
       this.dosierung_Mo += 1;
@@ -88,12 +102,12 @@ export class BDosierungPage {
   nextStep(){
     this.navCtrl.push(BScanPage, {
     });
-    this.firebaseProvider.dosierung_Mo = this.dosierung_Mo;
-    this.firebaseProvider.dosierung_Mi = this.dosierung_Mi;
-    this.firebaseProvider.dosierung_Ab = this.dosierung_Ab;
-    this.firebaseProvider.dosierung_Na = this.dosierung_Na;
-    this.firebaseProvider.dosierung_laenge = this.dosierung_laenge;
-    this.firebaseProvider.dosierung_einheit = this.dosierung_einheit;
+    this.fb.dosierung_Mo = this.dosierung_Mo;
+    this.fb.dosierung_Mi = this.dosierung_Mi;
+    this.fb.dosierung_Ab = this.dosierung_Ab;
+    this.fb.dosierung_Na = this.dosierung_Na;
+    this.fb.dosierung_laenge = this.dosierung_laenge;
+    this.fb.dosierung_einheit = this.dosierung_einheit;
 
   }
 

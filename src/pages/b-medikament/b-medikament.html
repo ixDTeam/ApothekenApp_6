@@ -4,7 +4,6 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
   <ion-searchbar [(ngModel)]="searchInput" [autocomplete]="true" [debounce]="200" [showCancelButton]="shouldShowCancel"  (ionInput)="searchEvent(searchInput)">
   </ion-searchbar>
@@ -22,10 +21,10 @@
     </ion-card-content>
   </ion-card>
 
-      <ion-card *ngIf="drugsVar?.length < 1">
-        <ion-card-header>
-          Leider wurden keine passenden Medikamente gefunden.
-        </ion-card-header>
-      </ion-card>
+  <ion-card *ngIf="drugsVar?.length < 1">
+    <ion-card-header>
+      Leider wurden keine passenden Medikamente gefunden.
+    </ion-card-header>
+  </ion-card>
 
 </ion-content>

@@ -10,9 +10,11 @@ import { FirebaseProvider } from '../../providers/firebase/firebase';
 })
 export class BPatientPage {
 
+
   private patientID:any;
 
   constructor(public navCtrl: NavController, public fb: FirebaseProvider) {
+
   }
 
   nextStep(){
