@@ -14,6 +14,13 @@
 
 
 <ion-content padding>
+  <nav>
+    <button ion-button [color]="fb.patientPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Patient')" >Patient</button>
+    <button ion-button [color]="fb.medikamentPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Medikament')">Medikament</button>
+    <button ion-button color="primary">Dosierung</button>
+    <button ion-button [color]="fb.scanPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Scan')">Scan</button>
+    <button ion-button [color]="fb.zusammenfassungPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Zusammenfassung')">Zusammenfassung</button>
+  </nav>
   <ion-card>
     <ion-card>
       <ion-card-header>

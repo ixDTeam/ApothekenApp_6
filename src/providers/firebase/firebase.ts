@@ -25,6 +25,13 @@ export class FirebaseProvider {
   drugsRef: AngularFireList<any>;
 
 
+  // Breadcrumb
+  public patientPageStatus = true;
+  public medikamentPageStatus = false;
+  public dosierungPageStatus = false;
+  public scanPageStatus = false;
+  public zusammenfassungPageStatus = false;
+
   currentOrderID: any;
 
   private patientID: any;
@@ -40,7 +47,7 @@ export class FirebaseProvider {
 
 
   constructor(public db: AngularFireDatabase) {
-    this.ordersWaitingRef = this.db.list('/Orders/', ref => ref.orderByChild('Status').equalTo('Waiting'));
+    this.ordersWaitingRef = this.db.list('/Orders/',  ref => ref.orderByChild('Status').equalTo('Waiting'));
     this.ordersRef = db.list('/Orders/');
     this.dosenRef = db.list('/Box/');
     this.scannerRef = db.object('/Scanner/Devices/'+this.ScannerID);
@@ -61,7 +68,6 @@ export class FirebaseProvider {
   getMedikament(){
     return this.medikament;
   }
-
 
   getDrugs(value) {
     return this.db.list('/Drugs/', ref => ref.orderByKey().startAt(value).endAt(value + "\uf8ff"));
@@ -116,7 +122,6 @@ export class FirebaseProvider {
     let Order = {
       'Status': "Waiting"
       }
-
       this.ordersRef
       .push({ 'Status': "Waiting" })
       .then((item) => {

@@ -5,6 +5,13 @@
 </ion-header>
 
 <ion-content padding>
+  <nav>
+    <button ion-button [color]="fb.patientPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Patient')" >Patient</button>
+    <button ion-button color="primary">Medikament</button>
+    <button ion-button [color]="fb.dosierungPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Dosierung')">Dosierung</button>
+    <button ion-button [color]="fb.scanPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Scan')">Scan</button>
+    <button ion-button [color]="fb.zusammenfassungPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Zusammenfassung')">Zusammenfassung</button>
+  </nav>
   <ion-searchbar [(ngModel)]="searchInput" [autocomplete]="true" [debounce]="200" [showCancelButton]="shouldShowCancel"  (ionInput)="searchEvent(searchInput)">
   </ion-searchbar>
 

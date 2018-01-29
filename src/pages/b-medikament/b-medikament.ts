@@ -3,7 +3,12 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { Subject } from 'rxjs/Subject'
 import 'rxjs/add/operator/switchMap';
+
+import { BPatientPage } from '../b-patient/b-patient';
 import { BDosierungPage } from '../b-dosierung/b-dosierung';
+import { BScanPage } from '../b-scan/b-scan';
+import { BZusammenfassungPage } from '../b-zusammenfassung/b-zusammenfassung';
+
 import { Observable } from 'rxjs/Observable'
 
 
@@ -33,8 +38,30 @@ export class BMedikamentPage {
 
 
   nextStep(medikament){
+    this.fb.dosierungPageStatus = true;
     this.fb.medikament = medikament;
     this.navCtrl.push(BDosierungPage);
+  }
+
+  prevStep(site){
+    let pushSite:any;
+    console.log(this.fb.patientPageStatus);
+    if (site == 'Patient' && this.fb.patientPageStatus == true){
+      pushSite = BPatientPage;
+      this.navCtrl.push(pushSite);
+    } else if (site == 'Medikament' && this.fb.medikamentPageStatus == true){
+      pushSite = BMedikamentPage;
+      this.navCtrl.push(pushSite);
+    } else if (site == 'Dosierung' && this.fb.dosierungPageStatus == true) {
+      pushSite = BDosierungPage;
+      this.navCtrl.push(pushSite);
+    } else if (site == 'Scan' && this.fb.scanPageStatus == true){
+      pushSite = BScanPage;
+      this.navCtrl.push(pushSite);
+    } else if (site == 'Zusammenfassung' && this.fb.zusammenfassungPageStatus == true){
+      pushSite = BZusammenfassungPage;
+      this.navCtrl.push(pushSite);
+    }
   }
 
 

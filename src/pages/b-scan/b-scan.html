@@ -13,6 +13,13 @@
 </ion-header>
 
 <ion-content padding>
+  <nav>
+    <button ion-button [color]="fb.patientPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Patient')" >Patient</button>
+    <button ion-button [color]="fb.medikamentPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Medikament')">Medikament</button>
+    <button ion-button [color]="fb.dosierungPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Dosierung')">Dosierung</button>
+    <button ion-button color="primary">Scan</button>
+    <button ion-button [color]="fb.zusammenfassungPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Zusammenfassung')">Zusammenfassung</button>
+  </nav>
  Plazieren Sie die Dose jetzt auf dem Scanner.
  <button ion-button (click)="nextStep()">New</button>
 

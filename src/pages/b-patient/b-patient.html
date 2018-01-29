@@ -7,23 +7,24 @@
 <ion-header>
   <ion-navbar>
     <nav>
-      <div class="navItem">1. Patient</div>
-      <div class="navItem">2. Medikament</div>
-      <div class="navItem">3. Dosieung</div>
-      <div class="navItem">4. Zusammenfassung</div>
     </nav>
   </ion-navbar>
 
 </ion-header>
 
 
-
 <ion-content padding>
-
+  <nav>
+    <button ion-button color="primary">Patient</button>
+    <button ion-button [color]="fb.medikamentPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Medikament')">Medikament</button>
+    <button ion-button [color]="fb.dosierungPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Dosierung')">Dosierung</button>
+    <button ion-button [color]="fb.scanPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Scan')">Scan</button>
+    <button ion-button [color]="fb.zusammenfassungPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Zusammenfassung')">Zusammenfassung</button>
+  </nav>
     <ion-item>
-      <ion-label  fixed color="primary">PatientID</ion-label>
-      <ion-input required  [(ngModel)]="patientID"></ion-input>
+      <ion-label fixed color="primary">PatientID</ion-label>
+      <ion-input required  [(ngModel)]="fb.patientID"></ion-input>
     </ion-item>
-    <button type="submit" ion-button >Auswählen</button>
+    <button type="submit" ion-button >Test</button>
     <button type="submit" (click)="nextStep()" ion-button >Auswählen</button>
 </ion-content>
