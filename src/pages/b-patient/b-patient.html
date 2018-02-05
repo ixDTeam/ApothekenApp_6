@@ -9,7 +9,6 @@
     <nav>
     </nav>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -23,8 +22,7 @@
   </nav>
     <ion-item>
       <ion-label fixed color="primary">PatientID</ion-label>
-      <ion-input required  [(ngModel)]="fb.patientID"></ion-input>
+      <ion-input required [(ngModel)]="fb.patientID"></ion-input>
     </ion-item>
-    <button type="submit" ion-button >Test</button>
     <button type="submit" (click)="nextStep()" ion-button >Auswählen</button>
 </ion-content>

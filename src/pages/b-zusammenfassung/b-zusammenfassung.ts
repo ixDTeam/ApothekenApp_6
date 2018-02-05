@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { Observable } from 'rxjs/Observable'
 
+import { HomePage } from '../home/home';
 import { BPatientPage } from '../b-patient/b-patient';
 import { BDosierungPage } from '../b-dosierung/b-dosierung';
 import { BMedikamentPage } from '../b-medikament/b-medikament';
@@ -51,6 +52,8 @@ startNewOrderToArray(){
 
 newOrderToFirebase(){
   this.fb.newOrderToFirebase();
+  this.fb.clearOrderArray();
+  this.navCtrl.push(HomePage);
 }
 
 prevStep(site){

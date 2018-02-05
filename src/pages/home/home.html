@@ -1,12 +1,12 @@
 <ion-content>
     <ion-scroll scrollX="true">
-  		<ion-card class="myCard" *ngFor="let order of ordersWaiting | async">
+  		<ion-card class="myCard" *ngFor="let order of ordersWaiting">
         <ion-card-header class="mycardheader">
           <h3 class="h3">PatientenID</h3>
         </ion-card-header>
         <ion-card-content>
           <p>{{order.key}}</p>
-          <p>Order_2</p>
+          <p>{{order}}</p>
           <p class="text_button" (click)="displayItem(order.key)">Ansehen</p>
         </ion-card-content>
 
@@ -17,7 +17,6 @@
       <div class="static_bg">
       </div>
     </ion-scroll>
-
 
     <ion-card id="orderCard">
       <ion-list>

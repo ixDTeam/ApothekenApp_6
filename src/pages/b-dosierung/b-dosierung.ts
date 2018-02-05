@@ -32,16 +32,25 @@ export class BDosierungPage {
  medikament:any;
 
   constructor(public navCtrl: NavController, public fb: FirebaseProvider) {
-    fb.db.object('/Drugs/'+fb.getMedikament()).valueChanges()
-    .subscribe(changes => {
-       this.medikament = changes;
-       this.dosierung_Mo = this.medikament.Dosierung.Mo;
-       this.dosierung_Mi = this.medikament.Dosierung.Mi;
-       this.dosierung_Ab = this.medikament.Dosierung.Ab;
-       this.dosierung_Na = this.medikament.Dosierung.Na;
-       this.dosierung_einheit = this.medikament.Dosierung.Einheit;
-       this.dosierung_laenge = this.medikament.Dosierung.Laenge;
-    });
+    if(fb.scanPageStatus == false){
+      fb.db.object('/Drugs/'+fb.getMedikament()).valueChanges()
+      .subscribe(changes => {
+         this.medikament = changes;
+         this.dosierung_Mo = this.medikament.Dosierung.Mo;
+         this.dosierung_Mi = this.medikament.Dosierung.Mi;
+         this.dosierung_Ab = this.medikament.Dosierung.Ab;
+         this.dosierung_Na = this.medikament.Dosierung.Na;
+         this.dosierung_einheit = this.medikament.Dosierung.Einheit;
+         this.dosierung_laenge = this.medikament.Dosierung.Laenge;
+      });
+    } else {
+      this.dosierung_Mo = fb.dosierung_Mo;
+      this.dosierung_Mi = fb.dosierung_Mi;
+      this.dosierung_Ab = fb.dosierung_Ab;
+      this.dosierung_Na = fb.dosierung_Na;
+      this.dosierung_einheit = fb.dosierung_laenge;
+      this.dosierung_laenge = fb.dosierung_einheit;
+    }
 
   }
 

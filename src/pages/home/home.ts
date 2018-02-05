@@ -4,6 +4,7 @@ import { NavController, ModalController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { BPatientPage } from '../b-patient/b-patient';
+import { Subject } from 'rxjs/Subject';
 
 import { DetailPage } from '../detail/detail';
 
@@ -14,7 +15,9 @@ import { DetailPage } from '../detail/detail';
 })
 export class HomePage {
 
-  ordersWaiting:any;
+  // ordersWaiting:any;
+  ordersWaiting:any[];
+  ordersWaitingChanged = new Subject<any>();
   orders:any;
   controll:any;
   key:any;
@@ -35,12 +38,26 @@ export class HomePage {
     //
     // });
 
+  // Orders Waiting Alt
+  // this.ordersWaiting = this.fb.get_ordersWaitingRef().snapshotChanges().map(changes => {
+  //   console.log(this.ordersWaiting);
+  //    return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+  //  });
 
-
-  this.ordersWaiting = this.fb.get_ordersWaitingRef().snapshotChanges().map(changes => {
-    console.log(this.ordersWaiting);
-     return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    this.fb.get_ordersWaitingRef().snapshotChanges().map(actions => {
+     this.ordersWaiting = actions.map(action => ({ key: action.key, ...action.payload.val() }));
+     console.log(this.ordersWaiting);
+     this.ordersWaitingChanged.next();
+   }).subscribe(items => {
+     this.ordersWaitingChanged.next();
    });
+
+
+   // this.items = this.patients.valueChanges().subscribe(items => {
+   //   this.patientItems = items;
+   //   this.patientenChanged.next();
+   // });
+   //
 
 
     // Alle Orders
