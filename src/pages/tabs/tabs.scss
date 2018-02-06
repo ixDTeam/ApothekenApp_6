@@ -4,7 +4,15 @@
     top: 0px;
     width: 5rem;
     flex-direction: column;
-    background-color: #000 !important;
+    background-color: color($colors, dark) !important;
+  }
+
+  .tab-icon {
+    font-family: 'Font Awesome 5 Pro' !important !important;
+  }
+
+  #tab-settings {
+    font-family: 'Font Awesome 5 Pro';
   }
 
   .tab-button {
