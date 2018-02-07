@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Overpass:400,700');
+
+*{
+  font-family: 'Overpass';
+}
+
+
+
+
+
 .dash{
   .myCard{
     .mycardheader{
@@ -8,16 +18,39 @@
       padding-top: 10px;
     }
 
+    .mycardcontent{
+      padding-bottom: 7px;
+    }
+
     .myCardButton{
-      color: blue;
+      color: #4FC4FF;
+      font-size: 14px;
+    }
+
+    .box-number{
+      font-weight: 700;
+      font-size: 24px;
+    }
+    .mycardfooter{
+      height: 20px;
+      padding-bottom: 0px;
     }
   }
 }
-.tab{
-  .myTab{
+ion-tabs.tabs-ios#tableiste.tab-button-text{
     font-family: 'Font Awesome 5 Pro';
+    font-size: 30px !important;
+}
+
+ion-tabs.tabs-ios#tableiste{
+  .tabbar{
+    font-size: 60px;
   }
 }
+
+
+
+
 
 page-home {
   .scroll-zoom-wrapper{
@@ -35,6 +68,8 @@ page-home {
 
 .myCard {
   margin-top: 24px;
+  margin-left: 20px;
+  margin-right: 0px;
 }
 
 .myAdd {

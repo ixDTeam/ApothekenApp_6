@@ -1,22 +1,18 @@
 
   .tabbar {
     max-height:280px;
-    top: 0px;
-    width: 5rem;
+    top: 209px;
+    width: 69px;
     flex-direction: column;
     background-color: color($colors, dark) !important;
   }
 
-  .tab-icon {
-    font-family: 'Font Awesome 5 Pro' !important !important;
-  }
-
-  #tab-settings {
-    font-family: 'Font Awesome 5 Pro';
-  }
-
   .tab-button {
     min-height: 30px;
+  }
+
+  #tableiste{
+    background-color: color($colors, dark) !important !important;
   }
 
   ion-header {
@@ -25,7 +21,7 @@
   }
 
   ion-content {
-    left: 5rem;
+    left: 69px;
     right: 0;
   }
 
