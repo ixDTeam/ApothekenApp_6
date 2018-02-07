@@ -82,7 +82,7 @@ export class FirebaseProvider {
   }
 
   setPatintenID(id) {
-    // this.patientID = id;
+    this.patientID = id;
     console.log("PatientenID wurde geändernt auf " + this.patientID);
   }
 

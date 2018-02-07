@@ -1,0 +1,8 @@
+<!-- Generated template for the BreadcrumbComponent component -->
+<nav>
+  <button ion-button [class.current]="currentSite === 'BPatientPage'" (click)="prevStep('BPatientPage')">Patient</button>
+  <button ion-button [class.current]="currentSite === 'BMedikamentPage'" [disabled]="!fb.medikamentPageStatus"  (click)="prevStep('BMedikamentPage')">Medikament</button>
+  <button ion-button [class.current]="currentSite === 'BDosierungPage'" [disabled]="!fb.dosierungPageStatus" (click)="prevStep('BDosierungPage')">Dosierung</button>
+  <button ion-button [class.current]="currentSite === 'BScanPage'" [disabled]="!fb.scanPageStatus" (click)="prevStep('BScanPage')">Scan</button>
+  <button ion-button [class.current]="currentSite === 'BZusammenfassungPage'" [disabled]="!fb.zusammenfassungPageStatus" (click)="prevStep('BZusammenfassungPage')">Zusammenfassung</button>
+</nav>

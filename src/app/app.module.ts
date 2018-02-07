@@ -20,6 +20,8 @@ import { DetailPage } from '../pages/detail/detail';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import {BreadcrumbComponent} from '../components/breadcrumb/breadcrumb'
+
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
@@ -47,7 +49,8 @@ const firebaseConfig = {
     BScanPage,
     BDosierungPage,
     BZusammenfassungPage,
-    DetailPage
+    DetailPage,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,

@@ -53,13 +53,6 @@ export class HomePage {
    });
 
 
-   // this.items = this.patients.valueChanges().subscribe(items => {
-   //   this.patientItems = items;
-   //   this.patientenChanged.next();
-   // });
-   //
-
-
     // Alle Orders
     fb.get_ordersRef()
     .snapshotChanges()

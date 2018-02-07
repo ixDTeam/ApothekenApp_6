@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+
 import { BMedikamentPage } from '../b-medikament/b-medikament';
 import { BDosierungPage } from '../b-dosierung/b-dosierung';
 import { BScanPage } from '../b-scan/b-scan';
@@ -13,40 +15,27 @@ import { FirebaseProvider } from '../../providers/firebase/firebase';
 })
 export class BPatientPage {
 
+  authForm: FormGroup;
 
   private patientID:any;
   highlightColor:any;
 
-  constructor(public navCtrl: NavController, public fb: FirebaseProvider) {
+  constructor(public navCtrl: NavController, public fb: FirebaseProvider, public formBuilder: FormBuilder) {
+    this.patientID = fb.getPatientenID();
+    this.authForm = formBuilder.group({
+
+    patientID: [this.patientID, Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(30)])],
+    });
 
   }
 
-
-  nextStep(){
-    this.fb.setPatintenID(this.patientID);
-    this.navCtrl.push(BMedikamentPage);
-    this.fb.medikamentPageStatus = true;
-  }
-
-  prevStep(site){
-    let pushSite:any;
-    console.log(this.fb.dosierungPageStatus)
-    if (site == 'Patient' && this.fb.patientPageStatus == true){
-      pushSite = BPatientPage;
-      this.navCtrl.push(pushSite);
-    } else if (site == 'Medikament' && this.fb.medikamentPageStatus == true){
-      pushSite = BMedikamentPage;
-      this.navCtrl.push(pushSite);
-    } else if (site == 'Dosierung' && this.fb.dosierungPageStatus == true) {
-      pushSite = BDosierungPage;
-      this.navCtrl.push(pushSite);
-    } else if (site == 'Scan' && this.fb.scanPageStatus == true){
-      pushSite = BScanPage;
-      this.navCtrl.push(pushSite);
-    } else if (site == 'Zusammenfassung' && this.fb.zusammenfassungPageStatus == true){
-      pushSite = BZusammenfassungPage;
-      this.navCtrl.push(pushSite);
+  onSubmit(value: any): void {
+    if(this.authForm.valid) {
+      this.fb.setPatintenID(value.patientID);
+      this.navCtrl.push(BMedikamentPage);
+      this.fb.medikamentPageStatus = true;
     }
   }
+
 
 }
