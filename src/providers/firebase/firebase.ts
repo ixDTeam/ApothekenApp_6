@@ -19,6 +19,7 @@ export class FirebaseProvider {
   // Waiting List
   ordersWaiting:any;
   ordersWaitingRef: AngularFireList<any>;
+  ordersKommenRef: AngularFireList<any>;
 
   scannerRef:any;
   dosenRef: AngularFireList<any>;
@@ -44,10 +45,14 @@ export class FirebaseProvider {
   dosierung_Na: any = '';
   dosierung_laenge: any = '';
   dosierung_einheit: any = '';
+  anzahlPillen: any = 0;
+  startTime = new Date(Date.UTC(2018, 2, 7));
+  endTime = new Date(Date.UTC(2018, 2, 8));
 
 
   constructor(public db: AngularFireDatabase) {
     this.ordersWaitingRef = this.db.list('/Orders/',  ref => ref.orderByChild('Status').equalTo('Waiting'));
+    this.ordersKommenRef = this.db.list('/Orders/',  ref => ref.orderByChild('Menge'));
     this.ordersRef = db.list('/Orders/');
     this.dosenRef = db.list('/Box/');
     this.scannerRef = db.object('/Scanner/Devices/'+this.ScannerID);
@@ -59,6 +64,10 @@ export class FirebaseProvider {
 
   get_ordersWaitingRef(){
     return this.ordersWaitingRef
+  }
+
+  get_ordersKommenRef(){
+    return this.ordersKommenRef
   }
 
   getItems(){
@@ -104,6 +113,8 @@ export class FirebaseProvider {
       "BoxID":  this.BoxID,
       "Medikament": this.medikament,
       "PatientID": this.patientID,
+      "Menge": this.anzahlPillen,
+      "MaxMenge": this.anzahlPillen,
       "dosierung" : {
         dosierung_Mo: this.dosierung_Mo,
         dosierung_Mi: this.dosierung_Mi,
@@ -114,11 +125,12 @@ export class FirebaseProvider {
       }
     };
     this.ordersStore.push(Order);
-    console.log(this.ordersStore);
   }
 
   clearOrderArray(){
       this.ordersStore.length=0;
+      this.patientID = '';
+      this.BoxID = '';
   }
 
   newOrderToFirebase() {
@@ -135,7 +147,7 @@ export class FirebaseProvider {
           var newOrder = this.ordersStore[i];
           this.db.list('/Orders/'+this.currentOrderID).set("Order_"+i,this.ordersStore[i]);
       }
-
+      this.clearOrderArray();
     });
   }
 

@@ -30,7 +30,6 @@ scannerValue:any;
     });
   }
 
-
 nextStep(){
   this.fb.zusammenfassungPageStatus = true;
   if (this.prevScannerValue == this.scannerValue){

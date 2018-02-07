@@ -6,12 +6,16 @@
         </ion-card-header>
         <ion-card-content>
           <p>{{order}}</p>
-
           <p class="text_button" (click)="displayItem(order.key)">Ansehen</p>
         </ion-card-content>
-
   		</ion-card>
+      <ion-card class="myCard" *ngIf="orders?.length < 1">
+        <ion-card-header class="mycardheader">
+          <h3 class="h3">Keine Bestellungen<br /> in der Warteliste</h3>
+        </ion-card-header>
+      </ion-card>
       <ion-card class="static" (click)="startNew()">
+         <ion-badge *ngIf="fb.ordersStore.length > 0">In Bearbeitung</ion-badge>
        <ion-icon class="myAdd" name="add"></ion-icon>
   		</ion-card>
       <div class="static_bg">
@@ -20,10 +24,15 @@
 
     <ion-card id="orderCard">
       <ion-list>
-        <ion-item *ngFor="let order of orders">
-          OrderID: {{order.Name}}<br />
+        <ion-item *ngFor="let order of ordersKommen">
+          OrderID: {{order.Order_0.BoxID | json}}<br />
+          OrderID: {{order | json}}<br />
+        </ion-item>
+        <ion-item *ngIf="orders?.length < 1">
+            Es liegen keine Bestellungen vor.
         </ion-item>
       </ion-list>
+
     </ion-card>
 
 </ion-content>

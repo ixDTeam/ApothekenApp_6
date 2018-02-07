@@ -67,12 +67,41 @@
       </ion-card-header>
       <ion-card-content>
         <button ion-button [disabled]="dosierung_einheit === 3"  (click)="dosierungAdd('einheit')">+</button>
-         {{dosierung_einheit}}
+        <span *ngIf="dosierung_einheit === 1">
+          <span *ngIf="dosierung_laenge > 1">
+            Tage
+          </span>
+          <span *ngIf="dosierung_laenge <= 1">
+            Tag
+          </span>
+        </span>
+        <span *ngIf="dosierung_einheit === 2">
+          <span *ngIf="dosierung_laenge > 1">
+            Wochen
+          </span>
+          <span *ngIf="dosierung_laenge <= 1">
+            Woche
+          </span>
+        </span>
+        <span *ngIf="dosierung_einheit === 3">
+          <span *ngIf="dosierung_laenge > 1">
+            Monate
+          </span>
+          <span *ngIf="dosierung_laenge <= 1">
+            Monat
+          </span>
+        </span>
         <button ion-button [disabled]="dosierung_einheit === 1" (click)="dosierungSub('einheit')">-</button>
       </ion-card-content>
     </ion-card>
   </ion-card>
 
+  <ion-calendar [(ngModel)]="dateRange"
+                [type]="time"
+                [options]="optionsRange"
+                [format]="'DD-MM-YYYY'"
+                [readonly]=true>
+  </ion-calendar>
 
 <button ion-button (click)="nextStep()">Auswählen</button>
 </ion-content>

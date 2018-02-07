@@ -30,12 +30,7 @@ export class BreadcrumbComponent {
     this.currentSite = this.navCtrl.getActive().name;
   }
 
-  test(){
-        console.log('Test');
-  }
-
   prevStep(site){
-
     let pushSite:any;
     if (site == 'BPatientPage' && this.fb.patientPageStatus == true && site != this.currentSite){
       this.navCtrl.push(BPatientPage);

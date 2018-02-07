@@ -11,7 +11,7 @@
     <ion-card-header>
       Medikament: {{box.Medikament}}
       BoxID: {{box.BoxID}}
-      PatientID: {{box.patientID}}
+      PatientID: {{box.PatientID}}
       Dosierung: {{box.dosierung.dosierung_Mo}}, {{box.dosierung.dosierung_Mi}}, {{box.dosierung.dosierung_Ab}}, {{box.dosierung.dosierung_Na}}
     </ion-card-header>
     <ion-card-content>
@@ -20,6 +20,6 @@
     </ion-card-content>
   </ion-card>
   <button ion-button (click)="startNewOrderToArray()">Weiteres Medikament hinzufügen</button>
-  <button ion-button (click)="newOrderToFirebase()">Kostenpflichtig bestellen.</button>
+  <button ion-button [disabled]="box.length === 0" (click)="newOrderToFirebaseConfirm()">Kostenpflichtig bestellen.</button>
 
 </ion-content>
