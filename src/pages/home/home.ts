@@ -3,12 +3,15 @@ import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+
 import { BPatientPage } from '../b-patient/b-patient';
+import { DetailPage } from '../detail/detail';
+
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 import { Subject } from 'rxjs/Subject';
 
-import { DetailPage } from '../detail/detail';
+
 
 
 @Component({
@@ -36,6 +39,8 @@ export class HomePage {
   }
 
   ionViewDidEnter(){
+
+    //
     this.fb.get_ordersWaitingRef().snapshotChanges().map(actions => {
      this.ordersWaiting = actions.map(action => ({ key: action.key, ...action.payload.val() }));
      console.log(this.ordersWaiting);
@@ -44,15 +49,12 @@ export class HomePage {
      this.ordersWaitingChanged.next();
    });
 
-   //  this.fb.get_ordersWaitingRef().snapshotChanges().map(actions => {
-   //   this.ordersWaiting = actions.map(action => ({ key: action.key, ...action.payload.val() }));
-   // });
-
     // Alle Orders
     this.fb.get_ordersRef()
     .snapshotChanges()
     .subscribe(changes => this.orders = changes, (err) => {console.error(err);});
 
+    //Kommende Orders
     this.fb.get_ordersKommenRef().snapshotChanges().map(actions => {
      this.ordersKommen = actions.map(action => ({ key: action.key, ...action.payload.val() }));
      console.log(this.ordersWaiting);

@@ -52,7 +52,6 @@ export class FirebaseProvider {
   endTime = new Date(Date.UTC(2018, 2, 8));
 
 
-
   constructor(public db: AngularFireDatabase) {
     this.ordersWaitingRef = this.db.list('/Orders/',  ref => ref.orderByChild('Status').equalTo('Waiting'));
     this.ordersKommenRef = this.db.list('/Orders/', ref => ref.orderByChild('Status').equalTo('Done'));

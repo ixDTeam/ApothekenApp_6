@@ -11,6 +11,7 @@ import { BDosierungPage } from '../b-dosierung/b-dosierung';
 import { BMedikamentPage } from '../b-medikament/b-medikament';
 import { BScanPage } from '../b-scan/b-scan';
 
+import { ToastController } from 'ionic-angular';
 
 
 /**
@@ -29,14 +30,13 @@ export class BZusammenfassungPage {
 
 box:any[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FirebaseProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FirebaseProvider, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.box = fb.ordersStore;
     this.fb.newOrderToArray();
   }
 
 
 editToArray(index){
-  // Eher Fake derzeit. Kann besser!
   this.fb.ordersStore.splice(index, 1);
   this.navCtrl.push(BMedikamentPage);
 }
@@ -84,8 +84,18 @@ newOrderToFirebaseConfirm(){
 newOrderToFirebase(){
   this.fb.newOrderToFirebase();
   this.resetProgess();
+  this.succesToast();
   // this.navCtrl.removeView(HomePage);
   this.navCtrl.goToRoot();
+}
+
+succesToast() {
+  let toast = this.toastCtrl.create({
+    message: 'Bestellung wurde erfolreich verbucht.',
+    duration: 4000,
+    position: 'top'
+  });
+  toast.present();
 }
 
 }
