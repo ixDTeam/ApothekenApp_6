@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
+import { SettingsPage } from '../pages/settings/settings';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -22,7 +22,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {BreadcrumbComponent} from '../components/breadcrumb/breadcrumb'
 import { CalendarModule } from "ion2-calendar";
-import { MonthViewComponent } from 'ionic2-calendar/monthview';
+
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import * as moment from 'moment';
 
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
@@ -41,7 +43,7 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    SettingsPage,
     ContactPage,
     HomePage,
     TabsPage,
@@ -56,6 +58,7 @@ const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
+    RoundProgressModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
     CalendarModule,
@@ -65,7 +68,7 @@ const firebaseConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    SettingsPage,
     ContactPage,
     MultiuserPage,
     HomePage,

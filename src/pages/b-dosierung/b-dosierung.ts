@@ -67,8 +67,8 @@ newCurrentDate = moment().add(1, 'M');
       this.dosierung_Mi = fb.dosierung_Mi;
       this.dosierung_Ab = fb.dosierung_Ab;
       this.dosierung_Na = fb.dosierung_Na;
-      this.dosierung_einheit = fb.dosierung_laenge;
-      this.dosierung_laenge = fb.dosierung_einheit;
+      this.dosierung_einheit = fb.dosierung_einheit;
+      this.dosierung_laenge = fb.dosierung_laenge;
       this.updateCalender();
     }
   }
@@ -160,7 +160,7 @@ calculateAmount(){
 }
 
 
-  saveData(){
+saveData(){
     this.fb.dosierung_Mo = this.dosierung_Mo;
     this.fb.dosierung_Mi = this.dosierung_Mi;
     this.fb.dosierung_Ab = this.dosierung_Ab;

@@ -1,14 +1,20 @@
 <ion-content>
     <ion-scroll scrollX="true">
-  		<ion-card class="myCard" *ngFor="let order of ordersWaiting">
-        <ion-card-header class="mycardheader">
-          <h3 class="h3">PatientenID</h3>
-        </ion-card-header>
-        <ion-card-content>
-          <p>{{order}}</p>
-          <p class="text_button" (click)="displayItem(order.key)">Ansehen</p>
-        </ion-card-content>
-  		</ion-card>
+      <ng-container *ngIf="ordersWaiting?.length">
+    		<ion-card class="myCard" *ngFor="let order of ordersWaiting">
+          <ng-container *ngIf="order.Order_0">
+            <ion-card-header class="mycardheader">
+              <h3 class="h3">{{order.Order_0.PatientID}}</h3>
+            </ion-card-header>
+            <ion-card-content>
+              <p>{{order.Order_0.Medikament}}</p>
+              <p *ngIf="order.Order_1">{{order.Order_1.Medikament}}</p>
+              <p>{{order.Order_0.BoxID  | slice:0:3}}</p>
+              <p class="text_button" (click)="displayItem(order.key)">Ansehen</p>
+            </ion-card-content>
+          </ng-container>
+    		</ion-card>
+      </ng-container>
       <ion-card class="myCard" *ngIf="orders?.length < 1">
         <ion-card-header class="mycardheader">
           <h3 class="h3">Keine Bestellungen<br /> in der Warteliste</h3>
@@ -25,12 +31,28 @@
     <ion-card id="orderCard">
       <ion-list>
         <ion-item *ngFor="let order of ordersKommen">
-          OrderID: {{order.Order_0.BoxID | json}}<br />
-          OrderID: {{order | json}}<br />
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                {{order.Order_0.PatientID}}<br />
+                {{order.Order_0.Medikament}}
+              </ion-col>
+              <ion-col>
+                {{order.Order_0.BoxID | slice:0:3}}
+              </ion-col>
+              <ion-col>
+                <round-progress [current]="order.Order_0.Menge" [max]="order.Order_0.MaxMenge" [radius]="22" [stroke]="3"  [rounded]="true" ></round-progress>
+              </ion-col>
+              <ion-col>
+                <p class="text_button" (click)="displayItem(order.key)">Vorbereiten</p>
+              </ion-col>
+            </ion-row>
+        </ion-grid>
         </ion-item>
         <ion-item *ngIf="orders?.length < 1">
             Es liegen keine Bestellungen vor.
         </ion-item>
+        <p class="text_button" (click)="displayItem(order.key)">Alle Anzeigen</p>
       </ion-list>
 
     </ion-card>

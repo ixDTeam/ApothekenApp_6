@@ -1,8 +1,8 @@
 <!-- Generated template for the BreadcrumbComponent component -->
 <nav>
-  <button ion-button [class.current]="currentSite === 'BPatientPage'" (click)="prevStep('BPatientPage')">Patient</button>
-  <button ion-button [class.current]="currentSite === 'BMedikamentPage'" [disabled]="!fb.medikamentPageStatus"  (click)="prevStep('BMedikamentPage')">Medikament</button>
-  <button ion-button [class.current]="currentSite === 'BDosierungPage'" [disabled]="!fb.dosierungPageStatus" (click)="prevStep('BDosierungPage')">Dosierung</button>
-  <button ion-button [class.current]="currentSite === 'BScanPage'" [disabled]="!fb.scanPageStatus" (click)="prevStep('BScanPage')">Scan</button>
-  <button ion-button [class.current]="currentSite === 'BZusammenfassungPage'" [disabled]="!fb.zusammenfassungPageStatus" (click)="prevStep('BZusammenfassungPage')">Zusammenfassung</button>
+  <button ion-button [class.current]="currentSite === 'BPatientPage'"  [disabled]="currentSite === 'BPatientPage' || currentSite === 'BZusammenfassungPage'" (click)="prevStep('BPatientPage')">Patient</button>
+  <button ion-button [class.current]="currentSite === 'BMedikamentPage'" [disabled]="!fb.medikamentPageStatus || currentSite === 'BMedikamentPage' || currentSite === 'BZusammenfassungPage'"  (click)="prevStep('BMedikamentPage')">Medikament</button>
+  <button ion-button [class.current]="currentSite === 'BDosierungPage'" [disabled]="!fb.dosierungPageStatus || currentSite === 'BDosierungPage' || currentSite === 'BZusammenfassungPage'" (click)="prevStep('BDosierungPage')">Dosierung</button>
+  <button ion-button [class.current]="currentSite === 'BScanPage'" [disabled]="!fb.scanPageStatus || currentSite === 'BScanPage'  || currentSite === 'BZusammenfassungPage'" (click)="prevStep('BScanPage')">Scan</button>
+  <button ion-button [class.current]="currentSite === 'BZusammenfassungPage'" [disabled]="!fb.zusammenfassungPageStatus || currentSite === 'BZusammenfassungPage'  || currentSite === 'BZusammenfassungPage'" (click)="prevStep('BZusammenfassungPage')">Zusammenfassung</button>
 </nav>

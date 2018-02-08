@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable'
 @Injectable()
 export class FirebaseProvider {
 
-  private ScannerID = "00001";
+  public ScannerID = "00001";
 
   orders: Observable<any[]>;
   dosen: Observable<any[]>;
@@ -45,18 +45,22 @@ export class FirebaseProvider {
   dosierung_Na: any = '';
   dosierung_laenge: any = '';
   dosierung_einheit: any = '';
+
   anzahlPillen: any = 0;
+
   startTime = new Date(Date.UTC(2018, 2, 7));
   endTime = new Date(Date.UTC(2018, 2, 8));
 
 
+
   constructor(public db: AngularFireDatabase) {
     this.ordersWaitingRef = this.db.list('/Orders/',  ref => ref.orderByChild('Status').equalTo('Waiting'));
-    this.ordersKommenRef = this.db.list('/Orders/',  ref => ref.orderByChild('Menge'));
+    this.ordersKommenRef = this.db.list('/Orders/', ref => ref.orderByChild('Status').equalTo('Done'));
     this.ordersRef = db.list('/Orders/');
     this.dosenRef = db.list('/Box/');
     this.scannerRef = db.object('/Scanner/Devices/'+this.ScannerID);
   }
+
 
   get_ordersRef(){
     return this.ordersRef
@@ -86,13 +90,16 @@ export class FirebaseProvider {
     return this.ScannerID
   }
 
+  setScannerID(id){
+    this.ScannerID = id;
+  }
+
   getPatientenID() {
     return this.patientID
   }
 
   setPatintenID(id) {
     this.patientID = id;
-    console.log("PatientenID wurde geändernt auf " + this.patientID);
   }
 
   getBox() {
@@ -148,7 +155,7 @@ export class FirebaseProvider {
           this.db.list('/Orders/'+this.currentOrderID).set("Order_"+i,this.ordersStore[i]);
       }
       this.clearOrderArray();
-    });
+    })
   }
 
 }

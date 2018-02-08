@@ -84,7 +84,8 @@ newOrderToFirebaseConfirm(){
 newOrderToFirebase(){
   this.fb.newOrderToFirebase();
   this.resetProgess();
-  this.navCtrl.push(HomePage);
+  // this.navCtrl.removeView(HomePage);
+  this.navCtrl.goToRoot();
 }
 
 }

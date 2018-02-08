@@ -20,11 +20,32 @@ export class DetailPage {
 
   orders:any;
   ordersObj:any;
+  orderID:any;
+  orderLength = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FirebaseProvider, params: NavParams) {
-    fb.db.list('/Orders/'+params.get('OrderID'))
-    .snapshotChanges().subscribe(changes => this.orders = changes)
+    this.orderID = params.get('OrderID');
+
+    fb.db.list('/Orders/'+this.orderID)
+    .valueChanges().subscribe(changes =>{
+      console.log(changes);
+      this.orders = changes;
+      this.orderLength = this.orders.length-1;
+    })
   }
 
+  cancle(){
+    this.navCtrl.pop();
+  }
+
+  confirmOrder(){
+    this.fb.db.list('/Orders/'+this.orderID).set("Status", "Done");
+    this.navCtrl.pop();
+  }
+
+  cancleOrder(){
+    this.fb.db.list('/Orders/'+this.orderID).remove();
+    this.navCtrl.pop();
+  }
 
 }
