@@ -7,6 +7,10 @@ import { BMedikamentPage } from '../b-medikament/b-medikament';
 import { BScanPage } from '../b-scan/b-scan';
 import { BZusammenfassungPage } from '../b-zusammenfassung/b-zusammenfassung';
 
+import * as moment from 'moment';
+
+import { CalendarComponentOptions } from 'ion2-calendar'
+
 /**
  * Generated class for the BDosierungPage page.
  *
@@ -29,7 +33,21 @@ export class BDosierungPage {
  dosierung_laenge:any = 1;
  dosierung_einheit:any = 1;
 
+ dosierungTage: any = 0;
+ anzahlPillen: any = 0;
+
+ currentDate = moment().format('YYYY-MM-DD');
+ endDate = moment().format('YYYY-MM-DD');
+
  medikament:any;
+
+newCurrentDate = moment().add(1, 'M');
+
+ dateRange: { from: string; to: string; };
+ type: 'object'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
+ optionsRange: CalendarComponentOptions = {
+   pickMode: 'range'
+ };
 
   constructor(public navCtrl: NavController, public fb: FirebaseProvider) {
     if(fb.scanPageStatus == false){
@@ -42,16 +60,17 @@ export class BDosierungPage {
          this.dosierung_Na = this.medikament.Dosierung.Na;
          this.dosierung_einheit = this.medikament.Dosierung.Einheit;
          this.dosierung_laenge = this.medikament.Dosierung.Laenge;
+         this.updateCalender();
       });
     } else {
       this.dosierung_Mo = fb.dosierung_Mo;
       this.dosierung_Mi = fb.dosierung_Mi;
       this.dosierung_Ab = fb.dosierung_Ab;
       this.dosierung_Na = fb.dosierung_Na;
-      this.dosierung_einheit = fb.dosierung_laenge;
-      this.dosierung_laenge = fb.dosierung_einheit;
+      this.dosierung_einheit = fb.dosierung_einheit;
+      this.dosierung_laenge = fb.dosierung_laenge;
+      this.updateCalender();
     }
-
   }
 
   dosierungAdd(dosierung){
@@ -60,7 +79,6 @@ export class BDosierungPage {
     case 'Mo':
       this.dosierung_Mo += 1;
     break ;
-
     case 'Mi':
       this.dosierung_Mi += 1;
     break ;
@@ -75,12 +93,16 @@ export class BDosierungPage {
 
     case'laenge':
       this.dosierung_laenge += 1;
+      this.updateCalender();
     break;
 
     case'einheit':
       this.dosierung_einheit += 1;
+      this.updateCalender();
     break;
   }
+  this.calculateAmount();
+  this.saveData();
 }
 
   dosierungSub(dosierung){
@@ -103,47 +125,56 @@ export class BDosierungPage {
 
       case'laenge':
         this.dosierung_laenge -= 1;
+        this.updateCalender();
       break;
 
       case'einheit':
         this.dosierung_einheit -= 1;
+        this.updateCalender();
       break;
     }
+    this.calculateAmount();
+    this.saveData();
   }
 
-  nextStep(){
-    this.fb.scanPageStatus = true;
-    this.navCtrl.push(BScanPage, {
-    });
+
+updateCalender(){
+  if(this.dosierung_einheit == 1){
+    this.endDate = moment().add(this.dosierung_laenge, 'd')
+  } if (this.dosierung_einheit == 2){
+    this.endDate = moment().add(this.dosierung_laenge, 'w')
+  } else if (this.dosierung_einheit == 3){
+    this.endDate = moment().add(this.dosierung_laenge, 'M')
+  }
+  this.calculateAmount();
+  this.dateRange = {
+    from: this.currentDate,
+    to: this.endDate
+  }
+}
+
+calculateAmount(){
+    this.dosierungTage = this.endDate.diff(this.currentDate, 'days');
+    this.anzahlPillen = (this.dosierungTage*this.dosierung_Mo)+(this.dosierungTage*this.dosierung_Mi)+(this.dosierungTage*this.dosierung_Ab)+(this.dosierungTage*this.dosierung_Na);
+    console.log(this.anzahlPillen);
+}
+
+
+saveData(){
     this.fb.dosierung_Mo = this.dosierung_Mo;
     this.fb.dosierung_Mi = this.dosierung_Mi;
     this.fb.dosierung_Ab = this.dosierung_Ab;
     this.fb.dosierung_Na = this.dosierung_Na;
     this.fb.dosierung_laenge = this.dosierung_laenge;
     this.fb.dosierung_einheit = this.dosierung_einheit;
-
+    this.fb.anzahlPillen = this.anzahlPillen;
   }
 
-  prevStep(site){
-    let pushSite:any;
-    console.log(this.fb.dosierungPageStatus)
-    if (site == 'Patient' && this.fb.patientPageStatus == true){
-      pushSite = BPatientPage;
-      this.navCtrl.push(pushSite);
-    } else if (site == 'Medikament' && this.fb.medikamentPageStatus == true){
-      pushSite = BMedikamentPage;
-      this.navCtrl.push(pushSite);
-    } else if (site == 'Dosierung' && this.fb.dosierungPageStatus == true) {
-      pushSite = BDosierungPage;
-      this.navCtrl.push(pushSite);
-    } else if (site == 'Scan' && this.fb.scanPageStatus == true){
-      pushSite = BScanPage;
-      this.navCtrl.push(pushSite);
-    } else if (site == 'Zusammenfassung' && this.fb.zusammenfassungPageStatus == true){
-      pushSite = BZusammenfassungPage;
-      this.navCtrl.push(pushSite);
-    }
+  nextStep(){
+      this.fb.scanPageStatus = true;
+      this.navCtrl.push(BScanPage, {
+      });
+      this.saveData();
   }
-
 
 }

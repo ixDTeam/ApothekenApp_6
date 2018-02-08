@@ -7,13 +7,45 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Detail</ion-title>
+    <ion-title>Bestellung</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <ion-item *ngFor="let order of orders">
-    {{order.payload | json }}
+  <ion-item *ngFor='let order of orders | slice:0:orderLength'  >
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-row>
+            {{order.PatientID}}
+          </ion-row>
+          <ion-row>
+            {{order.BoxID | slice:0:3}}
+          </ion-row>
+          <ion-row>
+          </ion-row>
+       </ion-col>
+       <ion-col>
+         <ion-row>
+           {{order.Medikament}}
+         </ion-row>
+         <ion-row>
+           {{order.Menge}} Stk
+           {{order.dosierung.dosierung_laenge}} Tage
+         </ion-row>
+       </ion-col>
+       <ion-col>
+           {{order.dosierung.dosierung_Mo}}
+           {{order.dosierung.dosierung_Mi}}
+           {{order.dosierung.dosierung_Ab}}
+           {{order.dosierung.dosierung_Na}}
+       </ion-col>
+      </ion-row>
+    </ion-grid>
+
   </ion-item>
+  <p class="text_button" item-start (click)="cancle()">Abbrechen</p>
+  <p class="text_button" item-start (click)="cancleOrder()">Bestellungen löschen</p>
+  <p class="text_button" item-end (click)="confirmOrder()">Abschließen</p>
 </ion-content>

@@ -4,23 +4,8 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Dosierung</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
 <ion-content padding>
-  <nav>
-    <button ion-button [color]="fb.patientPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Patient')" >Patient</button>
-    <button ion-button [color]="fb.medikamentPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Medikament')">Medikament</button>
-    <button ion-button color="primary">Dosierung</button>
-    <button ion-button [color]="fb.scanPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Scan')">Scan</button>
-    <button ion-button [color]="fb.zusammenfassungPageStatus ? 'secondary' : 'dark'" (click)="prevStep('Zusammenfassung')">Zusammenfassung</button>
-  </nav>
+<breadcrumb></breadcrumb>
   <ion-card>
     <ion-card>
       <ion-card-header>
@@ -28,8 +13,8 @@
       </ion-card-header>
       <ion-card-content>
         <button ion-button (click)="dosierungAdd('Mo')">+</button>
-         <ion-input [(ngModel)]="dosierung_Mo" type="number"></ion-input>
-        <button ion-button (click)="dosierungSub('Mo')">-</button>
+        {{dosierung_Mo}}
+        <button ion-button [disabled]="dosierung_Mo === 0" (click)="dosierungSub('Mo')">-</button>
     </ion-card-content>
     </ion-card>
     <ion-card>
@@ -38,8 +23,8 @@
       </ion-card-header>
       <ion-card-content>
         <button ion-button (click)="dosierungAdd('Mi')">+</button>
-         <ion-input [(ngModel)]="dosierung_Mi" type="number"></ion-input>
-        <button ion-button (click)="dosierungSub('Mi')">-</button>
+         {{dosierung_Mi}}
+        <button ion-button [disabled]="dosierung_Mi === 0" (click)="dosierungSub('Mi')">-</button>
     </ion-card-content>
     </ion-card>
     <ion-card>
@@ -48,8 +33,8 @@
       </ion-card-header>
       <ion-card-content>
         <button ion-button (click)="dosierungAdd('Ab')">+</button>
-         <ion-input [(ngModel)]="dosierung_Ab" type="number"></ion-input>
-        <button ion-button (click)="dosierungSub('Ab')">-</button>
+        {{dosierung_Ab}}
+        <button ion-button [disabled]="dosierung_Ab === 0" (click)="dosierungSub('Ab')">-</button>
       </ion-card-content>
     </ion-card>
     <ion-card>
@@ -58,8 +43,8 @@
       </ion-card-header>
       <ion-card-content>
         <button ion-button (click)="dosierungAdd('Na')">+</button>
-         <ion-input [(ngModel)]="dosierung_Na" type="number"></ion-input>
-        <button ion-button (click)="dosierungSub('Na')">-</button>
+         {{dosierung_Na}}
+        <button ion-button [disabled]="dosierung_Na === 0" (click)="dosierungSub('Na')">-</button>
       </ion-card-content>
     </ion-card>
   </ion-card>
@@ -72,8 +57,8 @@
       </ion-card-header>
       <ion-card-content>
         <button ion-button (click)="dosierungAdd('laenge')">+</button>
-         <ion-input [(ngModel)]="dosierung_laenge" type="number"></ion-input>
-        <button ion-button (click)="dosierungSub('laenge')">-</button>
+        {{dosierung_laenge}}
+        <button ion-button [disabled]="dosierung_laenge === 0" (click)="dosierungSub('laenge')">-</button>
       </ion-card-content>
     </ion-card>
     <ion-card>
@@ -81,13 +66,42 @@
         Zeiteinheit
       </ion-card-header>
       <ion-card-content>
-        <button ion-button (click)="dosierungAdd('einheit')">+</button>
-         <ion-input [(ngModel)]="dosierung_einheit"></ion-input>
-        <button ion-button (click)="dosierungSub('einheit')">-</button>
+        <button ion-button [disabled]="dosierung_einheit === 3"  (click)="dosierungAdd('einheit')">+</button>
+        <span *ngIf="dosierung_einheit === 1">
+          <span *ngIf="dosierung_laenge > 1">
+            Tage
+          </span>
+          <span *ngIf="dosierung_laenge <= 1">
+            Tag
+          </span>
+        </span>
+        <span *ngIf="dosierung_einheit === 2">
+          <span *ngIf="dosierung_laenge > 1">
+            Wochen
+          </span>
+          <span *ngIf="dosierung_laenge <= 1">
+            Woche
+          </span>
+        </span>
+        <span *ngIf="dosierung_einheit === 3">
+          <span *ngIf="dosierung_laenge > 1">
+            Monate
+          </span>
+          <span *ngIf="dosierung_laenge <= 1">
+            Monat
+          </span>
+        </span>
+        <button ion-button [disabled]="dosierung_einheit === 1" (click)="dosierungSub('einheit')">-</button>
       </ion-card-content>
     </ion-card>
   </ion-card>
 
+  <ion-calendar [(ngModel)]="dateRange"
+                [type]="time"
+                [options]="optionsRange"
+                [format]="'DD-MM-YYYY'"
+                [readonly]=true>
+  </ion-calendar>
 
 <button ion-button (click)="nextStep()">Auswählen</button>
 </ion-content>

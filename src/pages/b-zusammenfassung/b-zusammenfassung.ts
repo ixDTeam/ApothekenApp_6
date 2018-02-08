@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
+
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { Observable } from 'rxjs/Observable'
 
@@ -8,6 +10,9 @@ import { BPatientPage } from '../b-patient/b-patient';
 import { BDosierungPage } from '../b-dosierung/b-dosierung';
 import { BMedikamentPage } from '../b-medikament/b-medikament';
 import { BScanPage } from '../b-scan/b-scan';
+
+import { ToastController } from 'ionic-angular';
+
 
 /**
  * Generated class for the BZusammenfassungPage page.
@@ -25,14 +30,13 @@ export class BZusammenfassungPage {
 
 box:any[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FirebaseProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FirebaseProvider, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.box = fb.ordersStore;
     this.fb.newOrderToArray();
   }
 
 
 editToArray(index){
-  // Eher Fake derzeit. Kann besser!
   this.fb.ordersStore.splice(index, 1);
   this.navCtrl.push(BMedikamentPage);
 }
@@ -42,39 +46,56 @@ deleteToArray(index){
 }
 
 startNewOrderToArray(){
+  this.resetProgess();
+  this.navCtrl.push(BPatientPage);
+}
+
+resetProgess(){
   this.fb.patientPageStatus = true;
   this.fb.medikamentPageStatus = false;
   this.fb.dosierungPageStatus = false;
   this.fb.scanPageStatus = false;
   this.fb.zusammenfassungPageStatus = false;
-  this.navCtrl.push(BMedikamentPage);
+}
+
+newOrderToFirebaseConfirm(){
+  let alert = this.alertCtrl.create({
+      title: 'Bestellung bestätigen',
+      message: 'Möchten Sie diese Bestellung abschließen?',
+      buttons: [
+        {
+          text: 'Abbrechen',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Bestellen',
+          handler: () => {
+            this.newOrderToFirebase();
+          }
+        }
+      ]
+    });
+    alert.present();
 }
 
 newOrderToFirebase(){
   this.fb.newOrderToFirebase();
-  this.fb.clearOrderArray();
-  this.navCtrl.push(HomePage);
+  this.resetProgess();
+  this.succesToast();
+  // this.navCtrl.removeView(HomePage);
+  this.navCtrl.goToRoot();
 }
 
-prevStep(site){
-  let pushSite:any;
-  console.log(this.fb.dosierungPageStatus)
-  if (site == 'Patient' && this.fb.patientPageStatus == true){
-    pushSite = BPatientPage;
-    this.navCtrl.push(pushSite);
-  } else if (site == 'Medikament' && this.fb.medikamentPageStatus == true){
-    pushSite = BMedikamentPage;
-    this.navCtrl.push(pushSite);
-  } else if (site == 'Dosierung' && this.fb.dosierungPageStatus == true) {
-    pushSite = BDosierungPage;
-    this.navCtrl.push(pushSite);
-  } else if (site == 'Scan' && this.fb.scanPageStatus == true){
-    pushSite = BScanPage;
-    this.navCtrl.push(pushSite);
-  } else if (site == 'Zusammenfassung' && this.fb.zusammenfassungPageStatus == true){
-    pushSite = BZusammenfassungPage;
-    this.navCtrl.push(pushSite);
-  }
+succesToast() {
+  let toast = this.toastCtrl.create({
+    message: 'Bestellung wurde erfolreich verbucht.',
+    duration: 4000,
+    position: 'top'
+  });
+  toast.present();
 }
 
 }

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
+import { SettingsPage } from '../pages/settings/settings';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -19,6 +19,12 @@ import { DetailPage } from '../pages/detail/detail';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import {BreadcrumbComponent} from '../components/breadcrumb/breadcrumb'
+import { CalendarModule } from "ion2-calendar";
+
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import * as moment from 'moment';
 
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
@@ -37,7 +43,7 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    SettingsPage,
     ContactPage,
     HomePage,
     TabsPage,
@@ -47,19 +53,22 @@ const firebaseConfig = {
     BScanPage,
     BDosierungPage,
     BZusammenfassungPage,
-    DetailPage
+    DetailPage,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,
+    RoundProgressModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
+    CalendarModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    SettingsPage,
     ContactPage,
     MultiuserPage,
     HomePage,
