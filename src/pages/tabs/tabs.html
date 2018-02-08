@@ -1,6 +1,6 @@
-<ion-tabs>
-  <ion-tab class="myTab" [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="User" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Einstellungen" tabIcon="settings"></ion-tab>
+<ion-tabs  class="myTab">
+  <ion-tab [root]="tab1Root" tabTitle="home"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="User"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="cog"></ion-tab>
   <ion-tab *ngIf="connectionStatus" tabTitle="Status"></ion-tab>
 </ion-tabs>
