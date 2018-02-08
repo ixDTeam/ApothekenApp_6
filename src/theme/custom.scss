@@ -1,3 +1,194 @@
+@import url('https://fonts.googleapis.com/css?family=Overpass:400,700');
+
+//Variables
+$primary:    #4FC4FF;
+$secondary: #B181FC;
+
+$danger: #FE654F;
+$success: #30FF9B;
+
+$prim20: #3F9DCC;
+$prim60: #204F66;
+$prim75: #143140;
+
+
+
+
+
+
+
+
+$tab-bar-width: 69px;
+
+$font-regular: 14px;
+$font-head: 20px;
+
+
+//Fonts
+
 *{
-   color: green;
+  font-family: 'Overpass';
 }
+
+//Tableiste
+
+#mytabbar{
+  position: fixed;
+  top: 0px;
+  height: 210px;
+  width: $tab-bar-width;
+  background-color: $prim75;
+}
+
+#mytabbarbottom{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  height: 290px;
+  width: $tab-bar-width;
+  background-color: $prim75;
+}
+
+#logo{
+  margin-left: 16px;
+  margin-top: 16px;
+}
+
+.tabbar {
+
+  max-height:280px;
+  top: 209px;
+  width: $tab-bar-width;
+  flex-direction: column;
+  .tab-button.has-title-only {
+    width: 100%;
+    background-color: $prim75;
+    .tab-button-text{
+      width: 100%;
+      font-family: 'Font Awesome 5 Pro';
+      font-weight: 900;
+      font-size:30px;
+      color: white;
+    }
+
+  }
+}
+
+.tabs-ios{
+
+}
+
+//Dashboard
+
+
+// ion-tabs.tabs-ios#tableiste.tab-button-text{
+//     font-family: 'Font Awesome 5 Pro';
+//     font-size: 30px !important;
+// }
+
+//Cards
+
+.myCard{
+  padding-top: 30px;
+}
+.mycardcontent{
+  padding: 0px;
+}
+
+ion-tabs.tabs-ios#tableiste{
+  .tabbar{
+    font-size: 60px;
+  }
+}
+
+
+
+
+
+page-home {
+  .scroll-zoom-wrapper{
+  white-space: nowrap;
+}
+
+
+
+button {
+  width: 80px;
+}
+
+ion-scroll{
+  height: 200px;
+  background-color: #C9D2D7;
+    ::-webkit-scrollbar {
+      display: none;
+  }
+}
+
+ion-card.card{
+  display: inline-block;
+  border-radius: 8px;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, .12);
+  width: 236px;
+  height: 144px;
+  padding: 5px;
+
+}
+
+#orderCard{
+  width: 492px;
+}
+
+
+
+ion-card.card.static{
+  z-index: 10;
+  position: fixed;
+  top: 24px;
+  right: -50px;
+  width: 150px;
+  font-size: 48px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.static_bg{
+  position: fixed;
+  pointer-events: none;
+  top: 0px;
+  right: 0px;
+  height: 200px;
+  width: 300px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,c9d2d7+100&0+0,1+100 */
+  background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(201,210,215,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(201,210,215,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(201,210,215,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#c9d2d7',GradientType=1 ); /* IE6-9 */
+}
+}
+
+
+
+
+
+
+  ion-header {
+    left: 5rem;
+    right: 0;
+  }
+
+  ion-content {
+    left: $tab-bar-width;
+    right: 0;
+  }
+
+
+  .has-icon .tab-badge {
+    right: calc(50% - 22px);
+  }
+
+  .tab-badge {
+    top: 33%;
+  }
+
+.fixed-content { left: 0; right: 0; top: 0; bottom: 0; margin-bottom: 0 !important; position: absolute; display: block; }
+.scroll-content { left: 0; right: 0; top: 0; bottom: 0; margin-bottom: 0 !important; position: absolute; z-index: 1; display: block; overflow-x: hidden; overflow-y: scroll; -webkit-overflow-scrolling: touch; will-change: scroll-position; contain: size style layout; }
