@@ -8,14 +8,24 @@
 
 <ion-content padding>
   <breadcrumb></breadcrumb>
-  <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
-    <ion-item>
-      <ion-label fixed color="primary">PatientID</ion-label>
-      <ion-input formControlName="patientID"></ion-input>
-    </ion-item>
-    <ion-item *ngIf="!authForm.valid">
-    <p>Sorry, field password is required!</p>
-    </ion-item>
-    <button type="submit" [disabled]="!authForm.valid" ion-button>Auswählen</button>
-  </form>
+  <ion-card>
+    <ion-card-header class="mycardheader">
+      <h3>1. Patienten-ID eintragen</h3>
+    </ion-card-header>
+    <ion-card-content class="mycardcontent">
+      <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
+        <ion-item>
+          <ion-label color="primary">PatientID</ion-label>
+          <ion-input formControlName="patientID"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!authForm.valid">
+        <p>Die Patienten-ID ist ungültig.</p>
+        </ion-item>
+
+        <button type="submit" [disabled]="!authForm.valid" ion-button>Auswählen</button>
+      </form>
+      <span item-right (click)="displayItem(order.key)" class="myCardButton">Ansehen</span>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

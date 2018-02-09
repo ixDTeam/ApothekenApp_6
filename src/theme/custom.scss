@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Overpass:400,700');
 
 //Variables
-$primary:    #4FC4FF;
+$primary:   #4FC4FF;
 $secondary: #B181FC;
 
 $danger: #FE654F;
@@ -11,17 +11,16 @@ $prim20: #3F9DCC;
 $prim60: #204F66;
 $prim75: #143140;
 
-
-
-
-
-
-
+$black: #333333;
+$black20: #666666;
+$black40: #999999;
+$black60: #CCCCCC;
 
 $tab-bar-width: 69px;
 
 $font-regular: 14px;
-$font-head: 20px;
+$font-big: 18px;
+$font-head: 24px;
 
 
 //Fonts
@@ -177,13 +176,14 @@ ion-card.card.static{
   }
 
   ion-content {
-    left: $tab-bar-width;
-    right: 0;
+    box-sizing: border-box;
+    margin-left: $tab-bar-width;
+    width: (calc(100% - 69px));
   }
 
 
   .has-icon .tab-badge {
-    right: calc(50% - 22px);
+    right: calc(50% - #{$tab-bar-width});
   }
 
   .tab-badge {
@@ -192,3 +192,55 @@ ion-card.card.static{
 
 .fixed-content { left: 0; right: 0; top: 0; bottom: 0; margin-bottom: 0 !important; position: absolute; display: block; }
 .scroll-content { left: 0; right: 0; top: 0; bottom: 0; margin-bottom: 0 !important; position: absolute; z-index: 1; display: block; overflow-x: hidden; overflow-y: scroll; -webkit-overflow-scrolling: touch; will-change: scroll-position; contain: size style layout; }
+
+
+ion-card{
+  padding: 14px 24px;
+
+  ion-card-header.card-header{
+    padding: 0px;
+    
+    h3{
+      font-size: $font-regular;
+    }
+  }
+}
+
+
+.button{
+  font-size: $font-regular;
+  border-radius: 2px;
+  font-weight: bold;
+  padding: 5px 50px;
+  background: linear-gradient(to right, $primary , $secondary)
+}
+
+
+///////////////// Breadcrumbs
+////
+////
+///
+
+breadcrumb {
+
+.button{
+  font-size: $font-big;
+  background: transparent;
+  color: $black60;
+  border-bottom: 3px solid;
+  border-color: $black60;
+  border-radius: 0px;
+  margin: 1px 0px;
+  padding: 0px 20px;
+
+  &.current{
+    -webkit-border-image: -webkit-gradient(linear, left top, right top, from($primary), to($secondary), color-stop(0.6, $secondary)) 21 30 30 21 ;
+    border-color: $primary;
+    color: $black20;
+    opacity: 1;
+    font-weight: bold;
+  }
+}
+
+
+}

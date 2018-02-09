@@ -9,12 +9,6 @@ import { BDosierungPage } from '../../pages/b-dosierung/b-dosierung';
 import { BScanPage } from '../../pages/b-scan/b-scan';
 import { BZusammenfassungPage } from '../../pages/b-zusammenfassung/b-zusammenfassung';
 
-/**
- * Generated class for the BreadcrumbComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'breadcrumb',
   templateUrl: 'breadcrumb.html'
