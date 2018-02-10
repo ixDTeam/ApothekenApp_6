@@ -311,6 +311,14 @@ page-b-patient {
   .content{
     width: 150px;
   }
+
+  button.button{
+    width: 20px;
+    padding: 20px;
+  }
+  h2{
+    font-size: $font-huge;
+  }
   text-align: center;
   width: 200px;
 }
