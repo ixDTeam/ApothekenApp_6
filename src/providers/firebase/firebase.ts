@@ -139,6 +139,10 @@ export class FirebaseProvider {
       this.BoxID = '';
   }
 
+  resetScanner(){
+    this.db.object('/Scanner/Devices/'+this.ScannerID).update(0);
+  }
+
   newOrderToFirebase() {
     let Order = {
       'Status': "Waiting"
@@ -154,6 +158,7 @@ export class FirebaseProvider {
           this.db.list('/Orders/'+this.currentOrderID).set("Order_"+i,this.ordersStore[i]);
       }
       this.clearOrderArray();
+      this.resetScanner();
     })
   }
 

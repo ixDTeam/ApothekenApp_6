@@ -8,8 +8,25 @@
 
 <ion-content padding>
 <breadcrumb></breadcrumb>
- Plazieren Sie die Dose jetzt auf dem Scanner.
- {{fb.BoxID}}
- <button ion-button (click)="nextStep()">New</button>
-
+ <ion-card>
+   <ion-card-header class="mycardheader">
+     <h3>4. Box einscannen</h3>
+   </ion-card-header>
+     <ion-card-content class="mycardcontent">
+         <ion-item>
+            <h3>Plazieren Sie die Box auf dem Scanner</h3>
+            <h3 *ngIf="fb.BoxID === 0; else elseBlock ">Keine Box erkannt</h3>
+            <ng-template #elseBlock>
+              <h3>{{fb.BoxID}}</h3>
+            </ng-template>
+         </ion-item>
+     </ion-card-content>
+     <div class="ion-card-footer">
+       <ion-row>
+         <ion-col text-right>
+           <button class="action-button" clear (click)="nextStep()" [disabled]="fb.BoxID === 0" ion-button>Weiter</button>
+         </ion-col>
+       </ion-row>
+     </div>
+ </ion-card>
 </ion-content>
