@@ -15,7 +15,7 @@
      <ion-card-content class="mycardcontent">
          <ion-item>
             <h3>Plazieren Sie die Box auf dem Scanner</h3>
-            <h3 *ngIf="fb.BoxID === 0; else elseBlock ">Keine Box erkannt</h3>
+            <h3 *ngIf="fb.BoxID === '0'; else elseBlock ">Keine Box erkannt</h3>
             <ng-template #elseBlock>
               <h3>{{fb.BoxID}}</h3>
             </ng-template>
@@ -24,7 +24,7 @@
      <div class="ion-card-footer">
        <ion-row>
          <ion-col text-right>
-           <button class="action-button" clear (click)="nextStep()" [disabled]="fb.BoxID === 0" ion-button>Weiter</button>
+           <button class="action-button" clear (click)="nextStep()" [disabled]="fb.BoxID === '0'" ion-button>Weiter</button>
          </ion-col>
        </ion-row>
      </div>

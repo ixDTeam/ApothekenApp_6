@@ -140,7 +140,7 @@ export class FirebaseProvider {
   }
 
   resetScanner(){
-    this.db.object('/Scanner/Devices/'+this.ScannerID).update(0);
+    this.db.object('/Scanner/Devices/'+this.ScannerID).set("0");
   }
 
   newOrderToFirebase() {
