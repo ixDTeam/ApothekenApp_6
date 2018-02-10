@@ -15,9 +15,9 @@
      <ion-card-content class="mycardcontent">
          <ion-item>
             <h3>Plazieren Sie die Box auf dem Scanner</h3>
-            <h3 *ngIf="fb.BoxID === '0'; else elseBlock ">Keine Box erkannt</h3>
+            <h2 text-center class="danger" *ngIf="fb.BoxID === '0'; else elseBlock ">Keine Box erkannt</h2>
             <ng-template #elseBlock>
-              <h3>{{fb.BoxID}}</h3>
+              <h2 text-center>{{fb.BoxID}}</h2>
             </ng-template>
          </ion-item>
      </ion-card-content>

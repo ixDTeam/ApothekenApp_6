@@ -30,15 +30,12 @@ $font-huge: 64px;
   font-family: 'Overpass';
 }
 
-
 // Mixin
 
 @mixin shadow {
   border-radius: 8px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, .12);
 }
-
-
 
 ion-img{
   background: transparent;
@@ -261,6 +258,29 @@ page-b-patient {
       font-size: $font-huge;
     }
   }
+}
+
+page-b-scan{
+
+
+  ion-card.card ion-card-content{
+
+    .danger{
+      border-bottom: 2px solid $danger;
+      color: $black;
+    }
+
+    h2{
+      padding: 0px 10px;
+      font-size: $font-head;
+      margin: 50px auto 30px auto!important;
+      color: $primary;
+      font-weight: bold;
+      font-size: $font-head;
+    }
+  }
+
+
 }
 
 
