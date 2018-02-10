@@ -64,61 +64,62 @@
 
   <ion-card>
     <ion-row>
-        <ion-col class = "timecard">
-          <div class="header">
-            Länge
-          </div>
-          <div class="content">
-            <button ion-button (click)="dosierungAdd('laenge')">+</button>
-            {{dosierung_laenge}}
-            <button ion-button [disabled]="dosierung_laenge === 0" (click)="dosierungSub('laenge')">-</button>
-          </div>
-        </ion-col>
+      <ion-col col-3 class = "timecard">
+        <div class="header">
+          Länge
+        </div>
+        <div class="content">
+          <button ion-button (click)="dosierungAdd('laenge')">+</button>
+          <h2 class="marginfix">{{dosierung_laenge}}</h2>
+          <button ion-button [disabled]="dosierung_laenge === 0" (click)="dosierungSub('laenge')">-</button>
+        </div>
+      </ion-col>
 
-        <ion-col class = "timecard">
-          <div class="header">
-            Zeiteinheit
-          </div>
-          <div class="content">
-            <button ion-button [disabled]="dosierung_einheit === 3"  (click)="dosierungAdd('einheit')">+</button>
-            <span *ngIf="dosierung_einheit === 1">
-              <span *ngIf="dosierung_laenge > 1">
-                Tage
-              </span>
-              <span *ngIf="dosierung_laenge <= 1">
-                Tag
-              </span>
+      <ion-col col-3 class = "timecard">
+        <div class="header">
+          Zeiteinheit
+        </div>
+        <div class="content">
+          <button ion-button [disabled]="dosierung_einheit === 3"  (click)="dosierungAdd('einheit')">+</button>
+          <span *ngIf="dosierung_einheit === 1">
+            <span *ngIf="dosierung_laenge > 1">
+              <h2 class="marginfix">Tage</h2>
             </span>
-            <span *ngIf="dosierung_einheit === 2">
-              <span *ngIf="dosierung_laenge > 1">
-                Wochen
-              </span>
-              <span *ngIf="dosierung_laenge <= 1">
-                Woche
-              </span>
+            <span *ngIf="dosierung_laenge <= 1">
+              <h2 class="marginfix">Tag</h2>
             </span>
-            <span *ngIf="dosierung_einheit === 3">
-              <span *ngIf="dosierung_laenge > 1">
-                Monate
-              </span>
-              <span *ngIf="dosierung_laenge <= 1">
-                Monat
-              </span>
+          </span>
+          <span *ngIf="dosierung_einheit === 2">
+            <span *ngIf="dosierung_laenge > 1">
+              <h2 class="marginfix">Wochen</h2>
             </span>
-            <button ion-button [disabled]="dosierung_einheit === 1" (click)="dosierungSub('einheit')">-</button>
-          </div>
-        </ion-col>
+            <span *ngIf="dosierung_laenge <= 1">
+              <h2 class="marginfix">Woche</h2>
+            </span>
+          </span>
+          <span *ngIf="dosierung_einheit === 3">
+            <span *ngIf="dosierung_laenge > 1">
+              <h2 class="marginfix">Monate</h2>
+            </span>
+            <span *ngIf="dosierung_laenge <= 1">
+              <h2 class="marginfix">Monat</h2>
+            </span>
+          </span>
+          <button ion-button [disabled]="dosierung_einheit === 1" (click)="dosierungSub('einheit')">-</button>
+        </div>
+      </ion-col>
 
-        <ion-col class="calendar">
-          <ion-calendar [(ngModel)]="dateRange"
-                        [type]="time"
-                        [options]="optionsRange"
-                        [format]="'DD-MM-YYYY'"
-                        [readonly]=true>
-          </ion-calendar>
-        </ion-col>
+      <ion-col col-6 class="calendar">
+        <ion-calendar [(ngModel)]="dateRange"
+                      [type]="time"
+                      [options]="optionsRange"
+                      [format]="'DD-MM-YYYY'"
+                      [readonly]=true>
+        </ion-calendar>
+      </ion-col>
+    </ion-row>
 
-  </ion-row>
+
 
   </ion-card>
 
