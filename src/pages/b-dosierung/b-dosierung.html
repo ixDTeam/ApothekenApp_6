@@ -9,17 +9,29 @@
   <ion-card>
     <ion-card>
       <ion-card-header>
-        Morgens
+        <ion-row text-center>
+          <ion-col >
+            <ion-img width="60" height="60" src="assets/icon/time/sunrise.png"></ion-img>
+          </ion-col >
+        </ion-row>
       </ion-card-header>
       <ion-card-content>
-        <button ion-button (click)="dosierungAdd('Mo')">+</button>
-        {{dosierung_Mo}}
-        <button ion-button [disabled]="dosierung_Mo === 0" (click)="dosierungSub('Mo')">-</button>
+        <ion-row text-center>
+          <ion-col >
+            <button ion-button (click)="dosierungAdd('Mo')">+</button>
+          </ion-col >
+          <ion-col >
+            {{dosierung_Mo}}
+          </ion-col>
+          <ion-col >
+            <button ion-button [disabled]="dosierung_Mo === 0" (click)="dosierungSub('Mo')">-</button>
+          </ion-col >
+        </ion-row>
     </ion-card-content>
     </ion-card>
     <ion-card>
       <ion-card-header>
-        Mittags
+        <ion-img width="60" height="60" src="assets/icon/time/day.png"></ion-img>
       </ion-card-header>
       <ion-card-content>
         <button ion-button (click)="dosierungAdd('Mi')">+</button>
@@ -29,7 +41,7 @@
     </ion-card>
     <ion-card>
       <ion-card-header>
-        Abends
+        <ion-img width="60" height="60" src="assets/icon/time/dawn.png"></ion-img>
       </ion-card-header>
       <ion-card-content>
         <button ion-button (click)="dosierungAdd('Ab')">+</button>
@@ -39,7 +51,7 @@
     </ion-card>
     <ion-card>
       <ion-card-header>
-        Nachts
+        <ion-img width="60" height="60" src="assets/icon/time/night.png"></ion-img>
       </ion-card-header>
       <ion-card-content>
         <button ion-button (click)="dosierungAdd('Na')">+</button>

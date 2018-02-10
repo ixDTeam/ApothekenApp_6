@@ -12,20 +12,26 @@
     <ion-card-header class="mycardheader">
       <h3>1. Patienten-ID eintragen</h3>
     </ion-card-header>
-    <ion-card-content class="mycardcontent">
-      <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
-        <ion-item>
-          <ion-label color="primary">PatientID</ion-label>
-          <ion-input formControlName="patientID"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="!authForm.valid">
-        <p>Die Patienten-ID ist ungültig.</p>
-        </ion-item>
-
-        <button type="submit" [disabled]="!authForm.valid" ion-button>Auswählen</button>
-      </form>
-      <span item-right (click)="displayItem(order.key)" class="myCardButton">Ansehen</span>
-    </ion-card-content>
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
+      <ion-card-content class="mycardcontent">
+          <ion-item>
+            <ion-label color="primary">Patient-ID</ion-label>
+            <ion-input autofocus placeholder="A0000000" formControlName="patientID"></ion-input>
+          </ion-item>
+      </ion-card-content>
+      <div class="ion-card-footer">
+        <ion-row>
+          <ion-col text-right>
+            <span *ngIf="!authForm.valid">Die Patienten-ID ist ungültig.</span>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-right>
+            <button clear type="submit" [disabled]="!authForm.valid" ion-button>Weiter</button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </form>
   </ion-card>
 
 </ion-content>

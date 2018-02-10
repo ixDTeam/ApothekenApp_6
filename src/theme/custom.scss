@@ -29,6 +29,21 @@ $font-head: 24px;
   font-family: 'Overpass';
 }
 
+
+// Mixin
+
+@mixin shadow {
+  border-radius: 8px;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, .12);
+}
+
+
+
+ion-img{
+  background: transparent;
+}
+
+
 //Tableiste
 
 #mytabbar{
@@ -125,8 +140,6 @@ ion-scroll{
 
 ion-card.card{
   display: inline-block;
-  border-radius: 8px;
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, .12);
   width: 236px;
   height: 144px;
   padding: 5px;
@@ -194,25 +207,58 @@ ion-card.card.static{
 .scroll-content { left: 0; right: 0; top: 0; bottom: 0; margin-bottom: 0 !important; position: absolute; z-index: 1; display: block; overflow-x: hidden; overflow-y: scroll; -webkit-overflow-scrolling: touch; will-change: scroll-position; contain: size style layout; }
 
 
-ion-card{
-  padding: 14px 24px;
+ion-card.card{
+  padding: 24px 24px 0px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, .12);
+
+  ion-item.item{
+    padding: 0px;
+  }
+
+  ion-item.ion-card-footer{
+    button{
+
+    }
+  }
 
   ion-card-header.card-header{
     padding: 0px;
-    
     h3{
-      font-size: $font-regular;
+      font-size: $font-big;
+      font-weight: bold;
     }
   }
 }
 
+ion-searchbar.searchbar{
+  background: transparent;
+  padding: 0px;
+  margin: 12px;
+  @include shadow;
+
+}
+
+
+/************
+/*
+/* Button */
 
 .button{
   font-size: $font-regular;
   border-radius: 2px;
   font-weight: bold;
   padding: 5px 50px;
-  background: linear-gradient(to right, $primary , $secondary)
+  background: linear-gradient(to right, $primary , $secondary);
+
+  &.button-clear{
+    background: transparent;
+    padding: 5px;
+    color: $primary;
+    &[disabled]{
+      color:  $black60;
+    }
+  }
 }
 
 
@@ -241,6 +287,9 @@ breadcrumb {
     font-weight: bold;
   }
 }
+}
 
-
+/* Helper */
+.padding-bottom{
+  padding-bottom: 14px;
 }

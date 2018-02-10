@@ -4,13 +4,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
-import { BPatientPage } from '../pages/b-patient/b-patient';
-
+import { BDosierungPage } from '../pages/b-dosierung/b-dosierung';
 @Component({
   templateUrl: 'app.html',
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = BDosierungPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
