@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
-import { BDosierungPage } from '../pages/b-dosierung/b-dosierung';
+import { BPatientPage } from '../pages/b-patient/b-patient';
 @Component({
   templateUrl: 'app.html',
 })

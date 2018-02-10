@@ -7,6 +7,9 @@
 <ion-content padding>
 <breadcrumb></breadcrumb>
   <ion-card>
+    <ion-card-header class="mycardheader">
+      <h3>1. Patienten-ID eintragen</h3>
+    </ion-card-header>
     <ion-card>
       <ion-card-header>
         <ion-row text-center>
@@ -20,8 +23,8 @@
           <ion-col >
             <button ion-button (click)="dosierungAdd('Mo')">+</button>
           </ion-col >
-          <ion-col >
-            {{dosierung_Mo}}
+          <ion-col>
+            <h2 class="dosierung_nummer">{{dosierung_Mo}}</h2>
           </ion-col>
           <ion-col >
             <button ion-button [disabled]="dosierung_Mo === 0" (click)="dosierungSub('Mo')">-</button>

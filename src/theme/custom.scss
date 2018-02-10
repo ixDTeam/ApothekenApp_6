@@ -21,6 +21,7 @@ $tab-bar-width: 69px;
 $font-regular: 14px;
 $font-big: 18px;
 $font-head: 24px;
+$font-huge: 64px;
 
 
 //Fonts
@@ -237,6 +238,15 @@ ion-searchbar.searchbar{
   margin: 12px;
   @include shadow;
 
+}
+
+
+page-b-patient {
+  ion-card{
+    h2.dosierung_nummer{
+      font-size: $font-huge;
+    }
+  }
 }
 
 
