@@ -9,7 +9,7 @@ import { BPatientPage } from '../pages/b-patient/b-patient';
   templateUrl: 'app.html',
 })
 export class MyApp {
-  rootPage:any = BDosierungPage;
+  rootPage:any = BPatientPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
