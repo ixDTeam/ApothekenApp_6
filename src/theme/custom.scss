@@ -205,11 +205,25 @@ ion-card.card.static{
   }
 
 .fixed-content { left: 0; right: 0; top: 0; bottom: 0; margin-bottom: 0 !important; position: absolute; display: block; }
-.scroll-content { left: 0; right: 0; top: 0; bottom: 0; margin-bottom: 0 !important; position: absolute; z-index: 1; display: block; overflow-x: hidden; overflow-y: scroll; -webkit-overflow-scrolling: touch; will-change: scroll-position; contain: size style layout; }
+.scroll-content {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin-bottom: 0 !important;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  will-change: scroll-position;
+  contain: size style layout;
+}
 
 
 ion-card.card{
-  padding: 24px 24px 0px;
+  padding: 24px;
   border-radius: 8px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, .12);
 
@@ -264,11 +278,41 @@ page-b-patient {
   &.button-clear{
     background: transparent;
     padding: 5px;
-    color: $primary;
-    &[disabled]{
-      color:  $black60;
+    .current{
+      color: $primary;
     }
+    &.action-button{
+      margin: 0px;
+      padding: 0px;
+      height: 12px;
+      color: $primary;
+    }
+
   }
+}
+
+///////////////// Dosierungs Screen
+////
+////
+///
+
+.card-dosis{
+  text-align: center;
+  button.button{
+    width: 20px;
+    padding: 20px;
+  }
+  h2{
+    font-size: $font-huge;
+  }
+}
+
+.timecard{
+  .content{
+    width: 150px;
+  }
+  text-align: center;
+  width: 200px;
 }
 
 
@@ -276,6 +320,9 @@ page-b-patient {
 ////
 ////
 ///
+.breadcrumb-all{
+  box-shadow: 0 4px 2px -4px gray;
+}
 
 breadcrumb {
 
@@ -283,9 +330,7 @@ breadcrumb {
   font-size: $font-big;
   background: transparent;
   color: $black60;
-  border-bottom: 3px solid;
-  border-color: $black60;
-  border-radius: 0px;
+
   margin: 1px 0px;
   padding: 0px 20px;
 
@@ -295,6 +340,8 @@ breadcrumb {
     color: $black20;
     opacity: 1;
     font-weight: bold;
+    border-bottom: 3px solid;
+    border-radius: 0px;
   }
 }
 }

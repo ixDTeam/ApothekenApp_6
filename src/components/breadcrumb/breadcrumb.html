@@ -1,5 +1,5 @@
 <!-- Generated template for the BreadcrumbComponent component -->
-<nav>
+<nav class="breadcrumb-all">
   <button ion-button clear [class.current]="currentSite === 'BPatientPage'"  [disabled]="currentSite === 'BPatientPage' || currentSite === 'BZusammenfassungPage'" (click)="prevStep('BPatientPage')">1. Patient</button>
   <button ion-button clear [class.current]="currentSite === 'BMedikamentPage'" [disabled]="!fb.medikamentPageStatus || currentSite === 'BMedikamentPage' || currentSite === 'BZusammenfassungPage'"  (click)="prevStep('BMedikamentPage')">2. Medikament</button>
   <button ion-button clear [class.current]="currentSite === 'BDosierungPage'" [disabled]="!fb.dosierungPageStatus || currentSite === 'BDosierungPage' || currentSite === 'BZusammenfassungPage'" (click)="prevStep('BDosierungPage')">3. Dosierung</button>

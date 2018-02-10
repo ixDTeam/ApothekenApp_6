@@ -10,113 +10,119 @@
     <ion-card-header class="mycardheader">
       <h3>1. Patienten-ID eintragen</h3>
     </ion-card-header>
-    <ion-card>
-      <ion-card-header>
-        <ion-row text-center>
-          <ion-col >
+    <ion-row>
+
+        <ion-col class="card-dosis">
+          <div class="header">
             <ion-img width="60" height="60" src="assets/icon/time/sunrise.png"></ion-img>
-          </ion-col >
-        </ion-row>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-row text-center>
-          <ion-col >
-            <button ion-button (click)="dosierungAdd('Mo')">+</button>
-          </ion-col >
-          <ion-col>
-            <h2 class="dosierung_nummer">{{dosierung_Mo}}</h2>
-          </ion-col>
-          <ion-col >
-            <button ion-button [disabled]="dosierung_Mo === 0" (click)="dosierungSub('Mo')">-</button>
-          </ion-col >
-        </ion-row>
-    </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <ion-card-header>
-        <ion-img width="60" height="60" src="assets/icon/time/day.png"></ion-img>
-      </ion-card-header>
-      <ion-card-content>
-        <button ion-button (click)="dosierungAdd('Mi')">+</button>
-         {{dosierung_Mi}}
-        <button ion-button [disabled]="dosierung_Mi === 0" (click)="dosierungSub('Mi')">-</button>
-    </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <ion-card-header>
-        <ion-img width="60" height="60" src="assets/icon/time/dawn.png"></ion-img>
-      </ion-card-header>
-      <ion-card-content>
-        <button ion-button (click)="dosierungAdd('Ab')">+</button>
-        {{dosierung_Ab}}
-        <button ion-button [disabled]="dosierung_Ab === 0" (click)="dosierungSub('Ab')">-</button>
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <ion-card-header>
-        <ion-img width="60" height="60" src="assets/icon/time/night.png"></ion-img>
-      </ion-card-header>
-      <ion-card-content>
-        <button ion-button (click)="dosierungAdd('Na')">+</button>
-         {{dosierung_Na}}
-        <button ion-button [disabled]="dosierung_Na === 0" (click)="dosierungSub('Na')">-</button>
-      </ion-card-content>
-    </ion-card>
+          </div>
+          <div class="content">
+                <!-- <button ion-button (click)="dosierungAdd('Mo')">+</button> -->
+                <h2 class="dosierung_nummer">{{dosierung_Mo}}</h2>
+                <!-- <button ion-button [disabled]="dosierung_Mo === 0" (click)="dosierungSub('Mo')">-</button> -->
+          </div>
+        </ion-col>
+
+        <ion-col class="card-dosis">
+          <div class="header">
+            <ion-img width="60" height="60" src="assets/icon/time/day.png"></ion-img>
+          </div>
+          <div class="content">
+                <button ion-button (click)="dosierungAdd('Mi')">+</button>
+                <h2 class="dosierung_nummer">{{dosierung_Mi}}</h2>
+                <button ion-button [disabled]="dosierung_Mi === 0" (click)="dosierungSub('Mi')">-</button>
+          </div>
+        </ion-col>
+
+        <ion-col class="card-dosis">
+          <div class="header">
+            <ion-img width="60" height="60" src="assets/icon/time/dawn.png"></ion-img>
+          </div>
+          <div class="content">
+                <button ion-button (click)="dosierungAdd('Ab')">+</button>
+                <h2 class="dosierung_nummer">{{dosierung_Ab}}</h2>
+                <button ion-button [disabled]="dosierung_Ab === 0" (click)="dosierungSub('Ab')">-</button>
+          </div>
+        </ion-col>
+
+        <ion-col class="card-dosis">
+          <div class="header">
+            <ion-img width="60" height="60" src="assets/icon/time/night.png"></ion-img>
+          </div>
+          <div class="content">
+                <button ion-button (click)="dosierungAdd('Na')">+</button>
+                <h2 class="dosierung_nummer">{{dosierung_Na}}</h2>
+                <button ion-button [disabled]="dosierung_Na === 0" (click)="dosierungSub('Na')">-</button>
+          </div>
+        </ion-col>
+
+
+    </ion-row>
+
   </ion-card>
 
 
   <ion-card>
-    <ion-card>
-      <ion-card-header>
-        Länge
-      </ion-card-header>
-      <ion-card-content>
-        <button ion-button (click)="dosierungAdd('laenge')">+</button>
-        {{dosierung_laenge}}
-        <button ion-button [disabled]="dosierung_laenge === 0" (click)="dosierungSub('laenge')">-</button>
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <ion-card-header>
-        Zeiteinheit
-      </ion-card-header>
-      <ion-card-content>
-        <button ion-button [disabled]="dosierung_einheit === 3"  (click)="dosierungAdd('einheit')">+</button>
-        <span *ngIf="dosierung_einheit === 1">
-          <span *ngIf="dosierung_laenge > 1">
-            Tage
-          </span>
-          <span *ngIf="dosierung_laenge <= 1">
-            Tag
-          </span>
-        </span>
-        <span *ngIf="dosierung_einheit === 2">
-          <span *ngIf="dosierung_laenge > 1">
-            Wochen
-          </span>
-          <span *ngIf="dosierung_laenge <= 1">
-            Woche
-          </span>
-        </span>
-        <span *ngIf="dosierung_einheit === 3">
-          <span *ngIf="dosierung_laenge > 1">
-            Monate
-          </span>
-          <span *ngIf="dosierung_laenge <= 1">
-            Monat
-          </span>
-        </span>
-        <button ion-button [disabled]="dosierung_einheit === 1" (click)="dosierungSub('einheit')">-</button>
-      </ion-card-content>
-    </ion-card>
+    <ion-row>
+        <ion-col class = "timecard">
+          <div class="header">
+            Länge
+          </div>
+          <div class="content">
+            <button ion-button (click)="dosierungAdd('laenge')">+</button>
+            {{dosierung_laenge}}
+            <button ion-button [disabled]="dosierung_laenge === 0" (click)="dosierungSub('laenge')">-</button>
+          </div>
+        </ion-col>
+
+        <ion-col class = "timecard">
+          <div class="header">
+            Zeiteinheit
+          </div>
+          <div class="content">
+            <button ion-button [disabled]="dosierung_einheit === 3"  (click)="dosierungAdd('einheit')">+</button>
+            <span *ngIf="dosierung_einheit === 1">
+              <span *ngIf="dosierung_laenge > 1">
+                Tage
+              </span>
+              <span *ngIf="dosierung_laenge <= 1">
+                Tag
+              </span>
+            </span>
+            <span *ngIf="dosierung_einheit === 2">
+              <span *ngIf="dosierung_laenge > 1">
+                Wochen
+              </span>
+              <span *ngIf="dosierung_laenge <= 1">
+                Woche
+              </span>
+            </span>
+            <span *ngIf="dosierung_einheit === 3">
+              <span *ngIf="dosierung_laenge > 1">
+                Monate
+              </span>
+              <span *ngIf="dosierung_laenge <= 1">
+                Monat
+              </span>
+            </span>
+            <button ion-button [disabled]="dosierung_einheit === 1" (click)="dosierungSub('einheit')">-</button>
+          </div>
+        </ion-col>
+
+        <ion-col class="calendar">
+          <ion-calendar [(ngModel)]="dateRange"
+                        [type]="time"
+                        [options]="optionsRange"
+                        [format]="'DD-MM-YYYY'"
+                        [readonly]=true>
+          </ion-calendar>
+        </ion-col>
+
+  </ion-row>
+
   </ion-card>
 
-  <ion-calendar [(ngModel)]="dateRange"
-                [type]="time"
-                [options]="optionsRange"
-                [format]="'DD-MM-YYYY'"
-                [readonly]=true>
-  </ion-calendar>
+
 
 <button ion-button (click)="nextStep()">Auswählen</button>
 </ion-content>
