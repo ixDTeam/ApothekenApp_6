@@ -12,7 +12,7 @@ import { BScanPage } from '../pages/b-scan/b-scan';
   templateUrl: 'app.html',
 })
 export class MyApp {
-  rootPage:any = BDosierungPage;
+  rootPage:any = TabsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

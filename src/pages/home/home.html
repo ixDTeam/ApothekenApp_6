@@ -67,8 +67,8 @@
             </ion-row>
         </ion-grid>
         </ion-item>
-        <ion-item *ngIf="orders?.length < 1">
-            Es liegen keine Bestellungen vor.
+        <ion-item *ngIf="ordersKommen?.length < 1">
+            Es werden keine Bestellungen erwartet.
         </ion-item>
         <p class="text_button" (click)="displayItem(order.key)">Alle Anzeigen</p>
       </ion-list>
