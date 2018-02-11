@@ -7,13 +7,13 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { BPatientPage } from '../pages/b-patient/b-patient';
 import { BDosierungPage } from '../pages/b-dosierung/b-dosierung';
 import { BScanPage } from '../pages/b-scan/b-scan';
-import { BScanPage } from '../pages/b-scan/b-scan';
+import { BZusammenfassungPage } from '../pages/b-zusammenfassung/b-zusammenfassung';
 
 @Component({
   templateUrl: 'app.html',
 })
 export class MyApp {
-  rootPage:any = BScanPage;
+  rootPage:any = TabsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
