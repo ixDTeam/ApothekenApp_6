@@ -10,67 +10,66 @@
   <ion-card>
     <ion-card-header>
       <ion-row>
-        <ion-col>
-          Patient: {{fb.PatientID}}
+        <ion-col class="mycardheader">
+        <h3>Patient: {{fb.patientID}}</h3>
         </ion-col>
       </ion-row>
     </ion-card-header>
     <ion-card-content>
-    <ion-list>
-      <ion-item *ngFor="let box of box" let i = index>
+    <ion-list no-lines>
+      <ion-item *ngFor="let box of box" let i = index (click)="editToArray(i)">
         <ion-row>
           <ion-col col-1>
             <img width="40" height="40" src="assets/icon/box.svg">
           </ion-col>
           <ion-col col-1>
-            {{box.BoxID}}
+            <h3>{{box.BoxID | slice:0:3}}</h3>
           </ion-col>
           <ion-col>
-            <img width="40" height="40" src="assets/icon/box.svg">
-            {{box.Medikament}}
+            <ion-row><h3>{{box.Medikament}}</h3></ion-row>
+            <ion-row class=""><h4>Dosis pro Tag</h4></ion-row>
+          </ion-col>
+          <ion-col class="row_dosierung">
+            <ion-row>
+              <ion-col>
+                <ion-row><img src="assets/icon/time/sunrise.png"></ion-row>
+                <ion-row>{{box.dosierung.dosierung_Mo}}</ion-row>
+              </ion-col>
+              <ion-col>
+                <ion-row><img src="assets/icon/time/day.png"></ion-row>
+                <ion-row>{{box.dosierung.dosierung_Mi}}</ion-row>
+              </ion-col>
+              <ion-col>
+                <ion-row><img src="assets/icon/time/dawn.png"></ion-row>
+                <ion-row>{{box.dosierung.dosierung_Ab}}</ion-row>
+              </ion-col>
+              <ion-col>
+                <ion-row><img src="assets/icon/time/night.png"></ion-row>
+                <ion-row>{{box.dosierung.dosierung_Na}}</ion-row>
+              </ion-col>
+            </ion-row>
           </ion-col>
           <ion-col>
-            <ion-row><ion-img src="assets/icon/time/sunrise.png"></ion-img></ion-row>
-            <ion-row>{{box.dosierung.dosierung_Mo}}</ion-row>
+            <ion-row>{{box.MaxMenge}} Stk x {{box.MedikamentPreis}}€</ion-row>
+            <ion-row><h3>{{box.gesamtPreis}}€</h3></ion-row>
           </ion-col>
-          <ion-col>
-            <ion-row><ion-img src="assets/icon/time/day.png"></ion-img></ion-row>
-            <ion-row>{{box.dosierung.dosierung_Mi}}</ion-row>
-          </ion-col>
-          <ion-col>
-            <ion-row><ion-img src="assets/icon/time/dawn.png"></ion-img></ion-row>
-            <ion-row>{{box.dosierung.dosierung_Ab}}</ion-row>
-          </ion-col>
-          <ion-col>
-            <ion-row><ion-img src="assets/icon/time/night.png"></ion-img></ion-row>
-            <ion-row>{{box.dosierung.dosierung_Na}}</ion-row>
-          </ion-col>
-          <ion-col>
-            <ion-row>{{box.MaxMenge}} Stk x {{box.Preis}}</ion-row>
-            <ion-row>{{gesamtPreis}}</ion-row>
+          <ion-col col-1>
+            <button clear ion-button (click)="deleteToArray(i)"><i class="far fa-trash"></i></button>
           </ion-col>
         </ion-row>
       </ion-item>
     </ion-list>
     </ion-card-content>
   </ion-card>
-  <button ion-button clear (click)="startNewOrderToArray()">Buchung abbrechen</button>
-  <button ion-button (click)="startNewOrderToArray()">Weiteres Medikament hinzufügen</button>
-  <button ion-button [disabled]="box.length === 0" (click)="newOrderToFirebaseConfirm()">Kostenpflichtig bestellen.</button>
-      <pre>
-         {{box | json}}
-      </pre>
+  <ion-row align-items-center>
+    <ion-col align-self-start>
+      <button ion-button clear (click)="cancleOrder()">Buchung abbrechen</button>
+    </ion-col>
+    <ion-col align-self-end>
+      <button ion-button (click)="startNewOrderToArray()">Weiteres Medikament hinzufügen</button>
+    </ion-col>
+    <ion-col align-self-end>
+      <button ion-button [disabled]="box.length === 0" (click)="newOrderToFirebaseConfirm()">Bestellen</button>
+    </ion-col>
+  </ion-row>
 </ion-content>
-
-<ion-card *ngFor="let box of box" let i = index>
-  <ion-card-header>
-    Medikament: {{box.Medikament}}
-    BoxID: {{box.BoxID}}
-    PatientID: {{box.PatientID}}
-    Dosierung: {{box.dosierung.dosierung_Mo}}, {{box.dosierung.dosierung_Mi}}, {{box.dosierung.dosierung_Ab}}, {{box.dosierung.dosierung_Na}}
-  </ion-card-header>
-  <ion-card-content>
-    <button ion-button (click)="editToArray(i)">Edit</button>
-    <button ion-button (click)="deleteToArray(i)">Delete</button>
-  </ion-card-content>
-</ion-card>

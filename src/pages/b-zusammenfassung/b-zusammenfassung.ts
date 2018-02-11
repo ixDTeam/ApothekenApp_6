@@ -35,7 +35,6 @@ box:any[] = [];
     this.fb.newOrderToArray();
   }
 
-
 editToArray(index){
   this.fb.ordersStore.splice(index, 1);
   this.navCtrl.push(BMedikamentPage);
@@ -47,7 +46,14 @@ deleteToArray(index){
 
 startNewOrderToArray(){
   this.resetProgess();
+  this.fb.resetScanner();
   this.navCtrl.push(BPatientPage);
+}
+
+cancleOrder(){
+  this.resetProgess();
+  this.fb.resetScanner();
+  this.navCtrl.popToRoot();
 }
 
 resetProgess(){
@@ -86,7 +92,7 @@ newOrderToFirebase(){
   this.resetProgess();
   this.succesToast();
   // this.navCtrl.removeView(HomePage);
-  this.navCtrl.goToRoot();
+  this.navCtrl.popToRoot();
 }
 
 succesToast() {

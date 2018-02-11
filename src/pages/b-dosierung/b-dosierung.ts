@@ -44,7 +44,9 @@ export class BDosierungPage {
  currentDate = moment().format('YYYY-MM-DD');
  endDate = moment().format('YYYY-MM-DD');
 
- medikament:any;
+medikament:any;
+medikamentPreis:any;
+gesamtPreis:any;
 
 newCurrentDate = moment().add(1, 'M');
 
@@ -66,6 +68,7 @@ newCurrentDate = moment().add(1, 'M');
          this.dosierung_Na = this.medikament.Dosierung.Na;
          this.dosierung_einheit = this.medikament.Dosierung.Einheit;
          this.dosierung_laenge = this.medikament.Dosierung.Laenge;
+         this.medikamentPreis = this.medikament.Preis;
          this.updateCalender();
       });
     } else {
@@ -75,13 +78,13 @@ newCurrentDate = moment().add(1, 'M');
       this.dosierung_Na = fb.dosierung_Na;
       this.dosierung_einheit = fb.dosierung_einheit;
       this.dosierung_laenge = fb.dosierung_laenge;
+      this.medikament.Preis = fb.medikamentPreis;
       this.updateCalender();
     }
   }
 
 
   dosisCard(){
-
     if(this.dosis_card == false){
       this.dosis_card = true;
       this.time_card = false;
@@ -185,7 +188,7 @@ updateCalender(){
 calculateAmount(){
     this.dosierungTage = this.endDate.diff(this.currentDate, 'days');
     this.anzahlPillen = (this.dosierungTage*this.dosierung_Mo)+(this.dosierungTage*this.dosierung_Mi)+(this.dosierungTage*this.dosierung_Ab)+(this.dosierungTage*this.dosierung_Na);
-    console.log(this.anzahlPillen);
+    this.gesamtPreis = this.anzahlPillen * this.medikamentPreis;
 }
 
 
@@ -197,6 +200,8 @@ saveData(){
     this.fb.dosierung_laenge = this.dosierung_laenge;
     this.fb.dosierung_einheit = this.dosierung_einheit;
     this.fb.anzahlPillen = this.anzahlPillen;
+    this.fb.gesamtPreis = this.gesamtPreis;
+    this.fb.medikamentPreis = this.medikament.Preis;
   }
 
   nextStep(){

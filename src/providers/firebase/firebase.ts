@@ -35,7 +35,7 @@ export class FirebaseProvider {
 
   currentOrderID: any;
 
-  private patientID: any;
+  public patientID: any;
 
   BoxID:any;
   medikament: any = '';
@@ -47,6 +47,8 @@ export class FirebaseProvider {
   dosierung_einheit: any = '';
 
   anzahlPillen: any = 0;
+  gesamtPreis: any = 0;
+  medikamentPreis: any = 0;
 
   startTime = new Date(Date.UTC(2018, 2, 7));
   endTime = new Date(Date.UTC(2018, 2, 8));
@@ -120,6 +122,8 @@ export class FirebaseProvider {
       "Medikament": this.medikament,
       "PatientID": this.patientID,
       "Menge": this.anzahlPillen,
+      "gesamtPreis": this.gesamtPreis,
+      "MedikamentPreis": this.medikamentPreis,
       "MaxMenge": this.anzahlPillen,
       "dosierung" : {
         dosierung_Mo: this.dosierung_Mo,

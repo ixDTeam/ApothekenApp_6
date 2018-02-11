@@ -1,6 +1,6 @@
 <ion-content class="dash">
     <ion-scroll scrollX="true">
-      <ng-container *ngIf="ordersWaiting?.length">
+      <ng-container *ngIf="ordersWaiting?.length > 0">
     		<ion-card class="myCard" *ngFor="let order of ordersWaiting">
           <ng-container *ngIf="order.Order_0">
             <ion-card-header class="mycardheader">
@@ -33,7 +33,7 @@
           </ng-container>
     		</ion-card>
       </ng-container>
-      <ion-card class="myCard" *ngIf="orders?.length < 1">
+      <ion-card class="myCard" *ngIf="ordersWaiting?.length < 1">
         <ion-card-header>
           <h3 class="h3">Keine Bestellungen<br /> in der Warteliste</h3>
         </ion-card-header>

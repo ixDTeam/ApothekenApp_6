@@ -262,7 +262,6 @@ page-b-patient {
 
 page-b-scan{
 
-
   ion-card.card ion-card-content{
 
     #box_icon{
@@ -282,9 +281,21 @@ page-b-scan{
       font-weight: bold;
     }
   }
+}
 
 
+page-b-zusammenfassung {
 
+  h3 {
+    font-size: $font-head;
+  }
+
+  ion-item {
+    img {
+      width: 21px;
+      height: 21px;
+    }
+  }
 
 }
 
