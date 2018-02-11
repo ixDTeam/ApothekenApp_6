@@ -284,6 +284,8 @@ page-b-scan{
   }
 
 
+
+
 }
 
 
@@ -312,12 +314,24 @@ page-b-scan{
     }
 
   }
+  &.noGradient{
+    background: white;
+    @include shadow;
+    border-radius: 2px;
+    color: black;
+  }
 }
 
 ///////////////// Dosierungs Screen
 ////
 ////
 ///
+
+.toggle-icon{
+  padding: 0px;
+  vertical-align: middle;
+  float: right;
+}
 
 .card-dosis{
   text-align: center;
@@ -327,6 +341,11 @@ page-b-scan{
   }
   h2{
     font-size: $font-huge;
+  }
+  img{
+    width: 60px;
+    margin: auto;
+    margin-bottom: 10px;
   }
 }
 
@@ -353,8 +372,65 @@ page-b-scan{
   ion-calendar{
     padding: 0px;
     margin: 0px;
+
+    &.invisible{
+      .title{
+        display: none !important;
+      }
+    }
+  }
+  ion-calendar-month {
+    .days{
+      height: 30px;
+    }
+    .primary{
+      .between{
+          button.days-btn{
+            background-color: $primary;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+          }
+      }
+      .startSelection{
+        button.days-btn{
+          background-color: $primary;
+        }
+        &:after{
+          display: none;
+        }
+      }
+      .days.between{
+        background-color: transparent;
+      }
+    }
+    button.days-btn{
+      height: 30px;
+      width: 30px;
+
+    }
+
+
+
+  }
+
+
+
+  .week-toolbar{
+    display: none;
+  }
+
+}
+
+.button{
+  &.next_page{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
   }
 }
+
+
 
 
 ///////////////// Breadcrumbs
@@ -384,6 +460,8 @@ breadcrumb {
     border-bottom: 3px solid;
     border-radius: 0px;
   }
+
+
 }
 }
 

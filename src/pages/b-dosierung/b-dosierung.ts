@@ -18,12 +18,17 @@ import { CalendarComponentOptions } from 'ion2-calendar'
  * Ionic pages and navigation.
  */
 
+
 @IonicPage()
 @Component({
   selector: 'page-b-dosierung',
   templateUrl: 'b-dosierung.html',
 })
 export class BDosierungPage {
+
+  dosis_card:any = true;
+
+  time_card:any = false;
 
  dosierung_Mo:any = 0;
  dosierung_Mi:any = 0;
@@ -46,7 +51,8 @@ newCurrentDate = moment().add(1, 'M');
  dateRange: { from: string; to: string; };
  type: 'object'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
  optionsRange: CalendarComponentOptions = {
-   pickMode: 'range'
+   pickMode: 'range',
+   weekStart: 1
  };
 
   constructor(public navCtrl: NavController, public fb: FirebaseProvider) {
@@ -70,6 +76,29 @@ newCurrentDate = moment().add(1, 'M');
       this.dosierung_einheit = fb.dosierung_einheit;
       this.dosierung_laenge = fb.dosierung_laenge;
       this.updateCalender();
+    }
+  }
+
+
+  dosisCard(){
+
+    if(this.dosis_card == false){
+      this.dosis_card = true;
+      this.time_card = false;
+    }
+    else if(this.dosis_card == true){
+      this.dosis_card = false;
+      this.time_card = true;
+    }
+  }
+
+  timeCard(){
+    if(this.time_card == false){
+      this.time_card = true;
+      this.dosis_card = false;
+    }
+    else if(this.time_card == true){
+      this.time_card = false;
     }
   }
 
@@ -140,7 +169,7 @@ newCurrentDate = moment().add(1, 'M');
 
 updateCalender(){
   if(this.dosierung_einheit == 1){
-    this.endDate = moment().add(this.dosierung_laenge, 'd')
+    this.endDate = moment().add(this.dosierung_laenge-1, 'd')
   } if (this.dosierung_einheit == 2){
     this.endDate = moment().add(this.dosierung_laenge, 'w')
   } else if (this.dosierung_einheit == 3){

@@ -7,52 +7,60 @@
 <ion-content padding>
 <breadcrumb></breadcrumb>
   <ion-card>
-    <ion-card-header class="mycardheader">
-      <h3>1. Patienten-ID eintragen</h3>
+    <ion-card-header class="mycardheader"  (click)="dosisCard()">
+      <ion-row>
+        <ion-col>
+          <h3>1. Dosierung eintragen</h3>
+        </ion-col>
+        <ion-col col-1 class="toggle-icon">
+          <i *ngIf="!dosis_card" class="fal fa-angle-down toggle-icon"></i>
+          <i *ngIf="dosis_card" class="fal fa-angle-up toggle-icon"></i>
+        </ion-col>
+      </ion-row>
     </ion-card-header>
-    <ion-row>
+    <ion-row *ngIf="dosis_card">
 
-        <ion-col class="card-dosis">
+        <ion-col class="card-dosis" >
           <div class="header">
-            <ion-img width="60" height="60" src="assets/icon/time/sunrise.png"></ion-img>
+            <img src="assets/icon/time/sunrise.png"/>
           </div>
           <div class="content">
-              <!-- <button ion-button (click)="dosierungAdd('Mo')">+</button> -->
+              <button *ngIf="dosis_card"  ion-button (click)="dosierungAdd('Mo')" class="noGradient"><i class="fal fa-angle-up"></i></button>
               <h2 class="dosierung_nummer">{{dosierung_Mo}}</h2>
-              <!-- <button ion-button [disabled]="dosierung_Mo === 0" (click)="dosierungSub('Mo')">-</button> -->
+              <button *ngIf="dosis_card" ion-button [disabled]="dosierung_Mo === 0" (click)="dosierungSub('Mo')" class="noGradient"><i class="fal fa-angle-down"></i></button>
           </div>
         </ion-col>
 
         <ion-col class="card-dosis">
           <div class="header">
-            <ion-img width="60" height="60" src="assets/icon/time/day.png"></ion-img>
+            <img src="assets/icon/time/day.png"/>
           </div>
           <div class="content">
-                <button ion-button (click)="dosierungAdd('Mi')">+</button>
+                <button *ngIf="dosis_card" ion-button (click)="dosierungAdd('Mi')" class="noGradient"><i class="fal fa-angle-up"></i></button>
                 <h2 class="dosierung_nummer">{{dosierung_Mi}}</h2>
-                <button ion-button [disabled]="dosierung_Mi === 0" (click)="dosierungSub('Mi')">-</button>
+                <button *ngIf="dosis_card" ion-button [disabled]="dosierung_Mi === 0" (click)="dosierungSub('Mi')" class="noGradient"><i class="fal fa-angle-down"></i></button>
           </div>
         </ion-col>
 
         <ion-col class="card-dosis">
           <div class="header">
-            <ion-img width="60" height="60" src="assets/icon/time/dawn.png"></ion-img>
+            <img src="assets/icon/time/dawn.png"/>
           </div>
           <div class="content">
-                <button ion-button (click)="dosierungAdd('Ab')">+</button>
+                <button *ngIf="dosis_card" ion-button (click)="dosierungAdd('Ab')" class="noGradient"><i class="fal fa-angle-up"></i></button>
                 <h2 class="dosierung_nummer">{{dosierung_Ab}}</h2>
-                <button ion-button [disabled]="dosierung_Ab === 0" (click)="dosierungSub('Ab')">-</button>
+                <button *ngIf="dosis_card" ion-button [disabled]="dosierung_Ab === 0" (click)="dosierungSub('Ab')" class="noGradient"><i class="fal fa-angle-down"></i></button>
           </div>
         </ion-col>
 
         <ion-col class="card-dosis">
           <div class="header">
-            <ion-img width="60" height="60" src="assets/icon/time/night.png"></ion-img>
+            <img src="assets/icon/time/night.png"/>
           </div>
           <div class="content">
-                <button ion-button (click)="dosierungAdd('Na')">+</button>
+                <button *ngIf="dosis_card" ion-button (click)="dosierungAdd('Na')" class="noGradient"><i class="fal fa-angle-up"></i></button>
                 <h2 class="dosierung_nummer">{{dosierung_Na}}</h2>
-                <button ion-button [disabled]="dosierung_Na === 0" (click)="dosierungSub('Na')">-</button>
+                <button *ngIf="dosis_card" ion-button [disabled]="dosierung_Na === 0" (click)="dosierungSub('Na')" class="noGradient"><i class="fal fa-angle-down"></i></button>
           </div>
         </ion-col>
 
@@ -63,15 +71,29 @@
 
 
   <ion-card>
-    <ion-row>
-      <ion-col col-3 class = "timecard">
+    <ion-card-header (click)="timeCard()">
+      <ion-row>
+        <ion-col>
+          <h3>2. Dauer der Medikation</h3>
+        </ion-col>
+        <ion-col col-1 class="toggle-icon">
+          <i *ngIf="!time_card" class="fal fa-angle-down toggle-icon"></i>
+          <i *ngIf="time_card" class="fal fa-angle-up toggle-icon"></i>
+        </ion-col>
+      </ion-row>
+
+
+
+    </ion-card-header>
+    <ion-row *ngIf="time_Card">
+      <ion-col col-3 class="timecard">
         <div class="header">
           Länge
         </div>
         <div class="content">
           <button ion-button (click)="dosierungAdd('laenge')">+</button>
           <h2 class="marginfix">{{dosierung_laenge}}</h2>
-          <button ion-button [disabled]="dosierung_laenge === 0" (click)="dosierungSub('laenge')">-</button>
+          <button ion-button [disabled]="dosierung_laenge === 1" (click)="dosierungSub('laenge')">-</button>
         </div>
       </ion-col>
 
@@ -80,7 +102,7 @@
           Zeiteinheit
         </div>
         <div class="content">
-          <button ion-button [disabled]="dosierung_einheit === 3"  (click)="dosierungAdd('einheit')">+</button>
+          <button class="noGradient" ion-button [disabled]="dosierung_einheit === 3"  (click)="dosierungAdd('einheit')">+</button>
           <span *ngIf="dosierung_einheit === 1">
             <span *ngIf="dosierung_laenge > 1">
               <h2 class="marginfix">Tage</h2>
@@ -105,11 +127,11 @@
               <h2 class="marginfix">Monat</h2>
             </span>
           </span>
-          <button ion-button [disabled]="dosierung_einheit === 1" (click)="dosierungSub('einheit')">-</button>
+          <button class="noGradient" ion-button [disabled]="dosierung_einheit === 1" (click)="dosierungSub('einheit')">-</button>
         </div>
       </ion-col>
 
-      <ion-col col-6 class="calendar">
+      <ion-col  col-4 offset-md-1 class="calendar">
         <ion-calendar [(ngModel)]="dateRange"
                       [type]="time"
                       [options]="optionsRange"
@@ -125,5 +147,5 @@
 
 
 
-<button ion-button (click)="nextStep()">Auswählen</button>
+<button ion-button (click)="nextStep()" class="next_page">Auswählen</button>
 </ion-content>
