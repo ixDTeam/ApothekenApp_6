@@ -17,7 +17,14 @@
             <h3>Plazieren Sie die Box auf dem Scanner</h3>
             <h2 text-center class="danger" *ngIf="fb.BoxID === '0'; else elseBlock ">Keine Box erkannt</h2>
             <ng-template #elseBlock>
-              <h2 text-center>{{fb.BoxID}}</h2>
+              <ion-row align-items-center justify-content-center>
+                <ion-col col-1>
+                  <img width="40" height="40" src="assets/icon/box.svg">
+                </ion-col>
+                <ion-col col-2>
+                  <h2>{{fb.BoxID | slice:0:3}}</h2>
+                </ion-col>
+              </ion-row>
             </ng-template>
          </ion-item>
      </ion-card-content>

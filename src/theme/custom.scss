@@ -265,18 +265,21 @@ page-b-scan{
 
   ion-card.card ion-card-content{
 
+    #box_icon{
+      stroke: $black60;
+    }
+
     .danger{
-      border-bottom: 2px solid $danger;
-      color: $black;
+
+      color: $danger;
     }
 
     h2{
       padding: 0px 10px;
-      font-size: $font-head;
+      font-size: $font-huge;
       margin: 50px auto 30px auto!important;
-      color: $primary;
+      color: $black;
       font-weight: bold;
-      font-size: $font-head;
     }
   }
 

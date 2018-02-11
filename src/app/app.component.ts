@@ -7,6 +7,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { BPatientPage } from '../pages/b-patient/b-patient';
 import { BDosierungPage } from '../pages/b-dosierung/b-dosierung';
 import { BScanPage } from '../pages/b-scan/b-scan';
+import { BScanPage } from '../pages/b-scan/b-scan';
 
 @Component({
   templateUrl: 'app.html',
