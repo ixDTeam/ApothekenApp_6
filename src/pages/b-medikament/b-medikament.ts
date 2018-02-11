@@ -43,26 +43,6 @@ export class BMedikamentPage {
     this.navCtrl.push(BDosierungPage);
   }
 
-  prevStep(site){
-    let pushSite:any;
-    console.log(this.fb.patientPageStatus);
-    if (site == 'Patient' && this.fb.patientPageStatus == true){
-      pushSite = BPatientPage;
-      this.navCtrl.push(pushSite);
-    } else if (site == 'Medikament' && this.fb.medikamentPageStatus == true){
-      pushSite = BMedikamentPage;
-      this.navCtrl.push(pushSite);
-    } else if (site == 'Dosierung' && this.fb.dosierungPageStatus == true) {
-      pushSite = BDosierungPage;
-      this.navCtrl.push(pushSite);
-    } else if (site == 'Scan' && this.fb.scanPageStatus == true){
-      pushSite = BScanPage;
-      this.navCtrl.push(pushSite);
-    } else if (site == 'Zusammenfassung' && this.fb.zusammenfassungPageStatus == true){
-      pushSite = BZusammenfassungPage;
-      this.navCtrl.push(pushSite);
-    }
-  }
 
 
 }
