@@ -3,23 +3,45 @@
     <ion-searchbar autofocus clear placeholder="Medikament suchen" [(ngModel)]="searchInput" [autocomplete]="true" [debounce]="200" [showCancelButton]="shouldShowCancel"  (ionInput)="searchEvent(searchInput)">
     </ion-searchbar>
 
-  <ion-card *ngFor="let drug of drugsVar">
-    <ion-card-header>
-      Name: {{drug.key}}<br />
-      PZN: {{drug.PNZ}}
-    </ion-card-header>
-    <ion-card-content>
-      <!-- Hersteller: {{drug.Hersteller}}<br />
-      Preis: {{drug.Preis}}<br />
-      Wirkstoff: {{drug.Wirkstoff.Name}} -->
-      <button ion-button  (click)="nextStep(drug.key)">Auswählen</button>
-    </ion-card-content>
-  </ion-card>
 
-  <ion-card *ngIf="drugsVar?.length < 1">
-    <ion-card-header>
-      Leider wurden keine passenden Medikamente gefunden.
-    </ion-card-header>
-  </ion-card>
+    <ion-card *ngFor="let drug of drugsVar">
+      <ion-card-content>
+        <ion-row>
+          <ion-col><h3>{{drug.key}}</h3></ion-col>
+          <ion-col><h4>{{drug.PZN}}</h4></ion-col>
+          <ion-col>{{drug.Hersteller}}</ion-col>
+          <ion-col class="row_dosierung">
+            <ion-row>
+              <ion-col>
+                <ion-row><img src="assets/icon/time/sunrise.png"></ion-row>
+                <ion-row><h4>{{drug.Dosierung.Mo}}</h4></ion-row>
+              </ion-col>
+              <ion-col>
+                <ion-row><img src="assets/icon/time/day.png"></ion-row>
+                <ion-row><h4>{{drug.Dosierung.Mi}}</h4></ion-row>
+              </ion-col>
+              <ion-col>
+                <ion-row><img src="assets/icon/time/dawn.png"></ion-row>
+                <ion-row><h4>{{drug.Dosierung.Ab}}</h4></ion-row>
+              </ion-col>
+              <ion-col>
+                <ion-row><img src="assets/icon/time/night.png"></ion-row>
+                <ion-row><h4>{{drug.Dosierung.Na}}</h4></ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col>{{drug.Preis}}</ion-col>
+          <ion-col>
+            <button ion-button (click)="nextStep(drug.key)">Auswählen</button>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="drugsVar?.length < 1">
+      <ion-card-header>
+        Leider wurden keine passenden Medikamente gefunden.
+      </ion-card-header>
+    </ion-card>
 
 </ion-content>

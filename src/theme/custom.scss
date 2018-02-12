@@ -283,6 +283,26 @@ page-b-scan{
   }
 }
 
+
+ion-col.row_dosierung.col{
+  img{
+    width: 21px;
+    height: 21px;
+  }
+  text-align: center;
+  ion-row{
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    &:first-of-type{
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
+
 //// Zusammenfassung-page
 
 page-b-zusammenfassung {
@@ -296,19 +316,6 @@ page-b-zusammenfassung {
         font-size: $font-head;
         font-weight: bold;
       }
-
-    ion-col.row_dosierung.col{
-      text-align: center;
-      ion-row{
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        &:first-of-type{
-          margin-bottom: 10px;
-        }
-      }
-    }
 
     ion-col.pull-right{
       ion-row.row{

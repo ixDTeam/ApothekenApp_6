@@ -10,6 +10,7 @@ import { BScanPage } from '../b-scan/b-scan';
 import { BZusammenfassungPage } from '../b-zusammenfassung/b-zusammenfassung';
 
 import { Observable } from 'rxjs/Observable'
+import { Subject } from 'rxjs/Subject';
 
 
 @IonicPage()
@@ -21,19 +22,34 @@ export class BMedikamentPage {
 
 
   private drugsVar:any;
+  drugsVarChanged = new Subject<any>();
+
 
   constructor(public navCtrl: NavController, public fb: FirebaseProvider, public loadingCtrl: LoadingController ) {
   }
 
   ngOnInit(){
-    this.fb.getDrugs("").snapshotChanges().subscribe(changes => this.drugsVar = changes);
-  }
+    this.fb.getDrugs("").snapshotChanges().map(actions => {
+     this.drugsVar = actions.map(action => ({ key: action.key, ...action.payload.val() }));
+     console.log(this.drugsVar);
+     this.drugsVarChanged.next();
+   }).subscribe(items => {
+     this.drugsVarChanged.next();
+   });  }
 
   searchEvent(searchInput){
+
     searchInput = searchInput.replace(/\w\S*/g, function (txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
       });
-    this.fb.getDrugs(searchInput).snapshotChanges().subscribe(changes => this.drugsVar = changes);
+
+    this.fb.getDrugs(searchInput).snapshotChanges().map(actions => {
+     this.drugsVar = actions.map(action => ({ key: action.key, ...action.payload.val() }));
+     console.log(this.drugsVar);
+     this.drugsVarChanged.next();
+   }).subscribe(items => {
+     this.drugsVarChanged.next();
+   });
   }
 
 
