@@ -247,6 +247,7 @@ ion-searchbar.searchbar{
   background: transparent;
   padding: 0px;
   margin: 12px;
+  width: auto;
   @include shadow;
 
 }
@@ -304,7 +305,26 @@ ion-col.row_dosierung.col{
 
 //// Medikament-Page
 
+page-b-medikament{
+  h3{
+    &.drugs_name{
+      font-weight: bold;
+      font-size: $font-big;
+    }
+  }
 
+  ion-card{
+    .card-content{
+      padding: 0px;
+
+      button{
+        &.button-clear{
+          float: right;
+        }
+      }
+    }
+  }
+}
 
 //// Zusammenfassung-page
 
