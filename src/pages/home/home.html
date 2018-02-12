@@ -33,14 +33,13 @@
           </ng-container>
     		</ion-card>
       </ng-container>
-      <ion-card class="myCard" *ngIf="ordersWaiting?.length < 1">
-        <ion-card-header>
-          <h3 class="h3">Keine Bestellungen<br /> in der Warteliste</h3>
-        </ion-card-header>
-      </ion-card>
+      <div id="noOrders_warning" *ngIf="ordersWaiting?.length < 1">
+        <i class="fas fa-ban"></i>
+        Keine Bestellungen
+      </div>
       <ion-card class="static" (click)="startNew()">
          <ion-badge *ngIf="fb.ordersStore.length > 0">In Bearbeitung</ion-badge>
-       <ion-icon class="myAdd" name="add"></ion-icon>
+       <i class="fal fa-plus myAdd"></i>
   		</ion-card>
       <div class="static_bg">
       </div>
