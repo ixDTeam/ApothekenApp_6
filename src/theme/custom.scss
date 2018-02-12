@@ -223,6 +223,15 @@ ion-list{
 
 
 
+ion-scroll{
+  height: 200px;
+  background-color: #C9D2D7;
+    ::-webkit-scrollbar {
+      display: none;
+  }
+  ion-row{
+  }
+}
 
 page-home {
   .scroll-zoom-wrapper{
@@ -243,15 +252,6 @@ button {
   width: 80px;
 }
 
-ion-scroll{
-  height: 200px;
-  background-color: #C9D2D7;
-    ::-webkit-scrollbar {
-      display: none;
-  }
-  ion-row{
-  }
-}
 
 ion-card.card{
   display: inline-block;
