@@ -118,7 +118,34 @@ ion-img{
 ion-card{
   &.myCard{
     margin-top: 25px;
+    padding-top: 15px !important;
+    &.orders{
+        padding: 24px;
+    }
+    .card-content-ios{
+      padding-left: 0px;
+      padding-bottom: 0px;
+      height: 55px;
+      color: $black40;
+    }
+    .box-number{
+      font-size: 25px;
+      font-weight: bold;
+    }
+
   }
+  ion-col.number-col{
+    padding: 0px;
+  }
+}
+
+#orderCard{
+  padding: 24px;
+  height: 530px;
+}
+
+.button.button-clear.action-button{
+  padding-left: 20px !important;
 }
 
 ion-tabs.tabs-ios#tableiste{
@@ -127,6 +154,16 @@ ion-tabs.tabs-ios#tableiste{
   }
 }
 
+ion-list{
+  ion-item.orderItem{
+    border-top: 0px !important;
+
+
+  }
+}
+
+
+
 
 
 
@@ -134,8 +171,16 @@ ion-tabs.tabs-ios#tableiste{
 page-home {
   .scroll-zoom-wrapper{
   white-space: nowrap;
+  ion-card{
+    &.myCard{
+      padding: 25px;
+    }
+  }
 }
 
+.myCardButton{
+
+}
 
 
 button {
@@ -147,6 +192,8 @@ ion-scroll{
   background-color: #C9D2D7;
     ::-webkit-scrollbar {
       display: none;
+  }
+  ion-row{
   }
 }
 
