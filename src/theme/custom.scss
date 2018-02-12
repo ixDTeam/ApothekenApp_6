@@ -233,15 +233,18 @@ ion-scroll{
   }
 }
 
-page-home {
-    .scroll-zoom-wrapper{
-    white-space: nowrap;
-    ion-card{
-      &.myCard{
-        padding: 25px;
-      }
-    }
+.scroll-zoom-wrapper{
+white-space: nowrap;
+ion-card{
+  &.myCard{
+    padding: 25px;
   }
+}
+}
+
+
+page-home {
+
 
   #orderCard{
     width: 492px;
