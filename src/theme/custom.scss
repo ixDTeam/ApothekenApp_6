@@ -44,9 +44,12 @@ ion-img{
 
 
 .smallcard{
-  height: 246px!important;
+  height: 226px!important;
   padding-bottom: 0px;
   padding-right: 0px;
+  &:first-of-type{
+      margin-bottom: 25px;
+  }
 }
 
 

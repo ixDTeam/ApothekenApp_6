@@ -19,14 +19,6 @@
         <ion-item *ngFor="let order of ordersKommen" class="orderItem">
             <ion-row align-items-center>
               <ion-col col-2>
-                <round-progress [current]="order.Order_0.Menge" [max]="order.Order_0.MaxMenge" [radius]="15" [stroke]="3"  [rounded]="true" ></round-progress>
-                {{order.Order_0.Menge}} von {{order.Order_0.MaxMenge}}
-              </ion-col>
-              <ion-col col-2>
-                <h3>{{order.Order_0.PatientID}}<br/></h3>
-                {{order.Order_0.Medikament}}
-              </ion-col>
-              <ion-col col-4>
                 <svg class="box-icon" width="12px" height="17px" viewBox="0 0 12 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <g id="UI-Elements-/-Cards-/-Small" transform="translate(-19.000000, -107.000000)" stroke="#212121">
@@ -44,7 +36,17 @@
                 </svg>
                 {{order.Order_0.BoxID | slice:0:3}}
               </ion-col>
-              <ion-col class="row_dosierung">
+              <ion-col col-1>
+                <round-progress [current]="order.Order_0.Menge" [max]="order.Order_0.MaxMenge" [radius]="15" [stroke]="3"  [rounded]="true" ></round-progress>
+              </ion-col>
+              <ion-col col-3>
+                {{order.Order_0.Menge}} von {{order.Order_0.MaxMenge}}
+              </ion-col>
+              <ion-col col-3>
+                <h3>{{order.Order_0.PatientID}}<br/></h3>
+                {{order.Order_0.Medikament}}
+              </ion-col>
+              <ion-col col-3 class="row_dosierung">
                 <ion-row>
                   <ion-col>
                     <ion-row><img src="assets/icon/time/sunrise.png"></ion-row>
@@ -63,9 +65,6 @@
                     <ion-row><h4>{{order.Order_0.dosierung.dosierung_Na}}</h4></ion-row>
                   </ion-col>
                 </ion-row>
-              </ion-col>
-              <ion-col col-2>
-
               </ion-col>
             </ion-row>
         </ion-item>
