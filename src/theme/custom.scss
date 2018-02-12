@@ -78,9 +78,12 @@ ion-img{
     .tab-button-text{
       width: 100%;
       font-family: 'Font Awesome 5 Pro';
-      font-weight: 900;
-      font-size:30px;
+      font-weight: 300;
+      font-size:25px;
       color: white;
+      display: inline;
+      white-space: nowrap;
+
     }
 
   }
@@ -374,6 +377,7 @@ page-b-zusammenfassung {
 
 ///////////////// Dosierungs Screen
 ////
+
 ////
 ///
 
@@ -399,14 +403,17 @@ page-b-zusammenfassung {
   }
 }
 
-
+.timecard-row{
+  margin-top: 10px;
+}
 .timecard{
+  margin-top: 10px;
   button.button{
     width: 20px;
     padding: 20px;
   }
   h2{
-      font-size: $font-huge;
+      font-size: $font-huge - 10px;
     &:first-child{
       margin-top: 2px;
     }
