@@ -67,9 +67,7 @@
     </ion-list>
     </ion-card-content>
   </ion-card>
-  <ion-row align-items-center>
-      <button class="pull-left"  ion-button clear (click)="cancleOrder()">Buchung abbrechen</button>
-      <button class="pull-right" ion-button (click)="startNewOrderToArray()">Weiteres Medikament hinzufügen</button>
-      <button class="pull-right" ion-button [disabled]="box.length === 0" (click)="newOrderToFirebaseConfirm()">Bestellen</button>
-  </ion-row>
+      <button class="pull-left left"  ion-button clear (click)="cancleOrder()">Buchung abbrechen</button>
+      <button class="pull-right right" ion-button [disabled]="box.length === 0" (click)="newOrderToFirebaseConfirm()">Bestellen</button>
+      <button class="pull-right right" ion-button (click)="startNewOrderToArray()">Weiteres Medikament hinzufügen</button>
 </ion-content>

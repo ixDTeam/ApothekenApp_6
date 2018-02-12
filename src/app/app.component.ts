@@ -8,6 +8,7 @@ import { BPatientPage } from '../pages/b-patient/b-patient';
 import { BDosierungPage } from '../pages/b-dosierung/b-dosierung';
 import { BScanPage } from '../pages/b-scan/b-scan';
 import { BMedikamentPage } from '../pages/b-medikament/b-medikament';
+import { BZusammenfassungPage } from '../pages/b-zusammenfassung/b-zusammenfassung';
 
 @Component({
   templateUrl: 'app.html',

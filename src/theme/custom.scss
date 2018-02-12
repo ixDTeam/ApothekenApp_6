@@ -79,11 +79,19 @@ ion-img{
     .tab-button-text{
       width: 100%;
       font-family: 'Font Awesome 5 Pro';
-      font-weight: 900;
+      font-weight: 300;
       font-size:30px;
-      color: white;
+      color: $black40;
     }
 
+
+  }
+  .tab-button.has-title.has-title-only[aria-selected="true"]{
+    span{
+      background-image:linear-gradient(90deg,$primary, $secondary);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+    }
   }
 }
 
@@ -98,6 +106,19 @@ ion-img{
 //     font-family: 'Font Awesome 5 Pro';
 //     font-size: 30px !important;
 // }
+
+ion-badge{
+  position: absolute;
+  right: 95px;
+  top: 22px;
+  z-index: 20;
+  font-size: 33px;
+  border-radius: 40px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: $danger !important;
+}
+
 
 #noOrders_warning{
   font-size: $font-huge - 30px;
@@ -397,7 +418,63 @@ ion-col.row_dosierung.col{
   }
 }
 
+//// Details page
 
+page-detail {
+
+  background-color: white;
+  padding: 20px;
+  box-shadow: 5px 10px $black20;
+
+
+  .header{
+    h3{
+      margin: 0px;
+    }
+  }
+
+  .content{
+    ion-item{
+      margin-left: 0px;
+      padding-left: 0px;
+      .item-inner{
+        border: 0px !important;
+      }
+      ion-grid{
+        margin-left: 0px;
+        padding-left: 0px;
+        .row{
+          &.dosis-row{
+
+            .row {
+              height: 30px;
+              h4{
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer{
+    height: 20px;
+    p{
+      color: $primary;
+      &.center{
+        text-align: center;
+      }
+      &.left{
+        text-align: left;
+      }
+      &.right{
+        text-align: right;
+      }
+    }
+  }
+
+}
 
 //// Zusammenfassung-page
 
@@ -429,6 +506,19 @@ page-b-zusammenfassung {
           height: 21px;
         }
       }
+    }
+  }
+
+  .pull-right{
+    &.right{
+      float: right;
+      margin-right: 12px;
+    }
+  }
+  .pull-left{
+    &.left{
+      float: left;
+      margin-left: 12px;
     }
   }
 
@@ -518,7 +608,9 @@ page-b-medikament{
   }
 }
 
-
+.timecard-row{
+  margin-top: 5px;
+}
 .timecard{
   button.button{
     width: 20px;
@@ -643,4 +735,10 @@ breadcrumb {
 /* Helper */
 .padding-bottom{
   padding-bottom: 14px;
+}
+//Hintergrund wenn Modal
+ion-backdrop{
+//  background-color: transparent;
+left: $tab-bar-width;
+
 }

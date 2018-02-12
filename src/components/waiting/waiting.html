@@ -41,8 +41,9 @@
     <i class="fas fa-ban"></i>
     Keine Bestellungen
   </div>
+  <ion-badge *ngIf="fb.ordersStore.length > 0">1</ion-badge>
   <ion-card class="static" (click)="startNew()">
-     <ion-badge *ngIf="fb.ordersStore.length > 0">In Bearbeitung</ion-badge>
+
    <i class="fal fa-plus myAdd"></i>
   </ion-card>
   <div class="static_bg">
