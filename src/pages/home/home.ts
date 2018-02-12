@@ -36,6 +36,7 @@ export class HomePage {
 
 
   }
+  
 
   ionViewDidEnter(){
 

@@ -27,7 +27,6 @@ import { CalendarComponentOptions } from 'ion2-calendar'
 export class BDosierungPage {
 
   dosis_card:any = true;
-
   time_card:any = false;
 
  dosierung_Mo:any = 0;
