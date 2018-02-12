@@ -42,6 +42,14 @@ ion-img{
 }
 
 
+
+.smallcard{
+  height: 246px!important;
+  padding-bottom: 0px;
+  padding-right: 0px;
+}
+
+
 //Tableiste
 
 #mytabbar{
@@ -139,6 +147,7 @@ ion-badge{
 
 
 ion-card{
+
   &.myCard{
     margin-top: 25px;
     padding-top: 15px !important;
@@ -272,7 +281,7 @@ waiting {
   ion-card.card.static{
     z-index: 10;
     position: fixed;
-    top: 17px;
+    top: 25px;
     right: -50px;
     width: 150px;
     font-size: 48px;
@@ -380,13 +389,14 @@ page-b-patient {
 }
 
 page-b-scan{
-<<<<<<< HEAD
+
 ion-item{
 
 }
+
   h2{
     font-size: $font-head;
-=======
+}
   ion-row.row{
     margin-top: 35px;
   }
@@ -396,7 +406,7 @@ ion-item.item
     h2.smallerHead{
       font-size: $font-head;
     }
->>>>>>> 8473e01132ac84feb83bef42e983af49e66639b3
+
   }
 
   ion-card.card ion-card-content{
@@ -447,11 +457,20 @@ page-detail {
   padding: 20px;
   box-shadow: 5px 10px $black20;
 
-
+  .row h3{
+    font-weight: bold;
+    font-size: $font-head;
+  }
   .header{
     h3{
       margin: 0px;
+      font-size: $font-head;
+      font-weight: bold;
     }
+  .content{
+
+  }
+
   }
 
   .content{
@@ -466,11 +485,10 @@ page-detail {
         padding-left: 0px;
         .row{
           &.dosis-row{
-
             .row {
               height: 30px;
+              text-align: center;
               h4{
-                text-align: center;
               }
             }
           }

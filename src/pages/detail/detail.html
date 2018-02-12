@@ -7,54 +7,44 @@
 <div class="header">
   <h3>Bestellung</h3>
 </div>
-
 <div class="content">
   <ion-item *ngFor='let order of orders | slice:0:orderLength'  >
     <ion-grid>
-      <ion-row>
-        <ion-col>
+      <ion-row align-items-center>
+        <ion-col col-2>
+          <ion-row><h4>BoxID</h4></ion-row>
+          <ion-row><h3>{{order.BoxID | slice:0:3}}</h3></ion-row>
+        </ion-col>
+        <ion-col col-3>
+          <ion-row><h4>Medikament</h4></ion-row>
+          <ion-row><h3>{{order.Medikament}}</h3></ion-row>
+        </ion-col>
+        <ion-col col-3>
+          <ion-row><h4>Gesamtmenge</h4></ion-row>
+          <ion-row><h3>{{order.Menge}} Stk</h3></ion-row>
+        </ion-col>
+        <ion-col col-4 class="row_dosierung">
           <ion-row>
-            {{order.PatientID}}
+            <ion-col>
+              <ion-row><img src="assets/icon/time/sunrise.png"></ion-row>
+              <ion-row><h4>{{order.dosierung.dosierung_Mo}}</h4></ion-row>
+            </ion-col>
+            <ion-col>
+              <ion-row><img src="assets/icon/time/day.png"></ion-row>
+              <ion-row><h4>{{order.dosierung.dosierung_Mi}}</h4></ion-row>
+            </ion-col>
+            <ion-col>
+              <ion-row><img src="assets/icon/time/dawn.png"></ion-row>
+              <ion-row><h4>{{order.dosierung.dosierung_Ab}}</h4></ion-row>
+            </ion-col>
+            <ion-col>
+              <ion-row><img src="assets/icon/time/night.png"></ion-row>
+              <ion-row><h4>{{order.dosierung.dosierung_Na}}</h4></ion-row>
+            </ion-col>
           </ion-row>
-          <ion-row>
-            {{order.BoxID | slice:0:3}}
-          </ion-row>
-          <ion-row>
-          </ion-row>
-       </ion-col>
-       <ion-col>
-         <ion-row>
-           {{order.Medikament}}
-         </ion-row>
-         <ion-row>
-           {{order.Menge}} Stk
-           {{order.dosierung.dosierung_laenge}} Tage
-         </ion-row>
-       </ion-col>
-       <ion-col>
-         <ion-row class="row dosis-row" justify-content-center>
-              <ion-col class="col">
-                <ion-row class="row"><img src="assets/icon/time/sunrise.png"></ion-row>
-                <ion-row class="row"><h4>{{order.dosierung.dosierung_Mo}}</h4></ion-row>
-              </ion-col>
-              <ion-col class="col">
-                <ion-row class="row"><img src="assets/icon/time/day.png"></ion-row>
-                <ion-row class="row"><h4>{{order.dosierung.dosierung_Mi}}</h4></ion-row>
-              </ion-col>
-              <ion-col class="col">
-                <ion-row class="row"><img src="assets/icon/time/dawn.png"></ion-row>
-                <ion-row class="row"><h4>{{order.dosierung.dosierung_Ab}}</h4></ion-row>
-              </ion-col>
-              <ion-col class="col">
-                <ion-row class="row"><img src="assets/icon/time/night.png"></ion-row>
-                <ion-row class="row"><h4>{{order.dosierung.dosierung_Na}}</h4></ion-row>
-              </ion-col>
-            </ion-row>
-       </ion-col>
-
+        </ion-col>
       </ion-row>
     </ion-grid>
-
   </ion-item>
 </div>
 
@@ -72,8 +62,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
-
-
 </div>

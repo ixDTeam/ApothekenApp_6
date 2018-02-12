@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { BPatientPage } from '../b-patient/b-patient';
+import { KommendeBestellungenPage } from '../kommende-bestellungen/kommende-bestellungen';
 import { DetailPage } from '../detail/detail';
 
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
@@ -52,6 +53,10 @@ export class HomePage {
      this.ordersKommenChanged.next();
    });
 
+  }
+
+  displayAll(){
+    this.navCtrl.parent.select(1);
   }
 
   displayItem(key){
