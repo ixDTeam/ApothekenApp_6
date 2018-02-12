@@ -4,6 +4,51 @@
     </ion-searchbar>
 
 
+  <ion-card *ngFor="let drug of drugsVar">
+    <ion-card-content>
+    <ion-row>
+      <ion-col>
+        <ion-row><h3 class="drugs_name">{{drug.key}}</h3></ion-row>
+        <ion-row class=""><h4>{{drug.Hersteller}}</h4></ion-row>
+      </ion-col>
+      <ion-col>
+        <ion-row>
+          {{drug.Wirkstoff.Name}}
+        </ion-row>
+        <ion-row>
+          {{drug.Wirkstoff.Dosierung}}
+        </ion-row>
+      </ion-col>
+      <ion-col class="row_dosierung">
+        <ion-row>
+          <ion-col>
+            <ion-row><img src="assets/icon/time/sunrise.png"></ion-row>
+            <ion-row><h4>{{drug.Dosierung.Mo}}</h4></ion-row>
+          </ion-col>
+          <ion-col>
+            <ion-row><img src="assets/icon/time/day.png"></ion-row>
+            <ion-row><h4>{{drug.Dosierung.Mi}}</h4></ion-row>
+          </ion-col>
+          <ion-col>
+            <ion-row><img src="assets/icon/time/dawn.png"></ion-row>
+            <ion-row><h4>{{drug.Dosierung.Ab}}</h4></ion-row>
+          </ion-col>
+          <ion-col>
+            <ion-row><img src="assets/icon/time/night.png"></ion-row>
+            <ion-row><h4>{{drug.Dosierung.Na}}</h4></ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col class="pull-right" col-1>
+        <ion-row>
+          <button clear ion-button (click)="nextStep(drug.key)">Auswählen</button>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>
+
+
     <ion-card *ngFor="let drug of drugsVar">
       <ion-card-content>
         <ion-row>
