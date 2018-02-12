@@ -81,7 +81,8 @@ ion-img{
       font-family: 'Font Awesome 5 Pro';
       font-weight: 300;
       font-size:30px;
-      color: $black40;
+      color: white;
+      opacity: 0.2;
     }
 
 
@@ -91,6 +92,7 @@ ion-img{
       background-image:linear-gradient(90deg,$primary, $secondary);
  -webkit-background-clip: text;
  -webkit-text-fill-color: transparent;
+ opacity: 1;
     }
   }
 }
@@ -375,7 +377,7 @@ page-b-patient {
 
 page-b-scan{
 ion-item{
-  
+
 }
   h2{
     font-size: $font-head;
@@ -589,6 +591,11 @@ page-b-medikament{
 ////
 ///
 
+.dosiscard-row{
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
 .toggle-icon{
   padding: 0px;
   vertical-align: middle;
@@ -612,7 +619,8 @@ page-b-medikament{
 }
 
 .timecard-row{
-  margin-top: 5px;
+  margin-top: 35px;
+  margin-bottom: 35px;
 }
 .timecard{
   button.button{
@@ -620,7 +628,7 @@ page-b-medikament{
     padding: 20px;
   }
   h2{
-      font-size: $font-huge;
+      font-size: $font-huge - 15px;
     &:first-child{
       margin-top: 2px;
     }
