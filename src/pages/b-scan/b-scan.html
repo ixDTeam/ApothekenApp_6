@@ -36,11 +36,11 @@
             <h2 text-center class="danger smallerHead" *ngIf="fb.BoxID === '0'; else elseBlock ">Keine Box erkannt</h2>
             <ng-template #elseBlock>
               <ion-row align-items-center justify-content-center>
-                <ion-col col-1>
+                <!-- <ion-col col-1>
                   <img width="40" height="40" src="assets/icon/box.svg">
-                </ion-col>
+                </ion-col> -->
                 <ion-col col-2>
-                  <h2 class="smallerHead">{{fb.BoxID | slice:0:3}}</h2>
+                  <h2 class="smallerHead">BoxID: {{fb.BoxID | slice:0:3}}</h2>
                 </ion-col>
               </ion-row>
             </ng-template>

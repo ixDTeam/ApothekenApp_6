@@ -375,6 +375,10 @@ page-b-patient {
 }
 
 page-b-scan{
+  ion-row.row{
+    margin-top: 35px;
+  }
+
 ion-item.item
   {
     h2.smallerHead{
@@ -703,7 +707,7 @@ page-b-medikament{
 
 breadcrumb {
   nav.breadcrumb-all{
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     box-shadow: 0 4px 2px -4px gray;
     //border-bottom: 1px solid gray;
     padding: 0px;
