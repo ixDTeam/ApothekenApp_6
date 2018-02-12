@@ -79,12 +79,9 @@ ion-img{
     .tab-button-text{
       width: 100%;
       font-family: 'Font Awesome 5 Pro';
-      font-weight: 300;
-      font-size:25px;
+      font-weight: 900;
+      font-size:30px;
       color: white;
-      display: inline;
-      white-space: nowrap;
-
     }
 
   }
@@ -391,7 +388,6 @@ page-b-zusammenfassung {
 
 ///////////////// Dosierungs Screen
 ////
-
 ////
 ///
 
@@ -417,17 +413,14 @@ page-b-zusammenfassung {
   }
 }
 
-.timecard-row{
-  margin-top: 10px;
-}
+
 .timecard{
-  margin-top: 10px;
   button.button{
     width: 20px;
     padding: 20px;
   }
   h2{
-      font-size: $font-huge - 10px;
+      font-size: $font-huge;
     &:first-child{
       margin-top: 2px;
     }
@@ -502,38 +495,43 @@ page-b-zusammenfassung {
 }
 
 
-
-
 ///////////////// Breadcrumbs
 ////
 ////
-///
-.breadcrumb-all{
-  box-shadow: 0 4px 2px -4px gray;
-}
+
 
 breadcrumb {
-
-.button{
-  font-size: $font-big;
-  background: transparent;
-  color: $black60;
-
-  margin: 1px 0px;
-  padding: 0px 20px;
-
-  &.current{
-    -webkit-border-image: -webkit-gradient(linear, left top, right top, from($primary), to($secondary), color-stop(0.6, $secondary)) 21 30 30 21 ;
-    border-color: $primary;
-    color: $black20;
-    opacity: 1;
-    font-weight: bold;
-    border-bottom: 3px solid;
-    border-radius: 0px;
+  nav.breadcrumb-all{
+    margin-bottom: 30px;
+    box-shadow: 0 4px 2px -4px gray;
+    //border-bottom: 1px solid gray;
+    padding: 0px;
+    margin: 0px 24px;
+    .button{
+      margin-right: 40px;
+    }
   }
 
+  .button{
+    font-size: $font-big;
+    background: transparent;
+    color: $black60;
 
-}
+    margin: 1px 0px;
+    padding: 0px 20px;
+
+    &.current{
+      -webkit-border-image: -webkit-gradient(linear, left top, right top, from($primary), to($secondary), color-stop(0.6, $secondary)) 21 30 30 21 ;
+      border-color: $primary;
+      color: $black20;
+      opacity: 1;
+      font-weight: bold;
+      border-bottom: 3px solid;
+      border-radius: 0px;
+    }
+
+
+  }
 }
 
 /* Helper */
