@@ -34,7 +34,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, public fb: FirebaseProvider, public modalCtrl: ModalController) {
 
   }
-  
+
 
   ionViewDidEnter(){
 
@@ -52,6 +52,11 @@ export class HomePage {
      this.ordersKommenChanged.next();
    });
 
+  }
+
+  displayItem(key){
+    let modal = this.modalCtrl.create(DetailPage, {OrderID: key});
+    modal.present();
   }
 
 
