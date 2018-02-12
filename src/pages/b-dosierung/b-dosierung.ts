@@ -78,7 +78,7 @@ newCurrentDate = moment().add(1, 'M');
       this.dosierung_Na = fb.dosierung_Na;
       this.dosierung_einheit = fb.dosierung_einheit;
       this.dosierung_laenge = fb.dosierung_laenge;
-      this.medikament.Preis = fb.medikamentPreis;
+      this.medikamentPreis = fb.medikamentPreis;
       this.updateCalender();
     }
   }
@@ -201,7 +201,7 @@ saveData(){
     this.fb.dosierung_einheit = this.dosierung_einheit;
     this.fb.anzahlPillen = this.anzahlPillen;
     this.fb.gesamtPreis = this.gesamtPreis;
-    this.fb.medikamentPreis = this.medikament.Preis;
+    this.fb.medikamentPreis = this.medikamentPreis;
   }
 
   nextStep(){
