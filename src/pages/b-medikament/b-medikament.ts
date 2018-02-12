@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
-import { Subject } from 'rxjs/Subject'
-import 'rxjs/add/operator/switchMap';
 
 import { BPatientPage } from '../b-patient/b-patient';
 import { BDosierungPage } from '../b-dosierung/b-dosierung';
@@ -11,6 +9,7 @@ import { BZusammenfassungPage } from '../b-zusammenfassung/b-zusammenfassung';
 
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/switchMap';
 
 
 @IonicPage()
