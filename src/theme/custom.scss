@@ -358,6 +358,7 @@ ion-card.card{
 
 ion-searchbar.searchbar{
   background: transparent;
+  width: auto;
   padding: 0px;
   margin: 12px;
   @include shadow;
@@ -374,11 +375,11 @@ page-b-patient {
 }
 
 page-b-scan{
-ion-item{
-  
-}
-  h2{
-    font-size: $font-head;
+ion-item.item
+  {
+    h2.smallerHead{
+      font-size: $font-head;
+    }
   }
 
   ion-card.card ion-card-content{

@@ -126,7 +126,7 @@ export class FirebaseProvider {
       "Medikament": this.medikament,
       "PatientID": this.patientID,
       "Menge": this.anzahlPillen,
-      "gesamtPreis": this.gesamtPreis,
+      "gesamtPreis": this.gesamtPreis.toFixed(2),
       "MedikamentPreis": this.medikamentPreis,
       "MaxMenge": this.anzahlPillen,
       "dosierung" : {
