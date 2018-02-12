@@ -16,6 +16,27 @@
          <ion-item>
             <h3>Plazieren Sie die Box auf dem Scanner</h3>
             <h2 text-center class="danger" *ngIf="fb.BoxID === '0'; else elseBlock ">Keine Box erkannt</h2>
+            <ion-row justify-content-center>
+              <ion-col col-5 class="scan_icon">
+                <svg width="340px" height="251px" viewBox="0 0 340 251" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+                    <desc>Created with Sketch.</desc>
+                    <defs></defs>
+                    <g id="Checkout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="Checkout/Ausgabe" transform="translate(-367.000000, -283.000000)">
+                            <g id="Group-3" transform="translate(310.000000, 181.000000)">
+                                <g id="RFID-Icon">
+                                    <circle id="Oval-3" stroke="#C9D2D7" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="80,1,170,250" transform="translate(227.000000, 227.000000) rotate(-45.000000) translate(-227.000000, -227.000000) " cx="227" cy="227" r="160"></circle>
+                                    <circle id="Oval-3" stroke="#C9D2D7" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="57.6,0.7200000107288361,122.4,180" transform="translate(227.000000, 227.000000) rotate(-45.000000) translate(-227.000000, -227.000000) " cx="227" cy="227" r="115"></circle>
+                                    <circle id="Oval-3" stroke="#C9D2D7" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="22,1,85.68000030517578,126" transform="translate(228.000000, 228.000000) rotate(-45.000000) translate(-228.000000, -228.000000) " cx="228" cy="228" r="73"></circle>
+                                    <circle id="Oval-3" fill="#C9D2D7" transform="translate(227.500000, 227.500000) rotate(-45.000000) translate(-227.500000, -227.500000) " cx="227.5" cy="227.5" r="24.6936508"></circle>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+              </ion-col>
+            </ion-row>
             <ng-template #elseBlock>
               <ion-row align-items-center justify-content-center>
                 <ion-col col-1>
@@ -26,26 +47,6 @@
                 </ion-col>
               </ion-row>
             </ng-template>
-
-            <div class="scan_icon">
-              <svg width="340px" height="251px" viewBox="0 0 340 251" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
-                  <desc>Created with Sketch.</desc>
-                  <defs></defs>
-                  <g id="Checkout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g id="Checkout/Ausgabe" transform="translate(-367.000000, -283.000000)">
-                          <g id="Group-3" transform="translate(310.000000, 181.000000)">
-                              <g id="RFID-Icon">
-                                  <circle id="Oval-3" stroke="#C9D2D7" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="80,1,170,250" transform="translate(227.000000, 227.000000) rotate(-45.000000) translate(-227.000000, -227.000000) " cx="227" cy="227" r="160"></circle>
-                                  <circle id="Oval-3" stroke="#C9D2D7" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="57.6,0.7200000107288361,122.4,180" transform="translate(227.000000, 227.000000) rotate(-45.000000) translate(-227.000000, -227.000000) " cx="227" cy="227" r="115"></circle>
-                                  <circle id="Oval-3" stroke="#C9D2D7" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="22,1,85.68000030517578,126" transform="translate(228.000000, 228.000000) rotate(-45.000000) translate(-228.000000, -228.000000) " cx="228" cy="228" r="73"></circle>
-                                  <circle id="Oval-3" fill="#C9D2D7" transform="translate(227.500000, 227.500000) rotate(-45.000000) translate(-227.500000, -227.500000) " cx="227.5" cy="227.5" r="24.6936508"></circle>
-                              </g>
-                          </g>
-                      </g>
-                  </g>
-              </svg>
-            </div>
 
          </ion-item>
      </ion-card-content>

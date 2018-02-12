@@ -9,7 +9,11 @@ import { FirebaseProvider } from '../../providers/firebase/firebase';
 export class SettingsPage {
 
   constructor(public navCtrl: NavController, public fb: FirebaseProvider) {
-    
+
+  }
+
+  confirm(){
+    this.fb.setSettings();
   }
 
 }

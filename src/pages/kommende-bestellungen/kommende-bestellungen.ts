@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
+import { FirebaseProvider } from '../../providers/firebase/firebase';
+import { Subject } from 'rxjs/Subject';
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 /**
  * Generated class for the KommendeBestellungenPage page.
@@ -15,11 +19,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class KommendeBestellungenPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  ordersKommen:any[];
+
+  ordersKommenChanged = new Subject<any>();
+  orders:any;
+
+  controll:any;
+  key:any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FirebaseProvider) {
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad KommendeBestellungenPage');
-  }
+    this.fb.get_ordersKommenRef().snapshotChanges().map(actions => {
+     this.ordersKommen = actions.map(action => ({ key: action.key, ...action.payload.val() }));
+     this.ordersKommenChanged.next();
+   }).subscribe(items => {
+     this.ordersKommenChanged.next();
+   });  }
 
 }

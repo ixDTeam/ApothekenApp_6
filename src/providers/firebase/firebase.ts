@@ -116,6 +116,10 @@ export class FirebaseProvider {
     this.ordersStore.splice(index, 1);
   }
 
+  setSettings(){
+    console.log('Einstellungen gespeichert')
+  }
+
   newOrderToArray(){
     var Order = {
       "BoxID":  this.BoxID,

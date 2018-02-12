@@ -234,65 +234,61 @@ ion-scroll{
 }
 
 page-home {
-  .scroll-zoom-wrapper{
-  white-space: nowrap;
-  ion-card{
-    &.myCard{
-      padding: 25px;
+    .scroll-zoom-wrapper{
+    white-space: nowrap;
+    ion-card{
+      &.myCard{
+        padding: 25px;
+      }
     }
   }
-}
 
-.myCardButton{
-
-}
-
-
-button {
-  width: 80px;
-}
-
-
-ion-card.card{
-  display: inline-block;
-  width: 236px;
-  height: 144px;
-  padding: 5px;
+  #orderCard{
+    width: 492px;
+  }
 
 }
 
-#orderCard{
-  width: 492px;
+
+waiting {
+    button {
+      width: 80px;
+    }
+
+
+    ion-card.card{
+      display: inline-block;
+      width: 236px;
+      height: 144px;
+      padding: 5px;
+
+    }
+
+  ion-card.card.static{
+    z-index: 10;
+    position: fixed;
+    top: 17px;
+    right: -50px;
+    width: 150px;
+    font-size: 48px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .static_bg{
+    position: fixed;
+    pointer-events: none;
+    top: 0px;
+    right: 0px;
+    height: 200px;
+    width: 300px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,c9d2d7+100&0+0,1+100 */
+    background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(201,210,215,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(201,210,215,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(201,210,215,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#c9d2d7',GradientType=1 ); /* IE6-9 */
+  }
 }
-
-
-
-ion-card.card.static{
-  z-index: 10;
-  position: fixed;
-  top: 17px;
-  right: -50px;
-  width: 150px;
-  font-size: 48px;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.static_bg{
-  position: fixed;
-  pointer-events: none;
-  top: 0px;
-  right: 0px;
-  height: 200px;
-  width: 300px;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,c9d2d7+100&0+0,1+100 */
-  background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(201,210,215,1) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(201,210,215,1) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(201,210,215,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#c9d2d7',GradientType=1 ); /* IE6-9 */
-}
-}
-
 
 
 
@@ -378,8 +374,15 @@ page-b-patient {
 }
 
 page-b-scan{
+ion-item{
+  
+}
+  h2{
+    font-size: $font-head;
+  }
 
   ion-card.card ion-card-content{
+    padding: 0px;
 
     #box_icon{
       stroke: $black60;
