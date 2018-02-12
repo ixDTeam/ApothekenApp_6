@@ -399,14 +399,17 @@ page-b-zusammenfassung {
   }
 }
 
-
+.timecard-row{
+  margin-top: 10px;
+}
 .timecard{
+  margin-top: 10px;
   button.button{
     width: 20px;
     padding: 20px;
   }
   h2{
-      font-size: $font-huge;
+      font-size: $font-huge - 10px;
     &:first-child{
       margin-top: 2px;
     }
