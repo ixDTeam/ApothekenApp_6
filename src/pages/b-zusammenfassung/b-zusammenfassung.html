@@ -19,42 +19,48 @@
     <ion-list no-lines>
       <ion-item *ngFor="let box of box" let i = index (click)="editToArray(i)">
         <ion-row>
-          <ion-col col-1>
-            <img width="40" height="40" src="assets/icon/box.svg">
-          </ion-col>
-          <ion-col col-1>
-            <h3>{{box.BoxID | slice:0:3}}</h3>
+          <ion-col col-2>
+            <ion-row>
+              <ion-col col-4>
+                <img width="40" height="40" src="assets/icon/box_black.svg">
+              </ion-col>
+              <ion-col>
+                <h3>{{box.BoxID | slice:0:3}}</h3>
+              </ion-col>
+            </ion-row>
           </ion-col>
           <ion-col>
-            <ion-row><h3>{{box.Medikament}}</h3></ion-row>
+            <ion-row><h3 class="drugs_name">{{box.Medikament}}</h3></ion-row>
             <ion-row class=""><h4>Dosis pro Tag</h4></ion-row>
           </ion-col>
           <ion-col class="row_dosierung">
             <ion-row>
               <ion-col>
                 <ion-row><img src="assets/icon/time/sunrise.png"></ion-row>
-                <ion-row>{{box.dosierung.dosierung_Mo}}</ion-row>
+                <ion-row><h4>{{box.dosierung.dosierung_Mo}}</h4></ion-row>
               </ion-col>
               <ion-col>
                 <ion-row><img src="assets/icon/time/day.png"></ion-row>
-                <ion-row>{{box.dosierung.dosierung_Mi}}</ion-row>
+                <ion-row><h4>{{box.dosierung.dosierung_Mi}}</h4></ion-row>
               </ion-col>
               <ion-col>
                 <ion-row><img src="assets/icon/time/dawn.png"></ion-row>
-                <ion-row>{{box.dosierung.dosierung_Ab}}</ion-row>
+                <ion-row><h4>{{box.dosierung.dosierung_Ab}}</h4></ion-row>
               </ion-col>
               <ion-col>
                 <ion-row><img src="assets/icon/time/night.png"></ion-row>
-                <ion-row>{{box.dosierung.dosierung_Na}}</ion-row>
+                <ion-row><h4>{{box.dosierung.dosierung_Na}}</h4></ion-row>
               </ion-col>
             </ion-row>
           </ion-col>
-          <ion-col>
+          <ion-col class="pull-right" col-2>
             <ion-row>{{box.MaxMenge}} Stk x {{box.MedikamentPreis}}€</ion-row>
             <ion-row><h3>{{box.gesamtPreis}}€</h3></ion-row>
           </ion-col>
-          <ion-col col-1>
-            <button clear ion-button (click)="deleteToArray(i)"><i class="far fa-trash"></i></button>
+          <ion-col class="pull-right" col-1>
+            <ion-row>
+              <button clear ion-button (click)="deleteToArray(i)"><i class="far fa-trash"></i></button>
+            </ion-row>
           </ion-col>
         </ion-row>
       </ion-item>
@@ -62,14 +68,8 @@
     </ion-card-content>
   </ion-card>
   <ion-row align-items-center>
-    <ion-col align-self-start>
-      <button ion-button clear (click)="cancleOrder()">Buchung abbrechen</button>
-    </ion-col>
-    <ion-col align-self-end>
-      <button ion-button (click)="startNewOrderToArray()">Weiteres Medikament hinzufügen</button>
-    </ion-col>
-    <ion-col align-self-end>
-      <button ion-button [disabled]="box.length === 0" (click)="newOrderToFirebaseConfirm()">Bestellen</button>
-    </ion-col>
+      <button class="pull-left"  ion-button clear (click)="cancleOrder()">Buchung abbrechen</button>
+      <button class="pull-right" ion-button (click)="startNewOrderToArray()">Weiteres Medikament hinzufügen</button>
+      <button class="pull-right" ion-button [disabled]="box.length === 0" (click)="newOrderToFirebaseConfirm()">Bestellen</button>
   </ion-row>
 </ion-content>

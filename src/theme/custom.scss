@@ -283,17 +283,49 @@ page-b-scan{
   }
 }
 
+//// Zusammenfassung-page
 
 page-b-zusammenfassung {
 
-  h3 {
-    font-size: $font-head;
+  ion-card-content.card-content{
+    padding: 0px;
   }
 
-  ion-item {
-    img {
-      width: 21px;
-      height: 21px;
+  ion-list.list{
+    h3{
+        font-size: $font-head;
+        font-weight: bold;
+      }
+
+    ion-col.row_dosierung.col{
+      text-align: center;
+      ion-row{
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        &:first-of-type{
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    ion-col.pull-right{
+      ion-row.row{
+        -webkit-box-pack: flex-end;
+        -webkit-justify-content: flex-end;
+        -ms-flex-pack: flex-end;
+        justify-content: flex-end;
+      }
+    }
+
+    ion-item {
+      ion-col{
+        img {
+          width: 21px;
+          height: 21px;
+        }
+      }
     }
   }
 
