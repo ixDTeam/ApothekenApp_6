@@ -1,8 +1,12 @@
 <ion-content>
   <waiting></waiting>
+
   <ion-row>
     <ion-col>
       <ion-card>
+        <ion-card-header class="mycardheader">
+          <h3>Kommende Bestellungen</h3>
+        </ion-card-header>
         <ion-item>
           <ion-label fixed>ScannerID</ion-label>
           <ion-input [(ngModel)]="fb.ScannerID"></ion-input>
