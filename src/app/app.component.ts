@@ -14,7 +14,7 @@ import { BMedikamentPage } from '../pages/b-medikament/b-medikament';
 })
 export class MyApp {
 
-  rootPage:any = BDosierungPage;
+  rootPage:any = TabsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

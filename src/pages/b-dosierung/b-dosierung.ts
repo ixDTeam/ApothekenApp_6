@@ -57,6 +57,7 @@ newCurrentDate = moment().add(1, 'M');
    weekStart: 1
  };
 
+
   constructor(public navCtrl: NavController, public fb: FirebaseProvider) {
     if(fb.scanPageStatus == false){
       fb.db.object('/Drugs/'+fb.getMedikament()).valueChanges()
