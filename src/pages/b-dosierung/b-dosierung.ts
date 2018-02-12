@@ -41,7 +41,7 @@ export class BDosierungPage {
  anzahlPillen: any = 0;
 
  currentDate = moment().format('YYYY-MM-DD');
- endDate = moment().format('YYYY-MM-DD');
+ endDate:any;
 
 medikament:any;
 medikamentPreis:any;
@@ -187,6 +187,7 @@ updateCalender(){
 
 calculateAmount(){
     this.dosierungTage = this.endDate.diff(this.currentDate, 'days');
+    this.dosierungTage+=1;
     this.anzahlPillen = (this.dosierungTage*this.dosierung_Mo)+(this.dosierungTage*this.dosierung_Mi)+(this.dosierungTage*this.dosierung_Ab)+(this.dosierungTage*this.dosierung_Na);
     this.gesamtPreis = this.anzahlPillen * this.medikamentPreis;
 }
