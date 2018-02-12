@@ -68,6 +68,7 @@ ion-img{
 
 .tabbar {
 
+
   max-height:280px;
   top: 209px;
   width: $tab-bar-width;
@@ -101,13 +102,26 @@ ion-img{
 //     font-size: 30px !important;
 // }
 
+#noOrders_warning{
+  font-size: $font-huge - 30px;
+  margin-top: 70px;
+  margin-left: 30px;
+  color: $black20;
+
+}
+
 //Cards
 
-.myCard{
-  padding-top: 30px;
+.myAdd{
+  padding-top: 41px;
+  padding-right: 30px;
 }
-.mycardcontent{
-  padding: 0px;
+
+
+ion-card{
+  &.myCard{
+    margin-top: 25px;
+  }
 }
 
 ion-tabs.tabs-ios#tableiste{
@@ -156,7 +170,7 @@ ion-card.card{
 ion-card.card.static{
   z-index: 10;
   position: fixed;
-  top: 24px;
+  top: 17px;
   right: -50px;
   width: 150px;
   font-size: 48px;
