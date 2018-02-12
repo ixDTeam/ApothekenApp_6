@@ -66,6 +66,11 @@
 
 
     </ion-row>
+    <ion-row *ngIf="dosis_card">
+      <ion-col text-right>
+        <button class="action-button" clear type="submit" ion-button (click)="dosisCard()">Weiter</button>
+      </ion-col>
+    </ion-row>
 
   </ion-card>
 
@@ -85,15 +90,15 @@
 
 
     </ion-card-header>
-    <ion-row *ngIf="time_Card">
+    <ion-row *ngIf="time_card">
       <ion-col col-3 class="timecard">
         <div class="header">
           Länge
         </div>
         <div class="content">
-          <button ion-button (click)="dosierungAdd('laenge')">+</button>
+          <button class="noGradient" ion-button (click)="dosierungAdd('laenge')"><i class="fal fa-angle-up"></i></button>
           <h2 class="marginfix">{{dosierung_laenge}}</h2>
-          <button ion-button [disabled]="dosierung_laenge === 1" (click)="dosierungSub('laenge')">-</button>
+          <button class="noGradient" ion-button [disabled]="dosierung_laenge === 1" (click)="dosierungSub('laenge')"><i class="fal fa-angle-down"></i></button>
         </div>
       </ion-col>
 
@@ -102,7 +107,7 @@
           Zeiteinheit
         </div>
         <div class="content">
-          <button class="noGradient" ion-button [disabled]="dosierung_einheit === 3"  (click)="dosierungAdd('einheit')">+</button>
+          <button class="noGradient" ion-button [disabled]="dosierung_einheit === 3"  (click)="dosierungAdd('einheit')"><i class="fal fa-angle-up"></i></button>
           <span *ngIf="dosierung_einheit === 1">
             <span *ngIf="dosierung_laenge > 1">
               <h2 class="marginfix">Tage</h2>
@@ -127,7 +132,7 @@
               <h2 class="marginfix">Monat</h2>
             </span>
           </span>
-          <button class="noGradient" ion-button [disabled]="dosierung_einheit === 1" (click)="dosierungSub('einheit')">-</button>
+          <button class="noGradient" ion-button [disabled]="dosierung_einheit === 1" (click)="dosierungSub('einheit')"><i class="fal fa-angle-down"></i></button>
         </div>
       </ion-col>
 
@@ -140,6 +145,11 @@
         </ion-calendar>
       </ion-col>
     </ion-row>
+    <ion-row *ngIf="time_card">
+      <ion-col text-right>
+        <button class="action-button" clear type="submit" ion-button (click)="nextStep()">Weiter</button>
+      </ion-col>
+    </ion-row>
 
 
 
@@ -147,5 +157,4 @@
 
 
 
-<button ion-button (click)="nextStep()" class="next_page">Auswählen</button>
 </ion-content>
