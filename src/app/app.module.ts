@@ -14,6 +14,7 @@ import { BDosierungPage } from '../pages/b-dosierung/b-dosierung';
 import { BScanPage } from '../pages/b-scan/b-scan';
 import { BZusammenfassungPage } from '../pages/b-zusammenfassung/b-zusammenfassung';
 import { BPatientPage } from '../pages/b-patient/b-patient';
+import { KommendeBestellungenPage } from '../pages/kommende-bestellungen/kommende-bestellungen';
 
 import { DetailPage } from '../pages/detail/detail';
 
@@ -21,6 +22,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {BreadcrumbComponent} from '../components/breadcrumb/breadcrumb'
+import {WaitingComponent} from '../components/waiting/waiting'
+
 import { CalendarModule } from "ion2-calendar";
 
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
@@ -53,8 +56,10 @@ const firebaseConfig = {
     BScanPage,
     BDosierungPage,
     BZusammenfassungPage,
+    KommendeBestellungenPage,
     DetailPage,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    WaitingComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +78,7 @@ const firebaseConfig = {
     MultiuserPage,
     HomePage,
     TabsPage,
+    KommendeBestellungenPage,
     BPatientPage,
     BMedikamentPage,
     BScanPage,

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { SettingsPage } from '../settings/settings';
-import { MultiuserPage } from '../multiuser/multiuser';
+import { KommendeBestellungenPage } from '../kommende-bestellungen/kommende-bestellungen';
 import { HomePage } from '../home/home';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 
@@ -12,7 +12,7 @@ import { FirebaseProvider } from '../../providers/firebase/firebase';
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab2Root = MultiuserPage;
+  tab2Root = KommendeBestellungenPage;
   tab3Root = SettingsPage;
 
   connectionStatus = false;

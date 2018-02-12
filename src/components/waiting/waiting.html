@@ -1,0 +1,50 @@
+<ion-scroll scrollX="true">
+  <ng-container *ngIf="ordersWaiting?.length > 0">
+    <ion-card class="myCard " *ngFor="let order of ordersWaiting">
+      <ng-container *ngIf="order.Order_0">
+        <ion-card-header class="mycardheader">
+          <h3>{{order.Order_0.PatientID}}</h3>
+        </ion-card-header>
+        <ion-card-content>
+          {{order.Order_0.Medikament}}
+          <span *ngIf="order.Order_1">{{order.Order_1.Medikament}}</span>
+          {{order.Order_0.BoxID  | slice:0:3}}
+        </ion-card-content>
+          <ion-row>
+            <ion-col text-left class="number-col">
+              <svg width="12px" height="17px" viewBox="0 0 12 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="UI-Elements-/-Cards-/-Small" transform="translate(-19.000000, -107.000000)" stroke="#212121">
+                          <g id="Card-#1">
+                              <g id="Icon" transform="translate(20.000000, 108.000000)">
+                                  <rect id="Rectangle-2" stroke-width="1.28" fill="#FFFFFF" x="1.875" y="3.125" width="6.25" height="11.875" rx="0.64"></rect>
+                                  <rect id="Rectangle-2-Copy" stroke-width="1.28" fill="#FFFFFF" x="0" y="0" width="10" height="4.375" rx="1"></rect>
+                                  <path d="M8,6.5 L5,6.5" id="Path-2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M8,8.5 L5,8.5" id="Path-2-Copy" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  <path d="M8,10.5 L5,10.5" id="Path-2-Copy-2" stroke-linecap="round" stroke-linejoin="round"></path>
+                              </g>
+                          </g>
+                      </g>
+                  </g>
+              </svg>
+              <span class="box-number">200</span>
+
+            </ion-col>
+            <ion-col text-right>
+              <button class="action-button" clear type="submit" ion-button (click)="displayItem(order.key)">Ansehen</button>
+            </ion-col>
+          </ion-row>
+      </ng-container>
+    </ion-card>
+  </ng-container>
+  <div id="noOrders_warning" *ngIf="ordersWaiting?.length < 1">
+    <i class="fas fa-ban"></i>
+    Keine Bestellungen
+  </div>
+  <ion-card class="static" (click)="startNew()">
+     <ion-badge *ngIf="fb.ordersStore.length > 0">In Bearbeitung</ion-badge>
+   <i class="fal fa-plus myAdd"></i>
+  </ion-card>
+  <div class="static_bg">
+  </div>
+</ion-scroll>
