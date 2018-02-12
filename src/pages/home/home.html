@@ -63,7 +63,7 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                {{order.Order_0.PatientID}}<br />
+                <h3>{{order.Order_0.PatientID}}<br/></h3>
                 {{order.Order_0.Medikament}}
               </ion-col>
               <ion-col>
@@ -72,8 +72,8 @@
               <ion-col>
                 <round-progress [current]="order.Order_0.Menge" [max]="order.Order_0.MaxMenge" [radius]="15" [stroke]="3"  [rounded]="true" ></round-progress>
               </ion-col>
-              <ion-col>
-                <p class="text_button" (click)="displayItem(order.key)">Vorbereiten</p>
+              <ion-col col-2>
+                <p class="text_button" (click)="displayItem(order.key)">Bearbeiten</p>
               </ion-col>
             </ion-row>
         </ion-grid>
