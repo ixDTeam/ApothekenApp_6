@@ -7,28 +7,43 @@
       </ion-card-header>
       <ion-list>
         <ion-item *ngFor="let order of ordersKommen" class="orderItem">
-          <ion-grid>
-            <ion-row>
-              <ion-col>
+
+            <ion-row align-items-center>
+              <ion-col col-4>
                 <h3>{{order.Order_0.PatientID}}<br/></h3>
                 {{order.Order_0.Medikament}}
               </ion-col>
-              <ion-col>
+              <ion-col col-4>
+                <svg class="box-icon" width="12px" height="17px" viewBox="0 0 12 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="UI-Elements-/-Cards-/-Small" transform="translate(-19.000000, -107.000000)" stroke="#212121">
+                            <g id="Card-#1">
+                                <g id="Icon" transform="translate(20.000000, 108.000000)">
+                                    <rect id="Rectangle-2" stroke-width="1.28" fill="#FFFFFF" x="1.875" y="3.125" width="6.25" height="11.875" rx="0.64"></rect>
+                                    <rect id="Rectangle-2-Copy" stroke-width="1.28" fill="#FFFFFF" x="0" y="0" width="10" height="4.375" rx="1"></rect>
+                                    <path d="M8,6.5 L5,6.5" id="Path-2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M8,8.5 L5,8.5" id="Path-2-Copy" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M8,10.5 L5,10.5" id="Path-2-Copy-2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
                 {{order.Order_0.BoxID | slice:0:3}}
               </ion-col>
-              <ion-col>
+              <ion-col col-2>
                 <round-progress [current]="order.Order_0.Menge" [max]="order.Order_0.MaxMenge" [radius]="15" [stroke]="3"  [rounded]="true" ></round-progress>
               </ion-col>
               <ion-col col-2>
                 <p class="text_button" (click)="displayItem(order.key)">Bearbeiten</p>
               </ion-col>
             </ion-row>
-        </ion-grid>
+
         </ion-item>
         <ion-item *ngIf="ordersKommen?.length < 1">
             Es werden keine Bestellungen erwartet.
         </ion-item>
-        <p class="text_button" (click)="displayItem(order.key)">Alle Anzeigen</p>
+        <p id="showAllOrders" class="text_button" (click)="displayItem(order.key)">Alle Anzeigen</p>
       </ion-list>
     </ion-card>
 

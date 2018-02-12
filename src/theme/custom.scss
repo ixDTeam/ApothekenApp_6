@@ -68,6 +68,7 @@ ion-img{
 
 .tabbar {
 
+
   max-height:280px;
   top: 209px;
   width: $tab-bar-width;
@@ -98,13 +99,53 @@ ion-img{
 //     font-size: 30px !important;
 // }
 
+#noOrders_warning{
+  font-size: $font-huge - 30px;
+  margin-top: 70px;
+  margin-left: 30px;
+  color: $black20;
+
+}
+
 //Cards
 
-.myCard{
-  padding-top: 30px;
+.myAdd{
+  padding-top: 41px;
+  padding-right: 30px;
 }
-.mycardcontent{
-  padding: 0px;
+
+
+ion-card{
+  &.myCard{
+    margin-top: 25px;
+    padding-top: 15px !important;
+    &.orders{
+        padding: 24px;
+    }
+    .card-content-ios{
+      padding-left: 0px;
+      padding-bottom: 0px;
+      height: 55px;
+      color: $black40;
+    }
+    .box-number{
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+  }
+  ion-col.number-col{
+    padding: 0px;
+  }
+}
+
+#orderCard{
+  padding: 24px;
+  height: 530px;
+}
+
+.button.button-clear.action-button{
+  padding-left: 20px !important;
 }
 
 ion-tabs.tabs-ios#tableiste{
@@ -113,7 +154,6 @@ ion-tabs.tabs-ios#tableiste{
   }
 }
 
-<<<<<<< HEAD
 ion-list{
   ion-item.orderItem{
     border-top: 0px !important;
@@ -130,15 +170,35 @@ ion-list{
     .label{
       margin: 0px;
     }
+    ion-row{
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    svg.box-icon{
+      position: relative;
+      top: 2px;
+    }
+    round-progress{
+      width: 34px !important;
+      height: 34px !important;
+      svg{
+        width: 30px;
+        height: 30px;
+      }
+    }
 
 
+  }
+  #showAllOrders{
+    position: absolute;
+    bottom: 40px;
+    left: 390px;
+    color: $black40;
   }
 }
 
 
 
-=======
->>>>>>> 639fc9caf6e36c4eb2391de22a10505393f8b1e3
 
 
 
@@ -146,8 +206,16 @@ ion-list{
 page-home {
   .scroll-zoom-wrapper{
   white-space: nowrap;
+  ion-card{
+    &.myCard{
+      padding: 25px;
+    }
+  }
 }
 
+.myCardButton{
+
+}
 
 
 button {
@@ -159,6 +227,8 @@ ion-scroll{
   background-color: #C9D2D7;
     ::-webkit-scrollbar {
       display: none;
+  }
+  ion-row{
   }
 }
 
@@ -179,7 +249,7 @@ ion-card.card{
 ion-card.card.static{
   z-index: 10;
   position: fixed;
-  top: 24px;
+  top: 17px;
   right: -50px;
   width: 150px;
   font-size: 48px;
@@ -329,6 +399,7 @@ ion-col.row_dosierung.col{
 }
 
 
+<<<<<<< HEAD
 //// Medikament-Page
 
 page-b-medikament{
@@ -351,6 +422,8 @@ page-b-medikament{
     }
   }
 }
+=======
+>>>>>>> ec4aa785904b2e0d30729d85710017c39cdb1c99
 
 //// Zusammenfassung-page
 
@@ -537,14 +610,13 @@ page-b-zusammenfassung {
 
 breadcrumb {
   nav.breadcrumb-all{
-
+    margin-bottom: 30px;
+    box-shadow: 0 4px 2px -4px gray;
+    //border-bottom: 1px solid gray;
     padding: 0px;
-    margin: 30px 24px;
-
+    margin: 0px 24px;
     .button{
-      margin-right: 20px;
-      padding-left: 20px;
-      padding-right: 20px;
+      margin-right: 40px;
     }
   }
 
@@ -557,13 +629,14 @@ breadcrumb {
     padding: 0px 20px;
 
     &.current{
-      -webkit-border-image: -webkit-gradient(linear, left top, right top, from($primary), to($secondary), color-stop(0.6, $secondary)) 21 30 30 21 ;
+      -webkit-border-image: -webkit-gradient(linear, left top, right top, from($primary), to($secondary), color-stop(0.6, $secondary)) 30 21  30 21 ;
       border-color: $primary;
       color: $black20;
       opacity: 1;
       font-weight: bold;
       border-bottom: 3px solid;
       border-radius: 0px;
+      background-color: transparent;
     }
 
 

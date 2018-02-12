@@ -34,6 +34,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, public fb: FirebaseProvider, public modalCtrl: ModalController) {
 
   }
+  
 
   ionViewDidEnter(){
 
