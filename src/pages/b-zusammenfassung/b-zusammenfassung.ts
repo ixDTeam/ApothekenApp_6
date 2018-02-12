@@ -52,6 +52,7 @@ startNewOrderToArray(){
 
 cancleOrder(){
   this.resetProgess();
+  this.fb.clearOrderArray();
   this.fb.resetScanner();
   this.navCtrl.popToRoot();
 }
@@ -91,7 +92,6 @@ newOrderToFirebase(){
   this.fb.newOrderToFirebase();
   this.resetProgess();
   this.succesToast();
-  // this.navCtrl.removeView(HomePage);
   this.navCtrl.popToRoot();
 }
 

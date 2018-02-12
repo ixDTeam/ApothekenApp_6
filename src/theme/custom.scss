@@ -235,15 +235,18 @@ ion-scroll{
   }
 }
 
-page-home {
-    .scroll-zoom-wrapper{
-    white-space: nowrap;
-    ion-card{
-      &.myCard{
-        padding: 25px;
-      }
-    }
+.scroll-zoom-wrapper{
+white-space: nowrap;
+ion-card{
+  &.myCard{
+    padding: 25px;
   }
+}
+}
+
+
+page-home {
+
 
   #orderCard{
     width: 492px;
@@ -360,6 +363,7 @@ ion-card.card{
 
 ion-searchbar.searchbar{
   background: transparent;
+  width: auto;
   padding: 0px;
   margin: 12px;
   @include shadow;
@@ -376,11 +380,23 @@ page-b-patient {
 }
 
 page-b-scan{
+<<<<<<< HEAD
 ion-item{
 
 }
   h2{
     font-size: $font-head;
+=======
+  ion-row.row{
+    margin-top: 35px;
+  }
+
+ion-item.item
+  {
+    h2.smallerHead{
+      font-size: $font-head;
+    }
+>>>>>>> 8473e01132ac84feb83bef42e983af49e66639b3
   }
 
   ion-card.card ion-card-content{
@@ -710,7 +726,7 @@ page-b-medikament{
 
 breadcrumb {
   nav.breadcrumb-all{
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     box-shadow: 0 4px 2px -4px gray;
     //border-bottom: 1px solid gray;
     padding: 0px;

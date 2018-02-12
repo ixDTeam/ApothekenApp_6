@@ -6,9 +6,8 @@
           <h3>{{order.Order_0.PatientID}}</h3>
         </ion-card-header>
         <ion-card-content>
-          {{order.Order_0.Medikament}}
+          {{order.Order_0.Medikament}}<br />
           <span *ngIf="order.Order_1">{{order.Order_1.Medikament}}</span>
-          {{order.Order_0.BoxID  | slice:0:3}}
         </ion-card-content>
           <ion-row>
             <ion-col text-left class="number-col">
@@ -27,7 +26,7 @@
                       </g>
                   </g>
               </svg>
-              <span class="box-number">200</span>
+              <span class="box-number">{{order.Order_0.BoxID  | slice:0:3}}</span>
             </ion-col>
             <ion-col text-right>
               <button class="action-button" clear type="submit" ion-button (click)="displayItem(order.key)">Ansehen</button>
